@@ -78,6 +78,20 @@
           </div>
           <div class="dialog-bubble">前回の宿題、「手がかりを消せば縞は戻るか」を実験しよう。ただし、倒れた針を手で立て直すのは「消した」ことにならないよ。立て直す装置の側に、針が倒れていたという記録が移ってしまうだけだからね。手がかりというのは、押しても引いても、どこかに残りやすい。そこで装置を素性のいいものに替えよう。針の代わりに、粒子が左を通ると相棒の<strong>目印粒子</strong>が「<strong>左印</strong>」という状態になり、右を通ると「<strong>右印</strong>」になる仕掛けだ。左印と右印は直交している。つまり働きは前回の検出器と同じ。実際、光子のペアを使うとこういう装置が作れるんだ。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg id="marker-svg" class="dq-svg" viewBox="0 0 372 240" width="100%" role="img" aria-label="目印粒子の仕掛けのアニメーション。粒子が左のスリットを通ると、相棒の目印粒子が左印の状態になって飛び去り、右を通ると右印になる。左印と右印の向きは90度開いた直交状態で、完全に区別できる。スクリーンには縞のない分布が積もる">
+          <text class="strong" x="186" y="16" text-anchor="middle">目印粒子が、経路を記録して飛び去る</text>
+          <defs>
+            <marker id="ah-m" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#5b3fa6"></path></marker>
+          </defs>
+          <g id="marker-body"></g>
+        </svg>
+        <div class="diagram-caption">粒子が左を通ると、相棒の<strong>目印粒子</strong>（紫）が「<strong>左印</strong>」の状態（青緑の向き）になって飛び去り、右を通ると「<strong>右印</strong>」（琥珀の向き）になる。左印と右印の開きは90°＝<strong>直交</strong>で、完全に区別できる。つまり働きは、針の倒れる検出器とまったく同じ――スクリーンには縞のない分布が積もる。もつれた光子のペアを使うと、この仕掛けが実際に作れる</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
@@ -232,6 +246,140 @@
 
 <script src="js/progress.js"></script>
 <script>DQ.initStagePage(3);</script>
+
+<script>
+(function(){
+  // 図0: 目印粒子の仕掛け。粒子が通ったスリットに応じて目印が左印/右印になって飛び去る
+  var svg = document.getElementById('marker-svg');
+  var g = document.getElementById('marker-body');
+  if (!svg || !g) return;
+  var ns = 'http://www.w3.org/2000/svg';
+  var C1 = '#2f7a6b', C2 = '#b98a2e', CM = '#5b3fa6';
+  var SRC = {x: 30, y: 135}, SL = {x: 110, y: 105}, SR = {x: 110, y: 165};
+  var SCX = 250, TOP = 45, BOT = 225;
+  var PX = 332, PY = 88, PR = 28;
+
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(ns, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    (parent || g).appendChild(e);
+    return e;
+  }
+  function txt(x, y, cls, content, anchor) {
+    var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': anchor || 'middle'});
+    t.textContent = content;
+    return t;
+  }
+
+  // 装置
+  el('circle', {cx: SRC.x, cy: SRC.y, r: 5, fill: C2});
+  txt(SRC.x, SRC.y + 20, 'label', '光源');
+  el('line', {x1: 110, y1: 40, x2: 110, y2: SL.y - 8, stroke: 'var(--ink)', 'stroke-width': 4});
+  el('line', {x1: 110, y1: SL.y + 8, x2: 110, y2: SR.y - 8, stroke: 'var(--ink)', 'stroke-width': 4});
+  el('line', {x1: 110, y1: SR.y + 8, x2: 110, y2: 230, stroke: 'var(--ink)', 'stroke-width': 4});
+  txt(96, SL.y + 4, 'label', '左', 'end');
+  txt(96, SR.y + 4, 'label', '右', 'end');
+  el('line', {x1: SCX, y1: TOP, x2: SCX, y2: BOT, stroke: 'var(--ink)', 'stroke-width': 3});
+  txt(SCX, 38, 'label', 'スクリーン');
+
+  // のっぺり分布（理論カーブ）と点
+  function hump(y, c) { return Math.exp(-Math.pow((y - c) / 34, 2)); }
+  function pdf(y) { return 0.5 * hump(y, SL.y + 15) + 0.5 * hump(y, SR.y - 15); }
+  var d = '';
+  for (var yy = TOP; yy <= BOT; yy += 2) {
+    d += (d === '' ? 'M ' : 'L ') + (SCX + 8 + pdf(yy) * 60).toFixed(1) + ' ' + yy + ' ';
+  }
+  el('path', {d: d, fill: 'none', stroke: '#8a6a24', 'stroke-width': 1.6, 'stroke-dasharray': '3 3'});
+  var dotsG = el('g', {});
+  var dots = [];
+  function addDot(y) {
+    var c = el('circle', {cx: (SCX + 5 + Math.random() * 8).toFixed(1), cy: y.toFixed(1), r: 1.6, fill: 'var(--ink)', opacity: .75}, dotsG);
+    dots.push(c);
+    if (dots.length > 300) { var old = dots.shift(); old.parentNode.removeChild(old); }
+  }
+  function sampleY() {
+    for (var i = 0; i < 60; i++) {
+      var y = TOP + Math.random() * (BOT - TOP);
+      if (Math.random() < pdf(y)) return y;
+    }
+    return SRC.y;
+  }
+
+  // 目印の状態パネル（左印と右印は90°＝直交）
+  txt(PX, 46, 'label', '目印の状態');
+  el('circle', {cx: PX, cy: PY, r: PR, fill: 'var(--paper2)', stroke: 'var(--line)'});
+  var DIRL = {x: -0.707, y: -0.707}, DIRR = {x: 0.707, y: -0.707};
+  el('line', {x1: PX, y1: PY, x2: PX + DIRL.x * 23, y2: PY + DIRL.y * 23, stroke: C1, 'stroke-width': 1.6, 'stroke-dasharray': '3 3'});
+  el('line', {x1: PX, y1: PY, x2: PX + DIRR.x * 23, y2: PY + DIRR.y * 23, stroke: C2, 'stroke-width': 1.6, 'stroke-dasharray': '3 3'});
+  var lblL = txt(PX - 26, 60, 'label', '左印');
+  lblL.style.fill = C1; lblL.style.fontWeight = '900';
+  var lblR = txt(PX + 26, 60, 'label', '右印');
+  lblR.style.fill = C2; lblR.style.fontWeight = '900';
+  var stateArrow = el('line', {x1: PX, y1: PY, x2: PX, y2: PY, stroke: CM, 'stroke-width': 3, 'stroke-linecap': 'round', 'marker-end': 'url(#ah-m)', opacity: 0});
+  var stateTxt = txt(PX, PY + PR + 18, 'strong', '');
+  txt(PX, PY + PR + 33, 'label', '開き90°＝直交');
+
+  var particle = el('circle', {r: 4, fill: 'var(--ink)', opacity: 0});
+  var markerDot = el('circle', {r: 3, fill: CM, opacity: 0});
+
+  function setState(isLeft) {
+    var dir = isLeft ? DIRL : DIRR;
+    stateArrow.setAttribute('x2', PX + dir.x * 20);
+    stateArrow.setAttribute('y2', PY + dir.y * 20);
+    stateArrow.setAttribute('opacity', 1);
+    stateTxt.textContent = isLeft ? '左印' : '右印';
+    stateTxt.style.fill = isLeft ? C1 : C2;
+  }
+
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) {
+    for (var i = 0; i < 240; i++) addDot(sampleY());
+    setState(true);
+    return;
+  }
+
+  var t = 0, running = false, raf = null;
+  var cur = {slit: 'L', y: sampleY()};
+  function loop() {
+    if (!running) return;
+    t += 0.016;
+    var phase = (t % 1.0) / 1.0;
+    var slitP = cur.slit === 'L' ? SL : SR;
+    if (phase < 0.35) { // 光源→スリット
+      var p = phase / 0.35;
+      particle.setAttribute('opacity', 1);
+      particle.setAttribute('cx', (SRC.x + (slitP.x - SRC.x) * p).toFixed(1));
+      particle.setAttribute('cy', (SRC.y + (slitP.y - SRC.y) * p).toFixed(1));
+      markerDot.setAttribute('opacity', 0);
+      if (phase < 0.03) { stateArrow.setAttribute('opacity', 0.25); }
+    } else if (phase < 0.8) { // スリット→スクリーン。同時に目印がパネルへ飛ぶ
+      var p2 = (phase - 0.35) / 0.45;
+      particle.setAttribute('cx', (slitP.x + (SCX - slitP.x) * p2).toFixed(1));
+      particle.setAttribute('cy', (slitP.y + (cur.y - slitP.y) * p2).toFixed(1));
+      markerDot.setAttribute('opacity', 1);
+      markerDot.setAttribute('cx', (slitP.x + (PX - slitP.x) * p2).toFixed(1));
+      markerDot.setAttribute('cy', (slitP.y + (PY - slitP.y) * p2).toFixed(1));
+      if (p2 > 0.96) { setState(cur.slit === 'L'); markerDot.setAttribute('opacity', 0); }
+    } else {
+      if (particle.getAttribute('opacity') !== '0') {
+        particle.setAttribute('opacity', 0);
+        markerDot.setAttribute('opacity', 0);
+        setState(cur.slit === 'L');
+        addDot(cur.y);
+        var y2 = sampleY();
+        cur = {slit: hump(y2, SL.y + 15) > hump(y2, SR.y - 15) ? 'L' : 'R', y: y2};
+      }
+    }
+    raf = requestAnimationFrame(loop);
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(es){
+      if (es[0].isIntersecting && !running) { running = true; loop(); }
+      else if (!es[0].isIntersecting && running) { running = false; if (raf) cancelAnimationFrame(raf); }
+    }, {threshold: 0.15}).observe(svg);
+  } else { running = true; loop(); }
+})();
+</script>
 
 <script>
 (function(){
