@@ -213,6 +213,14 @@
         <div class="diagram-caption">左の矢印（青緑）と右の矢印（オレンジ）の合成。上の段（＋グループ）はそのまま足し、下の段（−グループ）は右の矢印を半回転させてから足す。道のり差が波長の整数倍の点（左列）では、足すと最大で＋の山、引くとゼロで−の谷。半端な点（右列）ではその逆。「足す」と「引く」が正確に裏返しなので、＋の山＝−の谷、−の山＝＋の谷となり、2枚合わせるとのっぺりに戻る</div>
       </div>
 
+      <div class="diagram-box">
+        <svg id="wave-svg" class="dq-svg" viewBox="0 0 372 288" width="100%" role="img" aria-label="波の重ね合わせで見るアニメーション。上の段では左からの波と右からの波をそのまま重ね、下の段では右の波の山と谷をひっくり返してから重ねる。道のり差が波長の整数倍のときは、そのまま重ねると大きく振れ、ひっくり返して重ねると打ち消し合う。道のり差が半端なときはその逆になる。下のグラフでは、道のり差を動かしたときの2つのグループの明るさが正確に互い違いになることが示される">
+          <text class="strong" x="186" y="16" text-anchor="middle">波で見る：そのまま重ねるか、ひっくり返して重ねるか</text>
+          <g id="wave-body"></g>
+        </svg>
+        <div class="diagram-caption">矢印の足し算は、波の重ね合わせと同じもの（矢印の向き＝波の山が来るタイミング、矢印の長さ＝波の振れ幅）。上段（＋グループ）：左からの波（青緑）と右からの波（オレンジ）を<strong>そのまま重ねる</strong>と、黒い合計の波になる。下段（−グループ）：右の波の<strong>山と谷をひっくり返してから</strong>（＝矢印の半回転）重ねる。道のり差が波長の整数倍なら、2つの波は山と山がそろうので、そのまま足せば大きく振れ（＋の山）、ひっくり返して足せば完全に打ち消し合う（−の谷）。半端ならその逆。下のグラフは道のり差を動かしたときの両グループの明るさ――山が正確に互い違いになり、合わせると常に一定＝のっぺりに戻る</div>
+      </div>
+
       <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -670,6 +678,137 @@
   el('line', {x1: 20, y1: 110, x2: 352, y2: 110, stroke: 'var(--line)', 'stroke-width': 1, 'stroke-dasharray': '4 4'});
   txt(186, 196, 'label', '「足す」と「引く」は正確に裏返し → ＋の山＝−の谷、−の山＝＋の谷', 10.5);
   txt(186, 212, 'label', '→ 2枚合わせると、山が谷を埋めてのっぺり', 10.5);
+})();
+</script>
+
+<script>
+(function(){
+  // 図0e: 波の重ね合わせで見る＋/−グループのアニメ
+  var svg = document.getElementById('wave-svg');
+  var g = document.getElementById('wave-body');
+  if (!svg || !g) return;
+  var ns = 'http://www.w3.org/2000/svg';
+  var C1 = '#2f7a6b', C2 = '#b98a2e', CP = '#5b3fa6';
+  var X0 = 20, X1 = 268, A = 15, LAMPX = 62;
+
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(ns, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    (parent || g).appendChild(e);
+    return e;
+  }
+  function txt(x, y, cls, content, anchor) {
+    var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': anchor || 'middle'});
+    t.textContent = content;
+    return t;
+  }
+
+  var deltaTxt = txt(186, 34, 'label', '');
+  deltaTxt.style.fontWeight = '900';
+
+  // 上下2パネル
+  var P = [
+    {base: 86, title: '＋グループ：そのまま重ねる', flip: 1},
+    {base: 170, title: '−グループ：右の波をひっくり返してから重ねる', flip: -1}
+  ];
+  var readouts = [];
+  P.forEach(function(p){
+    var t = txt(X0, p.base - 2 * A - 8, 'label', p.title, 'start');
+    t.style.fontWeight = '900';
+    el('line', {x1: X0, y1: p.base, x2: X1, y2: p.base, stroke: 'var(--line)', 'stroke-width': 1});
+    p.wL = el('path', {fill: 'none', stroke: C1, 'stroke-width': 1.5, opacity: .8});
+    p.wR = el('path', {fill: 'none', stroke: C2, 'stroke-width': 1.5, opacity: .8});
+    p.wS = el('path', {fill: 'none', stroke: 'var(--ink)', 'stroke-width': 2.6});
+    var r = txt(320, p.base + 4, 'strong', '');
+    readouts.push(r);
+  });
+
+  // 下: 明るさ vs 道のり差 のグラフ
+  var GX0 = 40, GX1 = 340, GY0 = 258, GH = 36, UMAX = 2.5;
+  function gx(u) { return GX0 + u / UMAX * (GX1 - GX0); }
+  el('line', {x1: GX0 - 6, y1: GY0, x2: GX1 + 6, y2: GY0, stroke: 'var(--ink)', 'stroke-width': 1.4});
+  [0, 0.5, 1, 1.5, 2, 2.5].forEach(function(u){
+    el('line', {x1: gx(u), y1: GY0, x2: gx(u), y2: GY0 + 4, stroke: 'var(--ink)'});
+    txt(gx(u), GY0 + 15, 'label', String(u));
+  });
+  txt(186, 284, 'label', '道のり差（波長の何倍か）');
+  function curve(f, color) {
+    var d = '';
+    for (var i = 0; i <= 120; i++) {
+      var u = UMAX * i / 120;
+      d += (i === 0 ? 'M ' : 'L ') + gx(u).toFixed(1) + ' ' + (GY0 - 5 - f(u) * GH).toFixed(1) + ' ';
+    }
+    el('path', {d: d, fill: 'none', stroke: color, 'stroke-width': 2});
+  }
+  function fP(u) { return Math.pow(Math.cos(Math.PI * u), 2); }
+  function fM(u) { return Math.pow(Math.sin(Math.PI * u), 2); }
+  curve(fP, CP); curve(fM, C2);
+  var lg1 = txt(112, 212, 'label', '＋の明るさ', 'start');
+  lg1.style.fill = CP; lg1.style.fontWeight = '900';
+  var lg2 = txt(206, 212, 'label', '−の明るさ', 'start');
+  lg2.style.fill = C2; lg2.style.fontWeight = '900';
+  var dotP = el('circle', {r: 4, fill: CP});
+  var dotM = el('circle', {r: 4, fill: C2});
+
+  function wavePath(base, phase, sign) {
+    var d = '';
+    for (var x = X0; x <= X1; x += 4) {
+      var y = base - sign * A * Math.sin(2 * Math.PI * x / LAMPX - phase);
+      d += (d === '' ? 'M ' : 'L ') + x + ' ' + y.toFixed(1) + ' ';
+    }
+    return d;
+  }
+  function sumPath(base, phi, flip) {
+    var d = '';
+    for (var x = X0; x <= X1; x += 4) {
+      var arg = 2 * Math.PI * x / LAMPX;
+      var y = base - A * (Math.sin(arg) + flip * Math.sin(arg - phi));
+      d += (d === '' ? 'M ' : 'L ') + x + ' ' + y.toFixed(1) + ' ';
+    }
+    return d;
+  }
+
+  function draw(u, tphase) {
+    var phi = 2 * Math.PI * u;
+    deltaTxt.textContent = '道のり差 ＝ 波長 × ' + u.toFixed(2);
+    P.forEach(function(p, i){
+      // 時間位相 tphase で波を流す（表示は空間波形＋時間シフト）
+      var d1 = '', d2 = '', ds = '';
+      for (var x = X0; x <= X1; x += 4) {
+        var arg = 2 * Math.PI * x / LAMPX - tphase;
+        var yL = p.base - A * Math.sin(arg);
+        var yR = p.base - p.flip * A * Math.sin(arg - phi);
+        var yS = p.base - A * (Math.sin(arg) + p.flip * Math.sin(arg - phi));
+        d1 += (d1 === '' ? 'M ' : 'L ') + x + ' ' + yL.toFixed(1) + ' ';
+        d2 += (d2 === '' ? 'M ' : 'L ') + x + ' ' + yR.toFixed(1) + ' ';
+        ds += (ds === '' ? 'M ' : 'L ') + x + ' ' + yS.toFixed(1) + ' ';
+      }
+      p.wL.setAttribute('d', d1); p.wR.setAttribute('d', d2); p.wS.setAttribute('d', ds);
+      var v = i === 0 ? fP(u) : fM(u);
+      readouts[i].textContent = '明るさ ' + Math.round(v * 100) + '%';
+    });
+    dotP.setAttribute('cx', gx(u)); dotP.setAttribute('cy', GY0 - 5 - fP(u) * GH);
+    dotM.setAttribute('cx', gx(u)); dotM.setAttribute('cy', GY0 - 5 - fM(u) * GH);
+  }
+
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) { draw(1.0, 0.8); return; }
+
+  var t = 0, running = false, raf = null;
+  function loop() {
+    if (!running) return;
+    t += 0.016;
+    var ph = (t % 16) / 16;
+    var tri = ph < 0.5 ? ph * 2 : (1 - ph) * 2;
+    draw(tri * UMAX, t * 3.2);
+    raf = requestAnimationFrame(loop);
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(es){
+      if (es[0].isIntersecting && !running) { running = true; loop(); }
+      else if (!es[0].isIntersecting && running) { running = false; if (raf) cancelAnimationFrame(raf); }
+    }, {threshold: 0.15}).observe(svg);
+  } else { running = true; loop(); }
 })();
 </script>
 
