@@ -168,8 +168,52 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">完璧だ。−の回も同じ理屈で縞が出る。ただし詳しく計算すると、−の場合は片方の矢印の向きが反転していて、縞の山と谷がちょうど入れ替わるんだ。だから＋の縞と−の縞は互い違いになり、合計すればのっぺり。つじつまは完全に合う。</div>
+          <div class="dialog-bubble">完璧だ。そして−と答えた回も、目印が「−の状態」に書き換わるから、同じ理屈で合流して縞が出るよ。</div>
         </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">そこで疑問があります。＋の縞の明るい場所は、ふつうの縞と同じ理屈なら、<strong>道のり差が波長のちょうど整数倍</strong>のところのはずです。逆縞と言うからには、−の縞の山は<strong>道のり差が0.5倍、1.5倍、2.5倍……という半端なところ</strong>に来るのだと思います。どうしてそんなにきれいに、互い違いに分かれるんでしょうか。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">影の<strong>符号</strong>まで見れば、きみのその予想ごと証明できるよ。筋書きの矢印は、掛け算で作られる。「左を通って目印が＋と答える」筋書きの矢印は、<strong>左の道のりの矢印 ×（左印が＋の物差しに落とす影の分）</strong>だ。ここで、影には長さだけでなく<strong>どちら側に落ちるか</strong>という向きがあったね。＋の物差しには、左印の影も右印の影も<strong>同じ側</strong>に落ちる。だから＋グループの合計は「左の矢印＋右の矢印」。ところが<strong>−の物差しには、左印の影と右印の影が互いに反対側に落ちる</strong>。反対側に落ちた影の分を掛けるということは、その矢印を<strong>半回転させる</strong>ということだ。だから−グループの合計は「左の矢印−右の矢印」――片方を半回転させてから足したものになる。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">それなら結末まで一気に行けます。道のり差が波長の整数倍の点では、左右の矢印は<strong>同じ向き</strong>。足せば最大――＋の縞の山。引けばゼロ――−の縞の谷。道のり差が半端な点では左右の矢印は<strong>正反対</strong>。足せばゼロ、引けば最大。つまり＋の山の場所は必ず−の谷で、−の山は必ず＋の谷。<strong>きれいに互い違いになるのは偶然ではなく、「足す」と「引く」が正確に裏返しだから</strong>なんですね。2枚を合わせれば山が谷を埋めてのっぺり――全体の分布が変わらないことともつじつまが合います。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">文句なしの証明だ。＋と−は直交する物差しのペアとして、「足す」と「引く」をちょうど手分けしている。だから縞と逆縞は2枚で1組、合わせてのっぺりになるのは必然なんだよ。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg id="alt-svg" class="dq-svg" viewBox="0 0 372 224" width="100%" role="img" aria-label="縞と逆縞が互い違いになる理由の図。道のり差が波長の整数倍の点では左右の矢印が同じ向きで、足すと最大（＋の縞の山）、引くとゼロ（−の縞の谷）。道のり差が半端な点では左右の矢印が正反対で、足すとゼロ、引くと最大。足すと引くが正確に裏返しなので、＋の山は必ず−の谷になる">
+          <text class="strong" x="186" y="16" text-anchor="middle">なぜ互い違いになるのか：足すか、引くか</text>
+          <defs>
+            <marker id="ah3-t" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#2f7a6b"></path></marker>
+            <marker id="ah3-o" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#b98a2e"></path></marker>
+            <marker id="ah3-k" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5.5" markerHeight="5.5" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--ink)"></path></marker>
+          </defs>
+          <g id="alt-body"></g>
+        </svg>
+        <div class="diagram-caption">左の矢印（青緑）と右の矢印（オレンジ）の合成。上の段（＋グループ）はそのまま足し、下の段（−グループ）は右の矢印を半回転させてから足す。道のり差が波長の整数倍の点（左列）では、足すと最大で＋の山、引くとゼロで−の谷。半端な点（右列）ではその逆。「足す」と「引く」が正確に裏返しなので、＋の山＝−の谷、−の山＝＋の谷となり、2枚合わせるとのっぺりに戻る</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
@@ -561,6 +605,71 @@
   arrow(168, Y2, 186, 110);
   arrow(282, 100, 296, 100);
   txt(186, 188, 'label', '終わりが一致 → 矢印を足せる → 縞（−の回も同様、ただし逆向きの縞）');
+})();
+</script>
+
+<script>
+(function(){
+  // 図0d: 足すか引くか（＋縞と−逆縞が互い違いになる理由、静的）
+  var g = document.getElementById('alt-body');
+  if (!g) return;
+  var ns = 'http://www.w3.org/2000/svg';
+  var C1 = '#2f7a6b', C2 = '#b98a2e';
+  function el(name, attrs) {
+    var e = document.createElementNS(ns, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    g.appendChild(e);
+    return e;
+  }
+  function txt(x, y, cls, content, size, anchor) {
+    var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': anchor || 'middle'});
+    t.textContent = content;
+    if (size) t.style.fontSize = size + 'px';
+    return t;
+  }
+  function arrowLine(x1, y, x2, color, marker) {
+    el('line', {x1: x1, y1: y, x2: x2, y2: y, stroke: color, 'stroke-width': 2.5, 'stroke-linecap': 'round', 'marker-end': 'url(#' + marker + ')'});
+  }
+
+  // 列見出し
+  txt(160, 42, 'strong', '道のり差＝波長の整数倍', 11);
+  txt(305, 42, 'strong', '半端（0.5倍、1.5倍…）', 11);
+  // 行見出し
+  var rp = txt(46, 84, 'strong', '＋：足す', 11);
+  rp.style.fill = '#5b3fa6';
+  var rm = txt(46, 148, 'strong', '−：引く', 11);
+  rm.style.fill = '#5b3fa6';
+  txt(46, 163, 'label', '（半回転して足す）', 8.5);
+
+  // セル: [列cx, 行y, 右矢印の向き(1=右,-1=左), 結果(max/zero)]
+  var L = 30;
+  var cells = [
+    {cx: 160, y: 72, dir: 1, res: 'max'},   // ＋ × 整数倍: →→
+    {cx: 305, y: 72, dir: -1, res: 'zero'}, // ＋ × 半端: →←
+    {cx: 160, y: 136, dir: -1, res: 'zero'},// − × 整数倍: 半回転で →←
+    {cx: 305, y: 136, dir: 1, res: 'max'}   // − × 半端: 半回転で →→
+  ];
+  cells.forEach(function(c){
+    var x0 = c.cx - 45;
+    // 左の矢印（青緑、常に右向き）
+    arrowLine(x0, c.y, x0 + L, C1, 'ah3-t');
+    // 右の矢印（オレンジ）: つなぎ足し
+    if (c.dir === 1) arrowLine(x0 + L, c.y, x0 + 2 * L, C2, 'ah3-o');
+    else arrowLine(x0 + L, c.y, x0, C2, 'ah3-o');
+    // 合計
+    if (c.res === 'max') {
+      arrowLine(x0, c.y + 16, x0 + 2 * L, 'var(--ink)', 'ah3-k');
+      var t1 = txt(c.cx + 28, c.y + 20, 'label', '山（明）', 10, 'start');
+      t1.style.fill = 'var(--ok)'; t1.style.fontWeight = '900';
+    } else {
+      el('circle', {cx: x0, cy: c.y + 16, r: 2.5, fill: 'var(--ink)'});
+      var t2 = txt(c.cx + 28, c.y + 20, 'label', '谷（0）', 10, 'start');
+      t2.style.fill = 'var(--ng)'; t2.style.fontWeight = '900';
+    }
+  });
+  el('line', {x1: 20, y1: 110, x2: 352, y2: 110, stroke: 'var(--line)', 'stroke-width': 1, 'stroke-dasharray': '4 4'});
+  txt(186, 196, 'label', '「足す」と「引く」は正確に裏返し → ＋の山＝−の谷、−の山＝＋の谷', 10.5);
+  txt(186, 212, 'label', '→ 2枚合わせると、山が谷を埋めてのっぺり', 10.5);
 })();
 </script>
 
