@@ -104,8 +104,19 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。ところで、目印粒子への「質問」は1種類ではないんだ。もつれ光子の旅で、偏光板の角度を変えるといろいろな質問ができたのと同じ発想だよ。「左印ですか、右印ですか」と聞く代わりに、<strong>斜めの質問</strong>ができる。答えは「<strong>＋</strong>」か「<strong>−</strong>」の2通りで、性質はこうだ。<strong>左印に斜めの質問をすると、＋と−が半々のランダム。右印に聞いても、やはり＋と−が半々のランダム</strong>。</div>
+          <div class="dialog-bubble">そう。ところで、目印粒子への「質問」は1種類ではないんだ。もつれ光子の旅で、偏光板の角度を変えるといろいろな質問ができたのと同じ発想だよ。「左印ですか、右印ですか」と聞く代わりに、<strong>斜めの質問</strong>ができる。答えは「<strong>＋</strong>」か「<strong>−</strong>」の2通りで、性質はこうだ。<strong>左印に斜めの質問をすると、＋と−が半々のランダム。右印に聞いても、やはり＋と−が半々のランダム</strong>。なぜそうなるのか、矢印の言葉で仕組みを説明しよう。質問というのは、<strong>直交する2本1組の「物差し」を、目印の矢印にあてがう操作</strong>なんだ。答えは必ずどちらかの物差しに決まり、その確率は、<strong>目印の矢印を物差しに沿って分解した「影」の長さの2乗</strong>で決まる――明るさの計算と同じ、いつもの2乗ルールだよ。「左印ですか、右印ですか」という質問は、左印の向きと右印の向きに物差しをあてがう。左印の目印はその片方にぴったり沿うから、影は全部そちらに落ちて、答えは100%「左印」。ところが<strong>斜めの質問の物差し（＋と−）は、そこから45°回してある</strong>。左印の矢印は、＋からも−からも同じ45°だけ離れているから、影の長さはぴったり等しく、答えは半々。右印の矢印も＋と−から45°ずつだから、やはり半々――というわけだ。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg id="question-svg" class="dq-svg" viewBox="0 0 372 240" width="100%" role="img" aria-label="2種類の質問の比較アニメーション。左のパネルでは左印か右印かの質問の物差しに目印の矢印をあてがい、左印の目印なら影が左印の物差しに全部落ちて答えは100%左印になる。右のパネルでは45度回した斜めの質問の物差しにあてがい、左印の矢印はプラスからもマイナスからも45度離れているので影が等しく、答えは半々になる。目印が右印に切り替わっても、斜めの質問の答えはやはり半々のまま変わらない">
+          <text class="strong" x="186" y="16" text-anchor="middle">同じ目印に、2種類の質問をあてがう</text>
+          <g id="question-body"></g>
+        </svg>
+        <div class="diagram-caption">質問＝直交する2本1組の「物差し」。答えの確率は、目印の矢印（紫）を物差しに沿って分解した<strong>影の長さの2乗</strong>で決まる。左：「左印か右印か」の質問では、左印の目印は物差しにぴったり沿うので答えは100%確定。右：<strong>斜めの質問（＋／−）は物差しを45°回したもの</strong>。左印の矢印は＋からも−からも45°離れているので影は等しく、答えは半々。目印が右印に切り替わっても（アニメで交互に入れ替わる）、斜めの質問の答えは<strong>やはり半々のまま</strong>――だから答えを聞いても、どちらの印だったかは分からない</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
@@ -370,6 +381,111 @@
         cur = {slit: hump(y2, SL.y + 15) > hump(y2, SR.y - 15) ? 'L' : 'R', y: y2};
       }
     }
+    raf = requestAnimationFrame(loop);
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(es){
+      if (es[0].isIntersecting && !running) { running = true; loop(); }
+      else if (!es[0].isIntersecting && running) { running = false; if (raf) cancelAnimationFrame(raf); }
+    }, {threshold: 0.15}).observe(svg);
+  } else { running = true; loop(); }
+})();
+</script>
+
+<script>
+(function(){
+  // 図0b: 2種類の質問（物差し）の比較。影の長さの2乗＝答えの確率
+  var svg = document.getElementById('question-svg');
+  var g = document.getElementById('question-body');
+  if (!svg || !g) return;
+  var ns = 'http://www.w3.org/2000/svg';
+  var C1 = '#2f7a6b', C2 = '#b98a2e', CM = '#5b3fa6';
+  var L = 40, R = 50;
+  var P1 = {x: 100, y: 128}, P2 = {x: 272, y: 128};
+  var U135 = {x: -0.7071, y: -0.7071}, U45 = {x: 0.7071, y: -0.7071};
+  var UP = {x: 0, y: -1}, RIGHT = {x: 1, y: 0};
+
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(ns, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    (parent || g).appendChild(e);
+    return e;
+  }
+  function txt(x, y, cls, content, anchor) {
+    var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': anchor || 'middle'});
+    t.textContent = content;
+    return t;
+  }
+  function axis(c, u, color) {
+    el('line', {x1: c.x - u.x * (R - 4), y1: c.y - u.y * (R - 4), x2: c.x + u.x * (R - 4), y2: c.y + u.y * (R - 4), stroke: color, 'stroke-width': 1.4});
+  }
+  function axisLabel(c, u, color, content) {
+    var t = txt(c.x + u.x * (R + 12), c.y + u.y * (R + 12) + 4, 'label', content);
+    t.style.fill = color; t.style.fontWeight = '900';
+  }
+
+  txt(P1.x, 52, 'strong', '「左印か右印か」の質問');
+  txt(P2.x, 52, 'strong', '斜めの質問（＋か−か）');
+  var stateLbl = txt(186, 34, 'label', '');
+  stateLbl.style.fontWeight = '900';
+
+  var panels = [
+    {c: P1, axes: [{u: U135, color: C1, name: '左印'}, {u: U45, color: C2, name: '右印'}]},
+    {c: P2, axes: [{u: UP, color: CM, name: '＋'}, {u: RIGHT, color: CM, name: '−'}]}
+  ];
+  var dyn = [];
+  panels.forEach(function(p){
+    el('circle', {cx: p.c.x, cy: p.c.y, r: R, fill: 'var(--paper2)', stroke: 'var(--line)'});
+    p.axes.forEach(function(a){ axis(p.c, a.u, a.color); axisLabel(p.c, a.u, a.color, a.name); });
+    var d = {
+      sh: p.axes.map(function(a){ return el('line', {stroke: a.color, 'stroke-width': 4, opacity: .55, 'stroke-linecap': 'round'}); }),
+      drop: p.axes.map(function(){ return el('line', {stroke: 'var(--muted)', 'stroke-width': 1, 'stroke-dasharray': '2 3'}); }),
+      arrow: el('line', {stroke: CM, 'stroke-width': 3, 'stroke-linecap': 'round', 'marker-end': 'url(#ah-m)'}),
+      read: txt(p.c.x, p.c.y + R + 26, 'strong', '')
+    };
+    dyn.push(d);
+  });
+  txt(186, 232, 'label', '答えの確率＝影の長さの2乗（いつもの2乗ルール）');
+
+  function draw(angDeg) {
+    var a = angDeg * Math.PI / 180;
+    var dir = {x: Math.cos(a), y: -Math.sin(a)};
+    var isLeft = angDeg > 90;
+    stateLbl.textContent = '目印の状態：' + (angDeg === 135 ? '左印' : angDeg === 45 ? '右印' : '（切り替え中）');
+    stateLbl.style.fill = isLeft ? C1 : C2;
+    panels.forEach(function(p, i){
+      var d = dyn[i];
+      var tip = {x: p.c.x + dir.x * L, y: p.c.y + dir.y * L};
+      d.arrow.setAttribute('x1', p.c.x); d.arrow.setAttribute('y1', p.c.y);
+      d.arrow.setAttribute('x2', tip.x.toFixed(1)); d.arrow.setAttribute('y2', tip.y.toFixed(1));
+      var probs = [];
+      p.axes.forEach(function(ax, j){
+        var s = dir.x * ax.u.x + dir.y * ax.u.y; // 物差しへの成分（符号つき）
+        var foot = {x: p.c.x + ax.u.x * s * L, y: p.c.y + ax.u.y * s * L};
+        d.sh[j].setAttribute('x1', p.c.x); d.sh[j].setAttribute('y1', p.c.y);
+        d.sh[j].setAttribute('x2', foot.x.toFixed(1)); d.sh[j].setAttribute('y2', foot.y.toFixed(1));
+        d.drop[j].setAttribute('x1', tip.x.toFixed(1)); d.drop[j].setAttribute('y1', tip.y.toFixed(1));
+        d.drop[j].setAttribute('x2', foot.x.toFixed(1)); d.drop[j].setAttribute('y2', foot.y.toFixed(1));
+        probs.push(ax.name + ' ' + Math.round(s * s * 100) + '%');
+      });
+      d.read.textContent = probs.join('　');
+    });
+  }
+
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) { draw(135); return; }
+
+  var t = 0, running = false, raf = null;
+  function loop() {
+    if (!running) return;
+    t += 0.016;
+    var ph = t % 5;
+    var ang;
+    if (ph < 2.0) ang = 135;
+    else if (ph < 2.5) ang = 135 - (ph - 2.0) / 0.5 * 90;
+    else if (ph < 4.5) ang = 45;
+    else ang = 45 + (ph - 4.5) / 0.5 * 90;
+    draw(ang);
     raf = requestAnimationFrame(loop);
   }
   if ('IntersectionObserver' in window) {
