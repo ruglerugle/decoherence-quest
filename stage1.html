@@ -148,9 +148,9 @@
         <svg id="interf-svg" class="dq-svg" viewBox="0 0 372 230" width="100%" role="img" aria-label="二重スリット実験のアニメーション。左の光源から2本のスリットへ道筋が伸び、スクリーン上の各点で2本の矢印が合成される。合成矢印の長さの2乗をなぞると、スクリーンに沿って干渉縞の明暗カーブが描かれる">
           <text class="strong" x="186" y="16" text-anchor="middle">2本の矢印の向きが、場所ごとの明るさを決める</text>
           <defs>
-            <marker id="ah-l" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#2f7a6b"></path></marker>
-            <marker id="ah-r" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#b98a2e"></path></marker>
-            <marker id="ah-s" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--ink)"></path></marker>
+            <marker id="ah-l" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#2f7a6b"></path></marker>
+            <marker id="ah-r" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#b98a2e"></path></marker>
+            <marker id="ah-s" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5.5" markerHeight="5.5" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--ink)"></path></marker>
           </defs>
           <g id="interf-body"></g>
         </svg>
@@ -294,7 +294,7 @@
   // 矢印インセット（右端）: 2本の矢印を先端どうしでつないで足し、合計の黒い矢印を作る
   var insetX = 334, insetY = 103;
   txt(insetX, 64, 'strong', '矢印の合成');
-  el('circle', {cx: insetX, cy: insetY, r: 26, fill: 'var(--paper2)', stroke: 'var(--line)'});
+  el('circle', {cx: insetX, cy: insetY, r: 28, fill: 'var(--paper2)', stroke: 'var(--line)'});
   var ar1 = el('line', {stroke: C1, 'stroke-width': 2.5, 'marker-end': 'url(#ah-l)'});
   var ar2 = el('line', {stroke: C2, 'stroke-width': 2.5, 'marker-end': 'url(#ah-r)'});
   var arS = el('line', {stroke: 'var(--ink)', 'stroke-width': 3, 'marker-end': 'url(#ah-s)'});
@@ -338,7 +338,7 @@
     path2.setAttribute('x2', SCX); path2.setAttribute('y2', y);
     dot.setAttribute('cx', SCX); dot.setAttribute('cy', y);
     lensDot.setAttribute('cx', SCX + 6 + r.I * 70); lensDot.setAttribute('cy', y);
-    var L = 12;
+    var L = 13;
     var v1 = {x: Math.cos(r.ph1) * L, y: -Math.sin(r.ph1) * L};
     var v2 = {x: Math.cos(r.ph2) * L, y: -Math.sin(r.ph2) * L};
     ar1.setAttribute('x1', insetX - (v1.x + v2.x) / 2); ar1.setAttribute('y1', insetY - (v1.y + v2.y) / 2);
