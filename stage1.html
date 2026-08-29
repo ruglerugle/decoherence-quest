@@ -293,7 +293,10 @@
 
   // 矢印インセット（右端）: 2本の矢印を先端どうしでつないで足し、合計の黒い矢印を作る
   var insetX = 334, insetY = 103;
-  txt(insetX, 64, 'strong', '矢印の合成');
+  txt(insetX, 52, 'strong', '矢印の合成');
+  var subTitle = txt(insetX, 68, 'label', '長さ²＝明るさ');
+  subTitle.style.fontSize = '10px';
+  subTitle.style.fontWeight = '900';
   el('circle', {cx: insetX, cy: insetY, r: 28, fill: 'var(--paper2)', stroke: 'var(--line)'});
   // 平行四辺形の補助線（点線）→ その上に矢印2本と合計を描く
   var gd1 = el('line', {stroke: C2, 'stroke-width': 1.2, 'stroke-dasharray': '3 3', opacity: .55});
