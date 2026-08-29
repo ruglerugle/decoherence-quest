@@ -143,15 +143,26 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">大正解。全体の分布はのっぺりのまま、1ミリも変わらない。ところが、だ。メモを頼りに点を2つのグループに<strong>仕分け</strong>してごらん。＋の回の点だけを集めると――<strong>縞が現れる</strong>。−の回の点だけを集めると――こちらにも縞。ただし山と谷が互い違いの、<strong>逆向きの縞</strong>だ。2枚を重ねると、山が谷をぴったり埋めて、のっぺりに戻る。</div>
+          <div class="dialog-bubble">大正解。全体の分布はのっぺりのまま、1ミリも変わらない。ところが、だ。メモを頼りに点を2つのグループに<strong>仕分け</strong>してごらん。＋の回の点だけを集めると――<strong>縞が現れる</strong>。−の回の点だけを集めると――こちらにも縞。ただし山と谷が互い違いの、<strong>逆向きの縞</strong>だ。2枚を重ねると、山が谷をぴったり埋めて、のっぺりに戻る。なぜ仕分けると縞が出るのか――種明かしの鍵をひとつ渡そう。物差しの質問には、答えを返すだけでなく、<strong>目印の状態を、答えの向きに書き換えてしまう</strong>働きがあるんだ。＋と答えた目印は、もう左印でも右印でもない。<strong>＋の状態そのもの</strong>になっている。元がどちらの印だったかの痕跡は、目印の中から消えている。ここまで材料がそろえば、きみなら導けるはずだよ。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">のっぺりの中に、逆向きの縞が2枚、隠れて埋まっていたんですね。なぜ仕分けで縞が出るのかは、ルールから導けるはずです。やってみます。筋書きを終わり方まで書くと――「粒子が左を通り、目印が＋と答え、点xに当たる」と「粒子が右を通り、目印が＋と答え、点xに当たる」。答えが＋だった回については、目印の終わり方はどちらの筋書きでも<strong>同じ「＋」</strong>。終わり方が完全に合流しています。だから矢印を足してよい――<strong>縞が出る</strong>！</div>
+          <div class="dialog-bubble">のっぺりの中に、逆向きの縞が2枚、隠れて埋まっていたんですね。その鍵を使って、仕分けで縞が出る理由を導いてみます。答えが＋だった回の筋書きを、終わり方まで省略せずに書きます。筋書き1「粒子が左を通り、目印は<strong>左印</strong>になり、斜めの質問に＋と答えて<strong>＋の状態に書き換わり</strong>、粒子は点xに当たる」。筋書き2「粒子が右を通り、目印は<strong>右印</strong>になり、やはり＋と答えて<strong>＋に書き換わり</strong>、点xに当たる」。最後の写真を並べると――どちらも「粒子は点x、目印は＋」。途中にあった左印と右印の違いは、書き換えで消えてしまって、もう写真のどこにも写っていません。<strong>2枚は完全に一致。合流できる。矢印を足してよい――縞が出る</strong>！</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg id="merge-svg" class="dq-svg" viewBox="0 0 372 200" width="100%" role="img" aria-label="プラスと答えた回の筋書きの流れ図。左を通った筋書きでは目印が左印になり、右を通った筋書きでは右印になるが、どちらも斜めの質問にプラスと答えた瞬間、目印はプラスの状態に書き換わる。その結果、2つの筋書きの最後の写真は、粒子は点x・目印はプラス、で完全に一致して合流し、矢印を足せるので縞が出る">
+          <text class="strong" x="186" y="16" text-anchor="middle">＋と答えた回：2つの筋書きが同じ写真に合流する</text>
+          <g id="merge-body"></g>
+        </svg>
+        <div class="diagram-caption">＋の回だけを集めたときの筋書きの流れ。途中では「左印／右印」と分かれていた目印が、斜めの質問に＋と答えた瞬間に<strong>＋の状態へ書き換わる</strong>。その結果、2つの筋書きの最後の写真は「粒子は点x・目印は＋」で完全に一致し、<strong>合流できる</strong>――矢印を足してよいので、＋のグループの中には縞が現れる。−と答えた回も同じ理屈で合流するが、計算すると片方の矢印の向きが反転していて、山と谷が入れ替わった逆縞になる</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
@@ -494,6 +505,62 @@
       else if (!es[0].isIntersecting && running) { running = false; if (raf) cancelAnimationFrame(raf); }
     }, {threshold: 0.15}).observe(svg);
   } else { running = true; loop(); }
+})();
+</script>
+
+<script>
+(function(){
+  // 図0c: ＋の回の筋書き合流図（静的）
+  var g = document.getElementById('merge-body');
+  if (!g) return;
+  var ns = 'http://www.w3.org/2000/svg';
+  var C1 = '#2f7a6b', C2 = '#b98a2e', CM = '#5b3fa6', CG = '#8a6a24';
+  function el(name, attrs) {
+    var e = document.createElementNS(ns, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    g.appendChild(e);
+    return e;
+  }
+  function txt(x, y, cls, content, size) {
+    var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': 'middle'});
+    t.textContent = content;
+    if (size) t.style.fontSize = size + 'px';
+    return t;
+  }
+  function box(x, y, w, h, color) {
+    el('rect', {x: x, y: y, width: w, height: h, rx: 7, fill: 'var(--paper2)', stroke: color, 'stroke-width': 1.8});
+  }
+  function arrow(x1, y1, x2, y2) {
+    el('line', {x1: x1, y1: y1, x2: x2 - 2, y2: y2, stroke: 'var(--muted)', 'stroke-width': 1.6});
+    var ang = Math.atan2(y2 - y1, x2 - x1);
+    var hx = x2, hy = y2;
+    el('path', {d: 'M ' + hx + ' ' + hy + ' L ' + (hx - 8 * Math.cos(ang) + 3.5 * Math.sin(ang)) + ' ' + (hy - 8 * Math.sin(ang) - 3.5 * Math.cos(ang)) + ' L ' + (hx - 8 * Math.cos(ang) - 3.5 * Math.sin(ang)) + ' ' + (hy - 8 * Math.sin(ang) + 3.5 * Math.cos(ang)) + ' z', fill: 'var(--muted)'});
+  }
+
+  var Y1 = 64, Y2 = 136, H = 30;
+  // 左経由レーン
+  box(14, Y1 - H / 2, 68, H, C1); txt(48, Y1 + 4, 'strong', '左を通る', 10.5);
+  box(100, Y1 - H / 2, 68, H, C1); txt(134, Y1 + 4, 'strong', '目印は左印', 10);
+  // 右経由レーン
+  box(14, Y2 - H / 2, 68, H, C2); txt(48, Y2 + 4, 'strong', '右を通る', 10.5);
+  box(100, Y2 - H / 2, 68, H, C2); txt(134, Y2 + 4, 'strong', '目印は右印', 10);
+  // 共有: 書き換え
+  box(186, 78, 96, 44, CM);
+  txt(234, 96, 'strong', '斜めの質問に「＋」', 9.5);
+  txt(234, 112, 'strong', '目印は＋に書き換え', 9.5);
+  var m = txt(234, 72, 'label', '合流！', 10.5);
+  m.style.fill = CM; m.style.fontWeight = '900';
+  // 最終: 写真一致
+  box(296, 78, 72, 44, CG);
+  txt(332, 96, 'strong', '写真が一致', 10);
+  txt(332, 112, 'strong', '点x・目印＋', 9.5);
+  // 矢印
+  arrow(82, Y1, 100, Y1);
+  arrow(82, Y2, 100, Y2);
+  arrow(168, Y1, 186, 90);
+  arrow(168, Y2, 186, 110);
+  arrow(282, 100, 296, 100);
+  txt(186, 188, 'label', '終わりが一致 → 矢印を足せる → 縞（−の回も同様、ただし逆向きの縞）');
 })();
 </script>
 
