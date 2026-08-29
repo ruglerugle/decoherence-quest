@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#143a3e">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9RTQCP2HXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9RTQCP2HXM');
+</script>
+<title>STAGE3 量子消しゴム ― 消える干渉縞</title>
+<meta name="description" content="経路の手がかりを「読み出せない形の質問」で上書きすると、消えた干渉縞がよみがえる――量子消しゴム実験の仕組みを足し算ルールから導く。全体は常にのっぺりのままで、仕分けによって＋の縞と−の逆縞が現れる。過去の書き換えも超光速通信も起きない理由、「乱すから消える」説と「意識が消す」説が無罪になる理由。">
+<link rel="canonical" href="https://ruglerugle.github.io/decoherence-quest/stage3.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="消える干渉縞">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="STAGE3 量子消しゴム ― 消える干渉縞">
+<meta property="og:description" content="手がかりを消せば縞は戻る。ただし全体は常にのっぺりのまま――量子消しゴムの見事な種明かし。">
+<meta property="og:url" content="https://ruglerugle.github.io/decoherence-quest/stage3.html">
+<meta property="og:image" content="https://ruglerugle.github.io/decoherence-quest/images/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="stylesheet" href="design-system.css">
+<style>
+  .dq-svg .label{fill:var(--muted);font-size:11px;font-weight:700}
+  .dq-svg .strong{fill:var(--ink);font-size:12px;font-weight:900}
+  .dq-svg .accent{fill:#5b3fa6;font-size:11px;font-weight:900}
+</style>
+</head>
+<body>
+<div class="app-shell side-collapsed" id="app-shell">
+  <header class="game-header">
+    <div class="brand">
+      <div class="brand-title"><a class="head-reset home-badge" href="index.html" title="トップへ" aria-label="トップへ">🌫️</a> <span>消える干渉縞</span></div>
+      <div class="brand-sub">STAGE 3 ― 量子消しゴム ―</div>
+    </div>
+    <div class="head-progress-wrap">
+      <div class="head-progress-label" id="progress-label">クリア 0 / 8</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+    <div class="header-actions">
+      <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
+      <button class="head-reset" id="head-nav-toggle" title="ステージ一覧の表示切替">☰ ナビ</button>
+    </div>
+  </header>
+
+  <div class="game-layout">
+    <div class="side-backdrop" id="side-backdrop"></div>
+    <aside class="side-panel">
+      <div class="side-head">
+        <button class="side-toggle" id="sidebar-toggle" title="ステージ一覧の表示切替" aria-label="ステージ一覧の表示切替">☰</button>
+        <span class="side-head-text">📚 ステージ一覧</span>
+      </div>
+      <div class="side-list" id="side-list"></div>
+    </aside>
+
+    <main class="main-area">
+      <div class="chapter-head">
+        <span class="chapter-badge">STAGE 3</span><span class="chapter-title">量子消しゴム</span>
+        <div class="chapter-sub">縞の復活実験</div>
+      </div>
+
+      <div class="mission-box">
+        <div class="mission-label">🎯 ミッション</div>
+        <div class="mission-text">経路の手がかりを消すと縞が復活する仕組みを、足し算ルールの逆適用として説明しよう。「全体は常にのっぺりのままで、仕分けたときだけ縞が見える」理由と、これが過去の書き換えにならない理由まで言えれば合格。</div>
+        <span class="mission-status" id="mission-status">未達成</span>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">前回の宿題、「手がかりを消せば縞は戻るか」を実験しよう。ただし、倒れた針を手で立て直すのは「消した」ことにならないよ。立て直す装置の側に、針が倒れていたという記録が移ってしまうだけだからね。手がかりというのは、押しても引いても、どこかに残りやすい。そこで装置を素性のいいものに替えよう。針の代わりに、粒子が左を通ると相棒の<strong>目印粒子</strong>が「<strong>左印</strong>」という状態になり、右を通ると「<strong>右印</strong>」になる仕掛けだ。左印と右印は直交している。つまり働きは前回の検出器と同じ。実際、光子のペアを使うとこういう装置が作れるんだ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">直交する目印が残る以上、縞は消える。ここまでは前回の理屈そのままです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そう。ところで、目印粒子への「質問」は1種類ではないんだ。もつれ光子の旅で、偏光板の角度を変えるといろいろな質問ができたのと同じ発想だよ。「左印ですか、右印ですか」と聞く代わりに、<strong>斜めの質問</strong>ができる。答えは「<strong>＋</strong>」か「<strong>−</strong>」の2通りで、性質はこうだ。<strong>左印に斜めの質問をすると、＋と−が半々のランダム。右印に聞いても、やはり＋と−が半々のランダム</strong>。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">左印でも右印でも答えの出方が同じなら、＋か−かを聞いたところで、目印がどちらの印だったかはまったく分からない。……つまり斜めの質問の答えは、「どちらを通ったか」の手がかりとして<strong>使えない</strong>。これが「消す」の正体ですか。消すというより、<strong>手がかりを読み出せない形の質問で上書きする</strong>。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。では本番の実験だ。粒子を1個ずつ飛ばしてスクリーンの点を記録し、同時に毎回、目印に斜めの質問をして＋か−かをメモしておく。さて、まず<strong>スクリーン全体</strong>の点の分布はどうなると思うかな。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">のっぺりのまま、だと思います。もし目印への質問の仕方を変えただけでスクリーンの点の付き方が変わるなら、遠く離れた場所への瞬間通信に使えてしまいます。もつれで通信はできない、ともつれの旅で学びました。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">大正解。全体の分布はのっぺりのまま、1ミリも変わらない。ところが、だ。メモを頼りに点を2つのグループに<strong>仕分け</strong>してごらん。＋の回の点だけを集めると――<strong>縞が現れる</strong>。−の回の点だけを集めると――こちらにも縞。ただし山と谷が互い違いの、<strong>逆向きの縞</strong>だ。2枚を重ねると、山が谷をぴったり埋めて、のっぺりに戻る。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">のっぺりの中に、逆向きの縞が2枚、隠れて埋まっていたんですね。なぜ仕分けで縞が出るのかは、ルールから導けるはずです。やってみます。筋書きを終わり方まで書くと――「粒子が左を通り、目印が＋と答え、点xに当たる」と「粒子が右を通り、目印が＋と答え、点xに当たる」。答えが＋だった回については、目印の終わり方はどちらの筋書きでも<strong>同じ「＋」</strong>。終わり方が完全に合流しています。だから矢印を足してよい――<strong>縞が出る</strong>！</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">完璧だ。−の回も同じ理屈で縞が出る。ただし詳しく計算すると、−の場合は片方の矢印の向きが反転していて、縞の山と谷がちょうど入れ替わるんだ。だから＋の縞と−の縞は互い違いになり、合計すればのっぺり。つじつまは完全に合う。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">1つだけ、気持ち悪さが残ります。目印への質問は、粒子がスクリーンに当たった<strong>あと</strong>に行ってもいいわけですよね。あとから斜めの質問を選んだら縞が見えた――これは過去にさかのぼって縞を作ったことになりませんか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">ならないんだ。そこがこの実験のいちばん美しいところだよ。スクリーンの点は最初から最後までのっぺりのまま、<strong>1点も動いていない</strong>。あとから変わるのは「どう仕分けられるか」だけで、仕分けに使うメモは目印に質問して初めて手に入る。過去の書き換えも、光より速い通信も、どこにも起きていない。この実験は実際に光子で行われていてね、偏光を使った量子消しゴム実験の決定版が2000年代に報告されている。結果は、今日きみが導いた計算のとおりだった。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">そしてこの実験は、重要な容疑者を無罪にします。<strong>「検出器が粒子を乱すから縞が消える」説</strong>です。もし乱れが原因なら、粒子が飛び終わったあとに目印への質問の仕方を変えたくらいで、縞が見えるようになるはずがありません。乱したかどうかは、とっくに終わった話ですから。縞の運命を握っていたのは乱れではなく、<strong>手がかりが読み出せる形で残っているかどうか</strong>。それだけでした。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">それが今日いちばんの収穫だ。ついでにもう1人、無罪にしておこう。<strong>「人間の意識が縞を消す」説</strong>だ。今日の実験のどこにも意識の出番はなかったね。目印と質問の仕方という物理の道具立てだけで、縞は消え、そして戻った。次のステージでは、この「目印」を<strong>もつれの相手</strong>として真正面から扱う。もつれの旅との合流点だよ。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg id="eraser-svg" class="dq-svg" viewBox="0 0 372 250" width="100%" role="img" aria-label="量子消しゴムのアニメーション。上の帯には全部の点が灰色で積もり、縞のないのっぺりした分布になる。下の帯では同じ点が目印の答え＋と−で色分けされ、＋の点は縞、−の点は山と谷が互い違いの逆縞を作る">
+          <text class="strong" x="186" y="16" text-anchor="middle">同じデータでも、仕分けると縞が見える</text>
+          <g id="eraser-body"></g>
+        </svg>
+        <div class="diagram-caption">上：全部の点をそのまま見ると、のっぺり（縞なし）。下：同じ点を目印の答えで仕分けると、＋の回（紫）は縞、−の回（琥珀）は山と谷が入れ替わった逆縞。2色を合わせると上の分布に戻る。点は1つも動いていない――変わったのは「見方」だけ</div>
+      </div>
+
+      <div class="diagram-box">
+        <svg id="sumzero-svg" class="dq-svg" viewBox="0 0 372 180" width="100%" role="img" aria-label="＋の縞の分布カーブと−の逆縞の分布カーブ、その合計ののっぺりカーブを重ねた静止図。＋の山が−の谷をちょうど埋めて、合計は縞のない分布になる">
+          <text class="strong" x="186" y="16" text-anchor="middle">＋の縞 ＋ −の逆縞 ＝ のっぺり</text>
+          <g id="sumzero-body"></g>
+        </svg>
+        <div class="diagram-caption">＋の回の分布（紫）と−の回の分布（琥珀）は山と谷が互い違い。足し合わせる（灰色）と凹凸が打ち消されて、のっぺりに戻る。仕分けなしで見えるのはこの灰色だけ――だから質問の仕方をあとから変えても、スクリーン全体の見た目は変えられず、超光速通信には使えない</div>
+      </div>
+
+      <div class="formula-box">
+        <span class="step">【このステージの成果 ― 量子消しゴム】</span>
+        <span class="step">・直交する目印（左印／右印）が残る → 縞は消える（前ステージの通り）</span>
+        <span class="step">・目印への<strong>斜めの質問</strong>：答えは＋か−で、左印でも右印でも半々 → 答えは経路の手がかりにならない</span>
+        <span class="step">・＋の回だけ仕分けると、筋書きの終わり方が「＋」に合流 → 矢印を足せる → <strong>縞が復活</strong>。−の回は逆向きの縞</span>
+        <span class="step">・全体（＋と−の合計）は常にのっぺり → 過去の書き換えなし、超光速通信なし</span>
+        <span class="step">・無罪確定：「乱すから消える」説・「意識が消す」説。縞の運命を決めるのは<strong>読み出せる手がかりの有無</strong>だけ</span>
+      </div>
+
+      <div class="quiz-head">確認クイズ</div>
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q1. 消えた縞が「復活」して見えるのは、どんなときだった？</p>
+        <div class="choice-list">
+          <button class="choice-btn">目印に斜めの質問をして、その答え（＋／−）ごとに点を仕分けたとき</button>
+          <button class="choice-btn">目印粒子をゴミ箱に捨てたとき</button>
+          <button class="choice-btn">スクリーンの感度を上げたとき</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 斜めの質問の答えが＋なら、左経由の筋書きも右経由の筋書きも「目印は＋」という同じ終わり方に合流する。合流すれば矢印を足せるので、仕分けたグループの中には縞が現れる。目印を捨てるだけでは手がかりが世界から消えないので、縞は戻らない。</div>
+      </div>
+
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q2. 仕分けをせずに、スクリーン全体の点の分布を見ると？</p>
+        <div class="choice-list">
+          <button class="choice-btn">斜めの質問をした日から薄い縞が出る</button>
+          <button class="choice-btn">質問の仕方によって縞になったりのっぺりになったりする</button>
+          <button class="choice-btn">常にのっぺりのまま。だから過去の書き換えにも超光速通信にもならない</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ ＋の縞と−の逆縞は山と谷が互い違いなので、合計すると必ずのっぺりに戻る。目印側で何をしようとスクリーン全体の見た目は不変――これが、もつれを使っても通信できないことと、消しゴムが過去を書き換えていないことの、両方を保証している。</div>
+      </div>
+
+      <div class="quiz-card" data-quiz>
+        <p class="quiz-q">Q3. 量子消しゴム実験が「無罪」を証明した説はどれ？</p>
+        <div class="choice-list">
+          <button class="choice-btn">「手がかりが残ると縞が消える」説</button>
+          <button class="choice-btn">「検出器が粒子を乱すから縞が消える」説と「人間の意識が縞を消す」説</button>
+          <button class="choice-btn">「もつれた粒子は同じ質問に同じ答えを返す」という完全相関</button>
+        </div>
+        <div class="quiz-explain" hidden>正解！ 粒子が飛び終わったあとに目印への質問を変えるだけで縞が見えるようになる以上、「飛行中に乱されたかどうか」は縞の運命と無関係。また実験のどこにも意識は登場しない。縞を支配するのは「読み出せる手がかりが世界に残っているか」だけ――これがこの旅の背骨になる。</div>
+      </div>
+
+      <div class="stage-nav">
+        <a class="btn" href="index.html">← トップへ</a>
+        <button class="btn btn-primary" id="btn-next" disabled>次へ →</button>
+      </div>
+
+      <div id="book-recommend"></div>
+    </main>
+  </div>
+</div>
+
+<script src="js/progress.js"></script>
+<script>DQ.initStagePage(3);</script>
+
+<script>
+(function(){
+  // 図1: 仕分け前（灰色のっぺり）と仕分け後（＋縞/−逆縞）の2帯アニメ
+  var svg = document.getElementById('eraser-svg');
+  var g = document.getElementById('eraser-body');
+  if (!svg || !g) return;
+  var ns = 'http://www.w3.org/2000/svg';
+  var CP = '#5b3fa6', CM = '#b98a2e';
+  var X0 = 40, W = 300;
+
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(ns, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    (parent || g).appendChild(e);
+    return e;
+  }
+  function txt(x, y, cls, content, anchor) {
+    var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': anchor || 'middle'});
+    t.textContent = content;
+    return t;
+  }
+
+  // 帯: 上=全体 下=仕分け
+  var BANDS = [
+    {y: 46, h: 62, label: '仕分け前（全部の点）'},
+    {y: 140, h: 84, label: '仕分け後（＋は紫、−は琥珀）'}
+  ];
+  BANDS.forEach(function(b){
+    el('rect', {x: X0, y: b.y, width: W, height: b.h, fill: 'var(--paper2)', stroke: 'var(--line)', rx: 6});
+    txt(X0 + W / 2, b.y - 6, 'label', b.label);
+  });
+  txt(X0 + W / 2, 244, 'label', '横方向＝スクリーン上の位置');
+
+  function env(u) { return Math.exp(-u * u * 2.2); }
+  // ＋: env*(1+cos(ku))/2, −: env*(1-cos(ku))/2
+  function pdfPlus(u) { return env(u) * (1 + Math.cos(u * 9)) / 2; }
+  function pdfMinus(u) { return env(u) * (1 - Math.cos(u * 9)) / 2; }
+
+  function sampleU(pdf) {
+    for (var i = 0; i < 80; i++) {
+      var u = Math.random() * 2 - 1;
+      if (Math.random() < pdf(u)) return u;
+    }
+    return 0;
+  }
+
+  var dotsTop = el('g', {}), dotsBot = el('g', {});
+  var listT = [], listB = [];
+  function addDot(u, isPlus) {
+    var x = X0 + (u + 1) / 2 * W;
+    var t = el('circle', {cx: x.toFixed(1), cy: (BANDS[0].y + 6 + Math.random() * (BANDS[0].h - 12)).toFixed(1), r: 1.7, fill: '#7a8580', opacity: .8}, dotsTop);
+    // 下帯: ＋は上半分、−は下半分に分けて縞の違いを見せる
+    var half = BANDS[1].h / 2;
+    var yb = isPlus ? BANDS[1].y + 4 + Math.random() * (half - 8) : BANDS[1].y + half + 4 + Math.random() * (half - 8);
+    var b = el('circle', {cx: x.toFixed(1), cy: yb.toFixed(1), r: 1.7, fill: isPlus ? CP : CM, opacity: .85}, dotsBot);
+    listT.push(t); listB.push(b);
+    if (listT.length > 700) {
+      var o1 = listT.shift(), o2 = listB.shift();
+      o1.parentNode.removeChild(o1); o2.parentNode.removeChild(o2);
+    }
+  }
+  txt(X0 - 8, BANDS[1].y + BANDS[1].h / 4 + 4, 'accent', '＋', 'end');
+  var mtxt = txt(X0 - 8, BANDS[1].y + BANDS[1].h * 3 / 4 + 4, 'label', '−', 'end');
+  mtxt.setAttribute('fill', CM); mtxt.setAttribute('font-weight', '900');
+
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function emit() {
+    var isPlus = Math.random() < 0.5;
+    addDot(sampleU(isPlus ? pdfPlus : pdfMinus), isPlus);
+  }
+  if (reduced) {
+    for (var i = 0; i < 500; i++) emit();
+    return;
+  }
+  var running = false, raf = null;
+  function loop() {
+    if (!running) return;
+    for (var i = 0; i < 3; i++) emit();
+    raf = requestAnimationFrame(loop);
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(es){
+      if (es[0].isIntersecting && !running) { running = true; loop(); }
+      else if (!es[0].isIntersecting && running) { running = false; if (raf) cancelAnimationFrame(raf); }
+    }, {threshold: 0.15}).observe(svg);
+  } else { running = true; loop(); }
+})();
+</script>
+
+<script>
+(function(){
+  // 図2: ＋縞・−逆縞・合計カーブの静止図
+  var g = document.getElementById('sumzero-body');
+  if (!g) return;
+  var ns = 'http://www.w3.org/2000/svg';
+  var CP = '#5b3fa6', CM = '#b98a2e', CS = '#7a8580';
+  function el(name, attrs) {
+    var e = document.createElementNS(ns, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    g.appendChild(e);
+    return e;
+  }
+  var X0 = 40, W = 292, Y0 = 150, H = 108;
+  el('rect', {x: X0, y: Y0 - H, width: W, height: H, fill: 'var(--paper2)', stroke: 'var(--line)', rx: 6});
+  function env(u) { return Math.exp(-u * u * 2.2); }
+  function curve(f, color, width, dash) {
+    var d = '';
+    for (var i = 0; i <= 120; i++) {
+      var u = (i - 60) / 60;
+      var x = X0 + 4 + (W - 8) * i / 120;
+      var y = Y0 - 6 - f(u) * (H - 16);
+      d += (i === 0 ? 'M ' : 'L ') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
+    }
+    var attrs = {d: d, fill: 'none', stroke: color, 'stroke-width': width};
+    if (dash) attrs['stroke-dasharray'] = dash;
+    el('path', attrs);
+  }
+  curve(function(u){ return env(u) * (1 + Math.cos(u * 9)) / 2; }, CP, 2);
+  curve(function(u){ return env(u) * (1 - Math.cos(u * 9)) / 2; }, CM, 2);
+  curve(function(u){ return env(u); }, CS, 2.6, '5 4');
+  // 凡例
+  var LY = 168;
+  el('line', {x1: 58, y1: LY, x2: 78, y2: LY, stroke: CP, 'stroke-width': 2.5});
+  el('line', {x1: 148, y1: LY, x2: 168, y2: LY, stroke: CM, 'stroke-width': 2.5});
+  el('line', {x1: 238, y1: LY, x2: 258, y2: LY, stroke: CS, 'stroke-width': 2.5, 'stroke-dasharray': '5 4'});
+  [['＋の縞', 84, CP], ['−の逆縞', 174, CM], ['合計', 264, CS]].forEach(function(it){
+    var t = el('text', {x: it[1], y: LY + 4, 'class': 'label', 'text-anchor': 'start'});
+    t.textContent = it[0];
+    t.setAttribute('fill', it[2]);
+    t.setAttribute('font-weight', '900');
+  });
+})();
+</script>
+</body>
+</html>
