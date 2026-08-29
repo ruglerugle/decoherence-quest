@@ -119,8 +119,42 @@
             <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">いい言い方だ、その理解で正確だよ。では、旅の唯一の武器を渡そう。ある結果――たとえば「スクリーンの点xに粒子が当たる」――に至る道筋が2つ以上あるとき、確率はどう計算するか。ルールはこうだ。<strong>その道筋たちが、宇宙のどこを探しても区別がつかないなら、矢印を足し合わせてから、合計の矢印の長さを2乗する。どの道筋だったかの手がかりがどこかに残っているなら、それぞれの長さを2乗してから、確率どうしを足す。</strong>これだけだ。この旅で使う道具は、最後までこの1つしかない。</div>
+          <div class="dialog-bubble">いい言い方だ、その理解で正確だよ。では、旅の唯一の武器を渡そう。ある結果――たとえば「スクリーンの点xに粒子が当たる」――に至る道筋が2つ以上あるとき、確率はどう計算するか。ルールはこうだ。まず前半。<strong>その道筋たちが、宇宙のどこを探しても区別がつかないなら、矢印を足し合わせてから、合計の矢印の長さを2乗する。</strong></div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg id="interf-svg" class="dq-svg" viewBox="0 0 372 230" width="100%" role="img" aria-label="二重スリット実験のアニメーション。左の光源から2本のスリットへ道筋が伸び、スクリーン上の各点で2本の矢印が合成される。合成矢印の長さの2乗をなぞると、スクリーンに沿って干渉縞の明暗カーブが描かれる">
+          <text class="strong" x="186" y="16" text-anchor="middle">2本の矢印の向きが、場所ごとの明るさを決める</text>
+          <defs>
+            <marker id="ah-l" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#2f7a6b"></path></marker>
+            <marker id="ah-r" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#b98a2e"></path></marker>
+            <marker id="ah-s" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5.5" markerHeight="5.5" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--ink)"></path></marker>
+          </defs>
+          <g id="interf-body"></g>
+        </svg>
+        <div class="diagram-caption">スクリーン上の黒丸の点に、左スリット経由（青緑）と右スリット経由（琥珀）の2本の矢印が、道のりに応じて回転しながら届く。<strong>右の円が「矢印の足し算」の作業台</strong>：2本の矢印を同じ出発点から描き、それらを隣り合う2辺とする平行四辺形（点線）を作ると、その対角線が「合計」（黒い矢印）になる。<strong>合計の長さの2乗が、その点の明るさ</strong>（スリット1本のときを×1として×0〜×4）。2本の向きの開きが<strong>位相差</strong>：位相差0°（同じ向き）なら合計は長く×4（強め合い）、位相差180°（正反対）なら合計はほぼ消えて×0（打ち消し合い＝黒い矢印が見えなくなる瞬間）。走査点を上下に動かしながら明るさを右側に描き足していくと、干渉縞のカーブが浮かび上がる</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そして後半。<strong>どの道筋だったかの手がかりがどこかに残っているなら、それぞれの長さを2乗してから、確率どうしを足す。</strong>これだけだ。この旅で使う道具は、最後までこの1つしかない。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg id="square-svg" class="dq-svg" viewBox="0 0 372 230" width="100%" role="img" aria-label="ルールの後半のアニメーション。同じ二重スリット装置で、左経由と右経由の矢印を足し合わせずに、それぞれ単独で長さを2乗する。左経由は×1、右経由も×1で、確率を足すとどの点でも×2。位相差は使われず、スクリーンには縞のないなだらかな分布が描かれる">
+          <text class="strong" x="186" y="16" text-anchor="middle">手がかりが残るなら、それぞれ2乗してから足す</text>
+          <g id="square-body"></g>
+        </svg>
+        <div class="diagram-caption">上の図と同じ装置・同じ2本の矢印。ただし手がかりが残るときは足し合わせが禁止され、<strong>左経由の矢印を単独で2乗（長さ1→×1.0）、右経由も単独で2乗（×1.0）、それから確率どうしを足す</strong>。合計はどの点でも×2.0で、矢印の向き（位相差）はどこにも使われない。強め合いも打ち消し合いも起きないので、スクリーンには縞のない、なだらかな分布が積もる――計算の手順が変わっただけで、縞は消える</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
@@ -144,19 +178,6 @@
         </div>
       </div>
 
-      <div class="diagram-box">
-        <svg id="interf-svg" class="dq-svg" viewBox="0 0 372 230" width="100%" role="img" aria-label="二重スリット実験のアニメーション。左の光源から2本のスリットへ道筋が伸び、スクリーン上の各点で2本の矢印が合成される。合成矢印の長さの2乗をなぞると、スクリーンに沿って干渉縞の明暗カーブが描かれる">
-          <text class="strong" x="186" y="16" text-anchor="middle">2本の矢印の向きが、場所ごとの明るさを決める</text>
-          <defs>
-            <marker id="ah-l" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#2f7a6b"></path></marker>
-            <marker id="ah-r" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#b98a2e"></path></marker>
-            <marker id="ah-s" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5.5" markerHeight="5.5" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--ink)"></path></marker>
-          </defs>
-          <g id="interf-body"></g>
-        </svg>
-        <div class="diagram-caption">スクリーン上の黒丸の点に、左スリット経由（青緑）と右スリット経由（琥珀）の2本の矢印が、道のりに応じて回転しながら届く。<strong>右の円が「矢印の足し算」の作業台</strong>：2本の矢印を同じ出発点から描き、それらを隣り合う2辺とする平行四辺形（点線）を作ると、その対角線が「合計」（黒い矢印）になる。<strong>合計の長さの2乗が、その点の明るさ</strong>（スリット1本のときを×1として×0〜×4）。2本の向きの開きが<strong>位相差</strong>：位相差0°（同じ向き）なら合計は長く×4（強め合い）、位相差180°（正反対）なら合計はほぼ消えて×0（打ち消し合い＝黒い矢印が見えなくなる瞬間）。走査点を上下に動かしながら明るさを右側に描き足していくと、干渉縞のカーブが浮かび上がる</div>
-      </div>
-
       <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
@@ -165,14 +186,6 @@
           </div>
           <div class="dialog-bubble">完璧だ。仕上げに、ルールのもう半分――<strong>「手がかりが残るなら、2乗してから足す」</strong>だとどうなるかも確かめておこう。左経由の確率と右経由の確率をそれぞれ計算してから足すだけなら、矢印の向きは出番がない。向きが出番を失えば、打ち消し合いはどこの点でも起きない。</div>
         </div>
-      </div>
-
-      <div class="diagram-box">
-        <svg id="square-svg" class="dq-svg" viewBox="0 0 372 230" width="100%" role="img" aria-label="ルールの後半のアニメーション。同じ二重スリット装置で、左経由と右経由の矢印を足し合わせずに、それぞれ単独で長さを2乗する。左経由は×1、右経由も×1で、確率を足すとどの点でも×2。位相差は使われず、スクリーンには縞のないなだらかな分布が描かれる">
-          <text class="strong" x="186" y="16" text-anchor="middle">手がかりが残るなら、それぞれ2乗してから足す</text>
-          <g id="square-body"></g>
-        </svg>
-        <div class="diagram-caption">上の図と同じ装置・同じ2本の矢印。ただし手がかりが残るときは足し合わせが禁止され、<strong>左経由の矢印を単独で2乗（長さ1→×1.0）、右経由も単独で2乗（×1.0）、それから確率どうしを足す</strong>。合計はどの点でも×2.0で、矢印の向き（位相差）はどこにも使われない。強め合いも打ち消し合いも起きないので、スクリーンには縞のない、なだらかな分布が積もる――計算の手順が変わっただけで、縞は消える</div>
       </div>
 
       <div class="dialogue-scene">
