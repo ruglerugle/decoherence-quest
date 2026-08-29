@@ -88,7 +88,7 @@
           </defs>
           <g id="marker-body"></g>
         </svg>
-        <div class="diagram-caption">粒子が左を通ると、相棒の<strong>目印粒子</strong>（紫）が「<strong>左印</strong>」の状態（青緑の向き）になって飛び去り、右を通ると「<strong>右印</strong>」（琥珀の向き）になる。左印と右印の開きは90°＝<strong>直交</strong>で、完全に区別できる。つまり働きは、針の倒れる検出器とまったく同じ――スクリーンには縞のない分布が積もる。もつれた光子のペアを使うと、この仕掛けが実際に作れる</div>
+        <div class="diagram-caption">粒子が左を通ると、相棒の<strong>目印粒子</strong>（紫）が「<strong>左印</strong>」の状態（青緑の向き）になって飛び去り、右を通ると「<strong>右印</strong>」（オレンジの向き）になる。左印と右印の開きは90°＝<strong>直交</strong>で、完全に区別できる。つまり働きは、針の倒れる検出器とまったく同じ――スクリーンには縞のない分布が積もる。もつれた光子のペアを使うと、この仕掛けが実際に作れる</div>
       </div>
 
       <div class="dialogue-scene">
@@ -183,7 +183,7 @@
           <text class="strong" x="186" y="16" text-anchor="middle">同じデータでも、仕分けると縞が見える</text>
           <g id="eraser-body"></g>
         </svg>
-        <div class="diagram-caption">上：全部の点をそのまま見ると、のっぺり（縞なし）。下：同じ点を目印の答えで仕分けると、＋の回（紫）は縞、−の回（琥珀）は山と谷が入れ替わった逆縞。2色を合わせると上の分布に戻る。点は1つも動いていない――変わったのは「見方」だけ</div>
+        <div class="diagram-caption">上：全部の点をそのまま見ると、のっぺり（縞なし）。下：同じ点を目印の答えで仕分けると、＋の回（紫）は縞、−の回（オレンジ）は山と谷が入れ替わった逆縞。2色を合わせると上の分布に戻る。点は1つも動いていない――変わったのは「見方」だけ</div>
       </div>
 
       <div class="diagram-box">
@@ -191,7 +191,7 @@
           <text class="strong" x="186" y="16" text-anchor="middle">＋の縞 ＋ −の逆縞 ＝ のっぺり</text>
           <g id="sumzero-body"></g>
         </svg>
-        <div class="diagram-caption">＋の回の分布（紫）と−の回の分布（琥珀）は山と谷が互い違い。足し合わせる（灰色）と凹凸が打ち消されて、のっぺりに戻る。仕分けなしで見えるのはこの灰色だけ――だから質問の仕方をあとから変えても、スクリーン全体の見た目は変えられず、超光速通信には使えない</div>
+        <div class="diagram-caption">＋の回の分布（紫）と−の回の分布（オレンジ）は山と谷が互い違い。足し合わせる（灰色）と凹凸が打ち消されて、のっぺりに戻る。仕分けなしで見えるのはこの灰色だけ――だから質問の仕方をあとから変えても、スクリーン全体の見た目は変えられず、超光速通信には使えない</div>
       </div>
 
       <div class="formula-box">
@@ -406,7 +406,7 @@
   // 帯: 上=全体 下=仕分け
   var BANDS = [
     {y: 46, h: 62, label: '仕分け前（全部の点）'},
-    {y: 140, h: 84, label: '仕分け後（＋は紫、−は琥珀）'}
+    {y: 140, h: 84, label: '仕分け後（＋は紫、−はオレンジ）'}
   ];
   BANDS.forEach(function(b){
     el('rect', {x: X0, y: b.y, width: W, height: b.h, fill: 'var(--paper2)', stroke: 'var(--line)', rx: 6});
