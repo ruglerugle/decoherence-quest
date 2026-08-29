@@ -296,7 +296,7 @@
   }
   txt(X0 - 8, BANDS[1].y + BANDS[1].h / 4 + 4, 'accent', '＋', 'end');
   var mtxt = txt(X0 - 8, BANDS[1].y + BANDS[1].h * 3 / 4 + 4, 'label', '−', 'end');
-  mtxt.setAttribute('fill', CM); mtxt.setAttribute('font-weight', '900');
+  mtxt.style.fill = CM; mtxt.style.fontWeight = '900';
 
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function emit() {
@@ -361,8 +361,8 @@
   [['＋の縞', 84, CP], ['−の逆縞', 174, CM], ['合計', 264, CS]].forEach(function(it){
     var t = el('text', {x: it[1], y: LY + 4, 'class': 'label', 'text-anchor': 'start'});
     t.textContent = it[0];
-    t.setAttribute('fill', it[2]);
-    t.setAttribute('font-weight', '900');
+    t.style.fill = it[2];
+    t.style.fontWeight = '900';
   });
 })();
 </script>

@@ -367,7 +367,7 @@
     txt(p.x0 + W / 2, 40, 'strong', p.label);
     txt(p.x0 + W / 2, y0 + 16, 'label', p.sub);
     var r = txt(p.x0 + W / 2, y0 + 32, 'accent', p.res);
-    r.setAttribute('fill', p.color);
+    r.style.fill = p.color;
   });
   // 中央と右の同一性を示す括弧
   el('path', {d: 'M 140 172 L 140 178 L 352 178 L 352 172', fill: 'none', stroke: 'var(--muted)', 'stroke-width': 1.4});

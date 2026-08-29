@@ -147,9 +147,14 @@
       <div class="diagram-box">
         <svg id="interf-svg" class="dq-svg" viewBox="0 0 372 230" width="100%" role="img" aria-label="二重スリット実験のアニメーション。左の光源から2本のスリットへ道筋が伸び、スクリーン上の各点で2本の矢印が合成される。合成矢印の長さの2乗をなぞると、スクリーンに沿って干渉縞の明暗カーブが描かれる">
           <text class="strong" x="186" y="16" text-anchor="middle">2本の矢印の向きが、場所ごとの明るさを決める</text>
+          <defs>
+            <marker id="ah-l" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#2f7a6b"></path></marker>
+            <marker id="ah-r" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#b98a2e"></path></marker>
+            <marker id="ah-s" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--ink)"></path></marker>
+          </defs>
           <g id="interf-body"></g>
         </svg>
-        <div class="diagram-caption">左スリット経由（青緑）と右スリット経由（琥珀）の矢印は、道のりに応じて回転しながら届く。スクリーン上の点を上下に走査しながら、2本を足した矢印の長さの2乗（＝明るさ）を右側に描くと、干渉縞のカーブが浮かび上がる。真ん中では同じ向きで強め合い（明るさ4倍）、半波長ずれる場所では正反対で打ち消し合う（明るさ0）</div>
+        <div class="diagram-caption">スクリーン上の黒丸の点に、左スリット経由（青緑）と右スリット経由（琥珀）の2本の矢印が、道のりに応じて回転しながら届く。<strong>右の円が「矢印の足し算」の作業台</strong>：青緑の矢印の先端に琥珀の矢印をつないで置き、出発点から終点まで一直線に引いた黒い矢印が「合計」だ。<strong>合計の長さの2乗が、その点の明るさ</strong>（スリット1本のときを×1として×0〜×4）。2本が同じ向きなら合計は長く×4（強め合い）、正反対なら合計はほぼ消えて×0（打ち消し合い＝黒い矢印が見えなくなる瞬間）。走査点を上下に動かしながら明るさを右側に描き足していくと、干渉縞のカーブが浮かび上がる</div>
       </div>
 
       <div class="dialogue-scene">
@@ -286,13 +291,22 @@
   var dot = el('circle', {r: 4, fill: 'var(--ink)'});
   var lensDot = el('circle', {r: 3, fill: '#8a6a24'});
 
-  // 矢印インセット（右端）
-  var insetX = 334, insetY = 125;
+  // 矢印インセット（右端）: 2本の矢印を先端どうしでつないで足し、合計の黒い矢印を作る
+  var insetX = 334, insetY = 103;
+  txt(insetX, 64, 'strong', '矢印の合成');
   el('circle', {cx: insetX, cy: insetY, r: 26, fill: 'var(--paper2)', stroke: 'var(--line)'});
-  txt(insetX, insetY + 44, 'label', '矢印の合成');
-  var ar1 = el('line', {stroke: C1, 'stroke-width': 2.5, 'marker-end': 'none'});
-  var ar2 = el('line', {stroke: C2, 'stroke-width': 2.5});
-  var arS = el('line', {stroke: 'var(--ink)', 'stroke-width': 3});
+  var ar1 = el('line', {stroke: C1, 'stroke-width': 2.5, 'marker-end': 'url(#ah-l)'});
+  var ar2 = el('line', {stroke: C2, 'stroke-width': 2.5, 'marker-end': 'url(#ah-r)'});
+  var arS = el('line', {stroke: 'var(--ink)', 'stroke-width': 3, 'marker-end': 'url(#ah-s)'});
+  // 凡例と明るさ表示
+  [['左経由', C1], ['右経由', C2], ['合計', 'var(--ink)']].forEach(function(itm, i){
+    var ly = 143 + i * 15;
+    el('line', {x1: 305, y1: ly, x2: 319, y2: ly, stroke: itm[1], 'stroke-width': i === 2 ? 3 : 2.5});
+    var lt = txt(323, ly + 4, 'label', itm[0], 'start');
+    lt.style.fill = itm[1];
+    lt.style.fontWeight = '900';
+  });
+  var brightTxt = txt(insetX, 200, 'accent', '明るさ ×4.0');
 
   function dist(a, b) { return Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)); }
 
@@ -333,6 +347,11 @@
     ar2.setAttribute('x2', insetX + (v1.x + v2.x) / 2); ar2.setAttribute('y2', insetY + (v1.y + v2.y) / 2);
     arS.setAttribute('x1', insetX - (v1.x + v2.x) / 2); arS.setAttribute('y1', insetY - (v1.y + v2.y) / 2);
     arS.setAttribute('x2', insetX + (v1.x + v2.x) / 2); arS.setAttribute('y2', insetY + (v1.y + v2.y) / 2);
+    // 合計の長さ→明るさ倍率（スリット1本＝矢印1本のときを×1として、×0〜×4）
+    var sumLen = Math.sqrt((v1.x + v2.x) * (v1.x + v2.x) + (v1.y + v2.y) * (v1.y + v2.y));
+    arS.setAttribute('opacity', sumLen < 3 ? 0 : 1);
+    var mult = (sumLen / L) * (sumLen / L);
+    brightTxt.textContent = '明るさ ×' + mult.toFixed(1);
     drawCurve(y);
   }
 
