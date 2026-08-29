@@ -165,6 +165,17 @@
           </div>
           <div class="dialog-bubble">完璧だ。仕上げに、ルールのもう半分――<strong>「手がかりが残るなら、2乗してから足す」</strong>だとどうなるかも確かめておこう。左経由の確率と右経由の確率をそれぞれ計算してから足すだけなら、矢印の向きは出番がない。向きが出番を失えば、打ち消し合いはどこの点でも起きない。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg id="square-svg" class="dq-svg" viewBox="0 0 372 230" width="100%" role="img" aria-label="ルールの後半のアニメーション。同じ二重スリット装置で、左経由と右経由の矢印を足し合わせずに、それぞれ単独で長さを2乗する。左経由は×1、右経由も×1で、確率を足すとどの点でも×2。位相差は使われず、スクリーンには縞のないなだらかな分布が描かれる">
+          <text class="strong" x="186" y="16" text-anchor="middle">手がかりが残るなら、それぞれ2乗してから足す</text>
+          <g id="square-body"></g>
+        </svg>
+        <div class="diagram-caption">上の図と同じ装置・同じ2本の矢印。ただし手がかりが残るときは足し合わせが禁止され、<strong>左経由の矢印を単独で2乗（長さ1→×1.0）、右経由も単独で2乗（×1.0）、それから確率どうしを足す</strong>。合計はどの点でも×2.0で、矢印の向き（位相差）はどこにも使われない。強め合いも打ち消し合いも起きないので、スクリーンには縞のない、なだらかな分布が積もる――計算の手順が変わっただけで、縞は消える</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
@@ -381,6 +392,120 @@
     var span = BOT - TOP;
     var y = TOP + (t % span);
     drawAt(y);
+    raf = requestAnimationFrame(loop);
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(es){
+      if (es[0].isIntersecting && !running) { running = true; loop(); }
+      else if (!es[0].isIntersecting && running) { running = false; if (raf) cancelAnimationFrame(raf); }
+    }, {threshold: 0.15}).observe(svg);
+  } else { running = true; loop(); }
+})();
+</script>
+
+<script>
+(function(){
+  // 図1b: 「それぞれ2乗してから足す」のアニメ。装置・矢印は図1と同じで、計算手順だけが違う
+  var svg = document.getElementById('square-svg');
+  var g = document.getElementById('square-body');
+  if (!svg || !g) return;
+  var ns = 'http://www.w3.org/2000/svg';
+  var SRC = {x: 26, y: 125}, SL = {x: 96, y: 100}, SR = {x: 96, y: 150};
+  var SCX = 220, TOP = 40, BOT = 210, LAM = 11;
+  var C1 = '#2f7a6b', C2 = '#b98a2e';
+
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(ns, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    (parent || g).appendChild(e);
+    return e;
+  }
+  function txt(x, y, cls, content, anchor) {
+    var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': anchor || 'middle'});
+    t.textContent = content;
+    return t;
+  }
+
+  // 装置（図1と同一）
+  el('circle', {cx: SRC.x, cy: SRC.y, r: 5, fill: C2});
+  txt(SRC.x, SRC.y + 20, 'label', '光源');
+  el('line', {x1: SL.x, y1: 34, x2: SL.x, y2: SL.y - 8, stroke: 'var(--ink)', 'stroke-width': 4});
+  el('line', {x1: SL.x, y1: SL.y + 8, x2: SL.x, y2: SR.y - 8, stroke: 'var(--ink)', 'stroke-width': 4});
+  el('line', {x1: SL.x, y1: SR.y + 8, x2: SL.x, y2: 216, stroke: 'var(--ink)', 'stroke-width': 4});
+  txt(SL.x, 30, 'label', 'スリット');
+  txt(SL.x - 12, SL.y + 4, 'label', '左', 'end');
+  txt(SL.x - 12, SR.y + 4, 'label', '右', 'end');
+  el('line', {x1: SCX, y1: TOP, x2: SCX, y2: BOT, stroke: 'var(--ink)', 'stroke-width': 3});
+  txt(SCX, 34, 'label', 'スクリーン');
+  txt(300, 34, 'label', '明るさ');
+
+  var path1 = el('line', {stroke: C1, 'stroke-width': 1.5, 'stroke-dasharray': '4 3'});
+  var path2 = el('line', {stroke: C2, 'stroke-width': 1.5, 'stroke-dasharray': '4 3'});
+  el('line', {x1: SRC.x, y1: SRC.y, x2: SL.x, y2: SL.y, stroke: C1, 'stroke-width': 1, opacity: .5});
+  el('line', {x1: SRC.x, y1: SRC.y, x2: SL.x, y2: SR.y, stroke: C2, 'stroke-width': 1, opacity: .5});
+  var curve = el('path', {fill: 'none', stroke: '#8a6a24', 'stroke-width': 2});
+  var dot = el('circle', {r: 4, fill: 'var(--ink)'});
+  var lensDot = el('circle', {r: 3, fill: '#8a6a24'});
+
+  // 右カラム: 2本の矢印を別々の小円に入れ、それぞれ単独で2乗する
+  var insetX = 334, L = 12;
+  var c1y = 76, c2y = 130;
+  el('circle', {cx: insetX, cy: c1y, r: 15, fill: 'var(--paper2)', stroke: 'var(--line)'});
+  el('circle', {cx: insetX, cy: c2y, r: 15, fill: 'var(--paper2)', stroke: 'var(--line)'});
+  var ar1 = el('line', {stroke: C1, 'stroke-width': 2.5, 'marker-end': 'url(#ah-l)'});
+  var ar2 = el('line', {stroke: C2, 'stroke-width': 2.5, 'marker-end': 'url(#ah-r)'});
+  var lb1 = txt(insetX, c1y + 28, 'label', '左経由 ×1.0');
+  lb1.style.fill = C1; lb1.style.fontWeight = '900';
+  var lb2 = txt(insetX, c2y + 28, 'label', '右経由 ×1.0');
+  lb2.style.fill = C2; lb2.style.fontWeight = '900';
+  txt(insetX, 178, 'label', '確率を足すと');
+  txt(insetX, 193, 'accent', '明るさ ×2.0');
+  var noteTxt = txt(insetX, 208, 'label', '位相差と無関係');
+
+  function dist(a, b) { return Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)); }
+
+  function intensityAt(y) {
+    var p = {x: SCX, y: y};
+    var ph1 = 2 * Math.PI * dist(SL, p) / LAM, ph2 = 2 * Math.PI * dist(SR, p) / LAM;
+    var env = Math.exp(-Math.pow((y - 125) / 70, 2));
+    // それぞれ2乗してから足す: |a1|²+|a2|² = 1+1 = 2 → 図1と同じ規格化（÷4）でI=0.5
+    return {I: 0.5 * env, ph1: ph1, ph2: ph2};
+  }
+
+  function drawCurve(uptoY) {
+    var d = '';
+    for (var y = TOP; y <= uptoY; y += 1.5) {
+      var r = intensityAt(y);
+      var x = SCX + 6 + r.I * 70;
+      d += (d === '' ? 'M ' : 'L ') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
+    }
+    curve.setAttribute('d', d);
+  }
+
+  function drawAt(y) {
+    var r = intensityAt(y);
+    path1.setAttribute('x1', SL.x); path1.setAttribute('y1', SL.y);
+    path1.setAttribute('x2', SCX); path1.setAttribute('y2', y);
+    path2.setAttribute('x1', SL.x); path2.setAttribute('y1', SR.y);
+    path2.setAttribute('x2', SCX); path2.setAttribute('y2', y);
+    dot.setAttribute('cx', SCX); dot.setAttribute('cy', y);
+    lensDot.setAttribute('cx', SCX + 6 + r.I * 70); lensDot.setAttribute('cy', y);
+    ar1.setAttribute('x1', insetX); ar1.setAttribute('y1', c1y);
+    ar1.setAttribute('x2', insetX + Math.cos(r.ph1) * L); ar1.setAttribute('y2', c1y - Math.sin(r.ph1) * L);
+    ar2.setAttribute('x1', insetX); ar2.setAttribute('y1', c2y);
+    ar2.setAttribute('x2', insetX + Math.cos(r.ph2) * L); ar2.setAttribute('y2', c2y - Math.sin(r.ph2) * L);
+    drawCurve(y);
+  }
+
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) { drawCurve(BOT); drawAt(125); return; }
+
+  var t = 0, running = false, raf = null;
+  function loop() {
+    if (!running) return;
+    t += 0.55;
+    var span = BOT - TOP;
+    drawAt(TOP + (t % span));
     raf = requestAnimationFrame(loop);
   }
   if ('IntersectionObserver' in window) {
