@@ -154,7 +154,7 @@
           </defs>
           <g id="interf-body"></g>
         </svg>
-        <div class="diagram-caption">スクリーン上の黒丸の点に、左スリット経由（青緑）と右スリット経由（琥珀）の2本の矢印が、道のりに応じて回転しながら届く。<strong>右の円が「矢印の足し算」の作業台</strong>：2本の矢印を同じ出発点から描き、それらを隣り合う2辺とする平行四辺形（点線）を作ると、その対角線が「合計」（黒い矢印）になる。<strong>合計の長さの2乗が、その点の明るさ</strong>（スリット1本のときを×1として×0〜×4）。2本が同じ向きなら合計は長く×4（強め合い）、正反対なら合計はほぼ消えて×0（打ち消し合い＝黒い矢印が見えなくなる瞬間）。走査点を上下に動かしながら明るさを右側に描き足していくと、干渉縞のカーブが浮かび上がる</div>
+        <div class="diagram-caption">スクリーン上の黒丸の点に、左スリット経由（青緑）と右スリット経由（琥珀）の2本の矢印が、道のりに応じて回転しながら届く。<strong>右の円が「矢印の足し算」の作業台</strong>：2本の矢印を同じ出発点から描き、それらを隣り合う2辺とする平行四辺形（点線）を作ると、その対角線が「合計」（黒い矢印）になる。<strong>合計の長さの2乗が、その点の明るさ</strong>（スリット1本のときを×1として×0〜×4）。2本の向きの開きが<strong>位相差</strong>：位相差0°（同じ向き）なら合計は長く×4（強め合い）、位相差180°（正反対）なら合計はほぼ消えて×0（打ち消し合い＝黒い矢印が見えなくなる瞬間）。走査点を上下に動かしながら明るさを右側に描き足していくと、干渉縞のカーブが浮かび上がる</div>
       </div>
 
       <div class="dialogue-scene">
@@ -312,7 +312,9 @@
     lt.style.fill = itm[1];
     lt.style.fontWeight = '900';
   });
-  var brightTxt = txt(insetX, 200, 'accent', '明るさ ×4.0');
+  var phaseTxt = txt(insetX, 187, 'label', '位相差 0°');
+  phaseTxt.style.fontWeight = '900';
+  var brightTxt = txt(insetX, 202, 'accent', '明るさ ×4.0');
 
   function dist(a, b) { return Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)); }
 
@@ -363,6 +365,9 @@
     arS.setAttribute('opacity', sumLen < 3 ? 0 : 1);
     var mult = (sumLen / L) * (sumLen / L);
     brightTxt.textContent = '明るさ ×' + mult.toFixed(1);
+    var dphi = ((r.ph1 - r.ph2) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+    if (dphi > Math.PI) dphi = 2 * Math.PI - dphi;
+    phaseTxt.textContent = '位相差 ' + Math.round(dphi * 180 / Math.PI) + '°';
     drawCurve(y);
   }
 
