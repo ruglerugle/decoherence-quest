@@ -30,6 +30,10 @@
   .dq-svg .strong{fill:var(--ink);font-size:12px;font-weight:900}
   .dq-svg .accent{fill:#2f7a6b;font-size:11px;font-weight:900}
   .dq-svg .grid{stroke:var(--line);stroke-width:1}
+  .anim-ctrl{display:flex;align-items:center;gap:10px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+  .anim-ctrl input[type=range]{flex:1;max-width:280px;min-width:140px;accent-color:#2f7a6b}
+  .anim-ctrl .btn{padding:.35rem .9rem;font-size:12px}
+  .anim-ctrl .ctrl-label{font-size:11px;color:var(--muted);font-weight:700}
 </style>
 </head>
 <body>
@@ -133,6 +137,11 @@
           </defs>
           <g id="interf-body"></g>
         </svg>
+        <div class="anim-ctrl">
+          <button type="button" class="btn" id="interf-play">⏸ 一時停止</button>
+          <span class="ctrl-label">走査位置</span>
+          <input type="range" id="interf-slider" min="40" max="210" step="0.5" value="40" aria-label="スクリーン上の走査位置を手動で動かす">
+        </div>
         <div class="diagram-caption">スクリーン上の黒丸の点に、左スリット経由（青緑）と右スリット経由（オレンジ）の2本の矢印が、道のりに応じて回転しながら届く。<strong>右の円が「矢印の足し算」の作業台</strong>：2本の矢印を同じ出発点から描き、それらを隣り合う2辺とする平行四辺形（点線）を作ると、その対角線が「合計」（黒い矢印）になる。<strong>合計の長さの2乗が、その点の明るさ</strong>（×1＝<strong>同じ場所に</strong>スリット1本だけ開けたときの明るさ。×0〜×4）。カーブの明るい帯の高さが端へ行くほど低いのは、矢印の長さそのものが場所で変わる（波が広がって薄まって届く）ためで、作業台の矢印も走査点が端に行くほど短く描かれる。×4という倍率は各場所の「1本のとき」との比を表す。2本の向きの開きが<strong>位相差</strong>：位相差0°（同じ向き）なら合計は長く×4（強め合い）、位相差180°（正反対）なら合計はほぼ消えて×0（打ち消し合い＝黒い矢印が見えなくなる瞬間）。走査点を上下に動かしながら明るさを右側に描き足していくと、干渉縞のカーブが浮かび上がる</div>
       </div>
 
@@ -151,6 +160,11 @@
           <text class="strong" x="186" y="16" text-anchor="middle">手がかりが残るなら、それぞれ2乗してから足す</text>
           <g id="square-body"></g>
         </svg>
+        <div class="anim-ctrl">
+          <button type="button" class="btn" id="square-play">⏸ 一時停止</button>
+          <span class="ctrl-label">走査位置</span>
+          <input type="range" id="square-slider" min="40" max="210" step="0.5" value="40" aria-label="スクリーン上の走査位置を手動で動かす">
+        </div>
         <div class="diagram-caption">上の図と同じ装置・同じ2本の矢印。ただし手がかりが残るときは足し合わせが禁止され、<strong>左経由の矢印を単独で2乗して×1.0（＝その場所に1本だけ開けたときの明るさそのもの）、右経由も×1.0、それから確率どうしを足す</strong>。合計はどの点でも×2.0で、矢印の向き（位相差）はどこにも使われない。強め合いも打ち消し合いも起きないので、スクリーンには縞のない、なだらかな分布が積もる――計算の手順が変わっただけで、縞は消える</div>
       </div>
 
@@ -376,7 +390,7 @@
     curve.setAttribute('d', d);
   }
 
-  function drawAt(y) {
+  function drawAt(y, full) {
     var r = intensityAt(y);
     path1.setAttribute('x1', SL.x); path1.setAttribute('y1', SL.y);
     path1.setAttribute('x2', SCX); path1.setAttribute('y2', y);
@@ -406,21 +420,41 @@
     var dphi = ((r.ph1 - r.ph2) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
     if (dphi > Math.PI) dphi = 2 * Math.PI - dphi;
     phaseTxt.textContent = '位相差 ' + Math.round(dphi * 180 / Math.PI) + '°';
-    drawCurve(y);
+    drawCurve(full ? BOT : y);
   }
 
+  // スライダーで手動操作、ボタンで自動再生と切り替え
+  var slider = document.getElementById('interf-slider');
+  var playBtn = document.getElementById('interf-play');
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced) { drawCurve(BOT); drawAt(125); return; }
-
+  var auto = !reduced;
   var t = 0, running = false, raf = null;
+  function setBtn() { if (playBtn) playBtn.textContent = auto ? '⏸ 一時停止' : '▶ 自動再生'; }
+  if (slider) {
+    slider.addEventListener('input', function () {
+      auto = false; setBtn();
+      drawAt(parseFloat(slider.value), true);
+    });
+  }
+  if (playBtn) {
+    playBtn.addEventListener('click', function () {
+      auto = !auto; setBtn();
+      if (auto && slider) t = parseFloat(slider.value) - TOP;
+      else if (slider) drawAt(parseFloat(slider.value), true);
+    });
+  }
+  setBtn();
   function loop() {
     if (!running) return;
-    t += 0.55;
-    var span = BOT - TOP;
-    var y = TOP + (t % span);
-    drawAt(y);
+    if (auto) {
+      t += 0.55;
+      var y = TOP + (t % (BOT - TOP));
+      if (slider) slider.value = y;
+      drawAt(y, false);
+    }
     raf = requestAnimationFrame(loop);
   }
+  if (!auto) { if (slider) slider.value = 125; drawAt(125, true); }
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function(es){
       if (es[0].isIntersecting && !running) { running = true; loop(); }
@@ -509,7 +543,7 @@
     curve.setAttribute('d', d);
   }
 
-  function drawAt(y) {
+  function drawAt(y, full) {
     var r = intensityAt(y);
     path1.setAttribute('x1', SL.x); path1.setAttribute('y1', SL.y);
     path1.setAttribute('x2', SCX); path1.setAttribute('y2', y);
@@ -522,20 +556,41 @@
     ar1.setAttribute('x2', insetX + Math.cos(r.ph1) * Ls); ar1.setAttribute('y2', c1y - Math.sin(r.ph1) * Ls);
     ar2.setAttribute('x1', insetX); ar2.setAttribute('y1', c2y);
     ar2.setAttribute('x2', insetX + Math.cos(r.ph2) * Ls); ar2.setAttribute('y2', c2y - Math.sin(r.ph2) * Ls);
-    drawCurve(y);
+    drawCurve(full ? BOT : y);
   }
 
+  // スライダーで手動操作、ボタンで自動再生と切り替え
+  var slider = document.getElementById('square-slider');
+  var playBtn = document.getElementById('square-play');
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced) { drawCurve(BOT); drawAt(125); return; }
-
+  var auto = !reduced;
   var t = 0, running = false, raf = null;
+  function setBtn() { if (playBtn) playBtn.textContent = auto ? '⏸ 一時停止' : '▶ 自動再生'; }
+  if (slider) {
+    slider.addEventListener('input', function () {
+      auto = false; setBtn();
+      drawAt(parseFloat(slider.value), true);
+    });
+  }
+  if (playBtn) {
+    playBtn.addEventListener('click', function () {
+      auto = !auto; setBtn();
+      if (auto && slider) t = parseFloat(slider.value) - TOP;
+      else if (slider) drawAt(parseFloat(slider.value), true);
+    });
+  }
+  setBtn();
   function loop() {
     if (!running) return;
-    t += 0.55;
-    var span = BOT - TOP;
-    drawAt(TOP + (t % span));
+    if (auto) {
+      t += 0.55;
+      var y = TOP + (t % (BOT - TOP));
+      if (slider) slider.value = y;
+      drawAt(y, false);
+    }
     raf = requestAnimationFrame(loop);
   }
+  if (!auto) { if (slider) slider.value = 125; drawAt(125, true); }
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function(es){
       if (es[0].isIntersecting && !running) { running = true; loop(); }
