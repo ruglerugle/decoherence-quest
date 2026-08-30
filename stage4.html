@@ -94,6 +94,21 @@
           </div>
           <div class="dialog-bubble">その通り。だがその前に腕試しをひとつ。ここに2種類の粒子の集団がある。集団Aは、どの粒子も「左と右の<strong>重ね合わせ</strong>」――左経由の矢印と右経由の矢印を両方持つ状態だ。集団Bは、半分の粒子を「確実に左」、残り半分を「確実に右」で作った、いわば<strong>「どちらか半々」</strong>の集団。位置を測れば、どちらの集団も左右半々に見つかる。さて、この2つを区別する方法はあるかな？</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg id="ensemble-svg" class="dq-svg" viewBox="0 0 372 226" width="100%" role="img" aria-label="腕試しの設問の図解。集団Aはどの粒子も左経由と右経由の矢印を2本とも持つ重ね合わせ。集団Bは確実に左の粒子と確実に右の粒子を半分ずつ混ぜた集団。位置を測ると、どちらの集団も左50%右50%で、位置の統計だけではまったく区別できない">
+          <text class="strong" x="186" y="16" text-anchor="middle">腕試し：この2つの集団、見分けられるか？</text>
+          <defs>
+            <marker id="ah4-l" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="4.5" markerHeight="4.5" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#2f7a6b"></path></marker>
+            <marker id="ah4-r" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="4.5" markerHeight="4.5" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#b98a2e"></path></marker>
+          </defs>
+          <g id="ensemble-body"></g>
+        </svg>
+        <div class="diagram-caption">集団A：どの粒子も、左経由の矢印（青緑）と右経由の矢印（オレンジ）を<strong>2本とも持つ「重ね合わせ」</strong>。集団B：<strong>確実に左</strong>の粒子（青緑の矢印1本）と<strong>確実に右</strong>の粒子（オレンジの矢印1本）を半分ずつ混ぜた集団。位置を測ると、どちらの集団も左50%・右50%で、<strong>位置の統計だけではまったく区別できない</strong>。見分ける方法はあるか――ヒント：矢印が2本そろって初めて起きる現象は何だったか</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
@@ -243,6 +258,53 @@
 
 <script src="js/progress.js"></script>
 <script>DQ.initStagePage(4);</script>
+
+<script>
+(function(){
+  // 図0: 腕試しの設問（集団A=重ね合わせ、集団B=どちらか半々）の図解（静的）
+  var g = document.getElementById('ensemble-body');
+  if (!g) return;
+  var ns = 'http://www.w3.org/2000/svg';
+  var C1 = '#2f7a6b', C2 = '#b98a2e';
+  function el(name, attrs) {
+    var e = document.createElementNS(ns, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    g.appendChild(e);
+    return e;
+  }
+  function txt(x, y, cls, content, size) {
+    var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': 'middle'});
+    t.textContent = content;
+    if (size) t.style.fontSize = size + 'px';
+    return t;
+  }
+  // 粒子アイコン: kind = 'both' | 'left' | 'right'
+  var DIRL = {x: -0.7071, y: -0.7071}, DIRR = {x: 0.7071, y: -0.7071}, AL = 10;
+  function particle(cx, cy, kind) {
+    el('circle', {cx: cx, cy: cy, r: 13, fill: 'var(--paper2)', stroke: 'var(--line)', 'stroke-width': 1.4});
+    if (kind !== 'right') el('line', {x1: cx, y1: cy, x2: cx + DIRL.x * AL, y2: cy + DIRL.y * AL, stroke: C1, 'stroke-width': 2, 'marker-end': 'url(#ah4-l)'});
+    if (kind !== 'left') el('line', {x1: cx, y1: cy, x2: cx + DIRR.x * AL, y2: cy + DIRR.y * AL, stroke: C2, 'stroke-width': 2, 'marker-end': 'url(#ah4-r)'});
+  }
+
+  var panels = [
+    {cx: 100, x0: 16, name: '集団A：全員が重ね合わせ', note: 'どの粒子も矢印2本（左＋右）', kinds: ['both','both','both','both','both','both']},
+    {cx: 272, x0: 188, name: '集団B：どちらか半々', note: '矢印1本ずつ（左か右）', kinds: ['left','right','left','right','left','right']}
+  ];
+  panels.forEach(function(p){
+    el('rect', {x: p.x0, y: 28, width: 168, height: 168, rx: 10, fill: 'var(--paper2)', stroke: 'var(--line)'});
+    var h = txt(p.cx, 46, 'strong', p.name, 11.5);
+    p.kinds.forEach(function(kind, i){
+      var col = i % 3, row = Math.floor(i / 3);
+      particle(p.cx + (col - 1) * 44, 76 + row * 34, kind);
+    });
+    txt(p.cx, 138, 'label', p.note, 9.5);
+    el('line', {x1: p.x0 + 10, y1: 148, x2: p.x0 + 158, y2: 148, stroke: 'var(--line)', 'stroke-dasharray': '4 4'});
+    txt(p.cx, 164, 'label', '位置を測ると', 9.5);
+    var r = txt(p.cx, 182, 'strong', '左 50%　右 50%', 11);
+  });
+  txt(186, 216, 'label', '→ 位置の統計はまったく同じ。では、どうやって見分ける？', 10.5);
+})();
+</script>
 
 <script>
 (function(){
