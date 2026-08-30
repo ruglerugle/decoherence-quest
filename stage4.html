@@ -231,11 +231,11 @@
       </div>
 
       <div class="diagram-box">
-        <svg id="table-svg" class="dq-svg" viewBox="0 0 372 248" width="100%" role="img" aria-label="うさ美が書いた場合分けの表。行1は相方が左で終わる場合で、起きる割合は2分の1、対応する筋書きは両方左だけなので手元は確実に左。行2は相方が右で終わる場合で、割合2分の1、手元は確実に右。行が交互に強調されたあと、行ごとの分布を割合の重みつきで足した合計として、縞のないのっぺりした分布が描かれる">
-          <text class="strong" x="186" y="16" text-anchor="middle">うさ美の場合分けの表：行の中は矢印、行の間は確率</text>
+        <svg id="table-svg" class="dq-svg" viewBox="0 0 372 240" width="100%" role="img" aria-label="場合分けの表の行の数が結果を決めることを示す対比図。左は相方がいない場合で、筋書きLと筋書きRが同じ1つの行に入り、行の中では矢印を足すので縞が出る。右は相方が直交している場合で、筋書きLと筋書きRが別々の行に引き裂かれ、行の間では確率を足すのでのっぺりになる">
+          <text class="strong" x="186" y="16" text-anchor="middle">表の形がすべて：行がひとつなら縞、ふたつならのっぺり</text>
           <g id="table-body"></g>
         </svg>
-        <div class="diagram-caption">セリフの表をそのまま書いたもの。行1：相方が<strong>左</strong>で終わる場合（割合1/2）――対応する筋書きは「2個とも左」だけなので、手元は<strong>確実に左</strong>（左由来の山）。行2：相方が<strong>右</strong>（割合1/2）――手元は<strong>確実に右</strong>。行ごとの分布を割合の重みつきで足すと、一番下の<strong>のっぺり</strong>になる。この表は「半分は確実に左、半分は確実に右」という集団Bのレシピと同じ――もつれの片割れは混合状態になりすます</div>
+        <div class="diagram-caption">場合分けの表の結果は、じつは<strong>行の数</strong>だけで決まる。左：相方がいなければ、筋書きLと筋書きRは<strong>同じ行に同居</strong>し、行の中では矢印を足す→縞。右：相方が直交していると、同じ2つの筋書きが<strong>別々の行に引き裂かれ</strong>、行の間では確率を足す→のっぺり。うさ美の表はこの右のケース。次のステージでは、行の分かれ方が<strong>不完全</strong>な場合（少しだけ引き裂かれる）を同じ表で扱い、縞の濃さが連続的に薄れていく様子を計算する</div>
       </div>
 
       <div class="dialogue-scene">
@@ -485,17 +485,15 @@
 
 <script>
 (function(){
-  // 図1: うさ美の場合分けの表。行を交互に強調し、重みつき合計カーブを描く
-  var svg = document.getElementById('table-svg');
+  // 図1: 行の数の対比図（静的）。1行＝矢印の足し算→縞、2行＝確率の足し算→のっぺり
   var g = document.getElementById('table-body');
-  if (!svg || !g) return;
+  if (!g) return;
   var ns = 'http://www.w3.org/2000/svg';
   var C1 = '#2f7a6b', C2 = '#b98a2e', CS = '#a63f6f';
-
-  function el(name, attrs, parent) {
+  function el(name, attrs) {
     var e = document.createElementNS(ns, name);
     for (var k in attrs) e.setAttribute(k, attrs[k]);
-    (parent || g).appendChild(e);
+    g.appendChild(e);
     return e;
   }
   function txt(x, y, cls, content, size) {
@@ -504,71 +502,61 @@
     if (size) t.style.fontSize = size + 'px';
     return t;
   }
-  function miniCurve(cx, cy, w, h, f, color) {
+  function env(u) { return Math.exp(-u * u * 2.2); }
+  function curve(x0, y0, w, h, f, color) {
     var d = '';
-    for (var i = 0; i <= 60; i++) {
-      var u = (i - 30) / 30;
-      var x = cx - w / 2 + w * i / 60;
-      var y = cy + h / 2 - f(u) * h;
+    for (var i = 0; i <= 100; i++) {
+      var u = (i - 50) / 50;
+      var x = x0 + 4 + (w - 8) * i / 100;
+      var y = y0 - 5 - f(u) * (h - 12);
       d += (i === 0 ? 'M ' : 'L ') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
     }
-    return el('path', {d: d, fill: 'none', stroke: color, 'stroke-width': 2});
+    el('path', {d: d, fill: 'none', stroke: color, 'stroke-width': 2.2});
   }
-  function envL(u) { return Math.exp(-Math.pow((u + 0.35) / 0.5, 2)) * 0.9; }
-  function envR(u) { return Math.exp(-Math.pow((u - 0.35) / 0.5, 2)) * 0.9; }
+  function twoTone(x, y, size) {
+    var a = txt(x - 30, y, 'strong', '筋書きL', size || 10);
+    a.style.fill = C1;
+    var b = txt(x + 30, y, 'strong', '筋書きR', size || 10);
+    b.style.fill = C2;
+    txt(x, y, 'strong', '＋', size || 10);
+  }
 
-  var X0 = 14, W = 344;
-  el('rect', {x: X0, y: 28, width: W, height: 212, rx: 8, fill: 'var(--paper2)', stroke: 'var(--line)'});
-  // ヘッダ行
-  txt(X0 + 26, 46, 'head-cell', '行');
-  txt(X0 + 100, 46, 'head-cell', '相方の終わり方');
-  txt(X0 + 170, 46, 'head-cell', '割合');
-  txt(X0 + 262, 46, 'head-cell', '手元の状態');
-  el('line', {x1: X0, y1: 52, x2: X0 + W, y2: 52, 'class': 'grid'});
-
-  // 行1・行2（強調用の背景）
-  var row1 = el('rect', {x: X0 + 2, y: 55, width: W - 4, height: 58, fill: 'rgba(47,122,107,.10)', opacity: 0});
-  var row2 = el('rect', {x: X0 + 2, y: 117, width: W - 4, height: 58, fill: 'rgba(185,138,46,.12)', opacity: 0});
-
-  [
-    {cy: 84, n: '行1', state: '左の状態', sub: '（対応：両方左だけ）', p: '確実に左', c: C1, f: envL},
-    {cy: 146, n: '行2', state: '右の状態', sub: '（対応：両方右だけ）', p: '確実に右', c: C2, f: envR}
-  ].forEach(function(r){
-    txt(X0 + 26, r.cy + 4, 'strong', r.n);
-    var st = txt(X0 + 100, r.cy - 4, 'strong', r.state, 11);
-    st.style.fill = r.c;
-    txt(X0 + 100, r.cy + 13, 'label', r.sub, 8.5);
-    txt(X0 + 170, r.cy + 4, 'strong', '1/2');
-    var pt = txt(X0 + 262, r.cy - 10, 'strong', r.p, 11);
-    pt.style.fill = r.c;
-    miniCurve(X0 + 262, r.cy + 9, 92, 22, r.f, r.c);
+  var panels = [
+    {x0: 14, head: '相方なし → 行はひとつ', mode: 'one'},
+    {x0: 192, head: '相方が直交 → 行はふたつ', mode: 'two'}
+  ];
+  panels.forEach(function(p){
+    var cx = p.x0 + 83;
+    txt(cx, 38, 'strong', p.head, 11);
+    if (p.mode === 'one') {
+      el('rect', {x: p.x0 + 4, y: 48, width: 158, height: 40, rx: 7, fill: 'var(--paper2)', stroke: CS, 'stroke-width': 1.6});
+      twoTone(cx, 68);
+      txt(cx, 82, 'label', '同じ行に同居', 8.5);
+      txt(cx, 106, 'label', '行の中 → 矢印を足す', 9.5);
+    } else {
+      el('rect', {x: p.x0 + 4, y: 48, width: 158, height: 22, rx: 6, fill: 'var(--paper2)', stroke: C1, 'stroke-width': 1.6});
+      var r1 = txt(cx, 63, 'strong', '行1：筋書きL（割合1/2）', 9.5);
+      r1.style.fill = C1;
+      el('rect', {x: p.x0 + 4, y: 74, width: 158, height: 22, rx: 6, fill: 'var(--paper2)', stroke: C2, 'stroke-width': 1.6});
+      var r2 = txt(cx, 89, 'strong', '行2：筋書きR（割合1/2）', 9.5);
+      r2.style.fill = C2;
+      txt(cx, 106, 'label', '行の間 → 確率を足す', 9.5);
+    }
+    // ↓ 矢印
+    el('line', {x1: cx, y1: 112, x2: cx, y2: 122, stroke: 'var(--muted)', 'stroke-width': 1.5});
+    el('path', {d: 'M ' + cx + ' 126 l -4 -7 l 8 0 z', fill: 'var(--muted)'});
+    // 結果の分布
+    el('rect', {x: p.x0 + 12, y: 130, width: 142, height: 70, rx: 6, fill: 'var(--paper2)', stroke: 'var(--line)'});
+    if (p.mode === 'one') {
+      curve(p.x0 + 12, 198, 142, 66, function(u){ return env(u) * Math.pow(Math.cos(u * 9), 2); }, C1);
+      var t1 = txt(cx, 218, 'label', '縞が出る', 11);
+      t1.style.fill = 'var(--ok)'; t1.style.fontWeight = '900';
+    } else {
+      curve(p.x0 + 12, 198, 142, 66, function(u){ return env(u) * 0.55; }, CS);
+      var t2 = txt(cx, 218, 'label', '縞は出ない（のっぺり）', 11);
+      t2.style.fill = 'var(--ng)'; t2.style.fontWeight = '900';
+    }
   });
-  el('line', {x1: X0, y1: 115, x2: X0 + W, y2: 115, 'class': 'grid'});
-  el('line', {x1: X0, y1: 177, x2: X0 + W, y2: 177, 'class': 'grid'});
-
-  // 合計行
-  txt(X0 + 84, 202, 'accent', '重みつき合計＝');
-  txt(X0 + 84, 218, 'label', '(1/2)×行1 ＋ (1/2)×行2');
-  miniCurve(X0 + 240, 202, 130, 34, function(u){ return (envL(u) + envR(u)) / 2; }, CS);
-  txt(X0 + 240, 232, 'accent', 'のっぺり（縞ゼロ）');
-
-  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced) { row1.setAttribute('opacity', 1); row2.setAttribute('opacity', 1); return; }
-  var t = 0, running = false, raf = null;
-  function loop() {
-    if (!running) return;
-    t += 0.016;
-    var ph = (t % 4) / 4;
-    row1.setAttribute('opacity', ph < 0.33 ? 1 : ph < 0.66 ? 0.25 : 1);
-    row2.setAttribute('opacity', ph < 0.33 ? 0.25 : 1);
-    raf = requestAnimationFrame(loop);
-  }
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function(es){
-      if (es[0].isIntersecting && !running) { running = true; loop(); }
-      else if (!es[0].isIntersecting && running) { running = false; if (raf) cancelAnimationFrame(raf); }
-    }, {threshold: 0.15}).observe(svg);
-  } else { running = true; loop(); }
 })();
 </script>
 
