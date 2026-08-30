@@ -149,14 +149,28 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう――<strong>もつれの相手は、天然の経路検出器</strong>なんだ。ではここからが本当の山場だよ。言いたいのは「縞が出ない」だけではない。手元の粒子に<strong>どんな実験をしても</strong>、さっきの集団B「どちらか半々」と見分けがつかない――そこまで言い切りたい。そのための計算道具を渡そう。<strong>場合分けの表</strong>だ。作り方は3行で言える。(1) 相方の直交する状態ごとに、表の行を作る。(2) 各行に、その場合の起きる割合（重み）と、そのときの手元の粒子の状態を書く。(3) 手元の実験の予想は、<strong>行ごとに計算してから、重みをつけて足す</strong>。行の中では矢印の足し算、行と行のあいだでは確率の足し算だ。</div>
+          <div class="dialog-bubble">そう――<strong>もつれの相手は、天然の経路検出器</strong>なんだ。ではここからが本当の山場だよ。言いたいのは「縞が出ない」だけではない。手元の粒子に<strong>どんな実験をしても</strong>、さっきの集団B「どちらか半々」と見分けがつかない――そこまで言い切りたい。そのために、手元の実験の予想を計算する手順を、いつものルールから組み立てておこう。鍵はこうだ。手元で何を測ろうと、筋書きの終わり方には<strong>相方の状態が必ず含まれる</strong>。相方の終わり方は「左の状態」か「右の状態」のどちらかで、この2つは直交している。だから、ありとあらゆる筋書きは、終わり方によって<strong>2つのグループ</strong>にきっぱり分かれる――「相方が左で終わる筋書きたち」と、「相方が右で終わる筋書きたち」だ。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">書いてみます。行1「相方が左の状態。重み1/2。手元は確実に左」。行2「相方が右の状態。重み1/2。手元は確実に右」。……この表、集団Bのレシピと<strong>一字一句同じ</strong>です。「半分は確実に左、半分は確実に右」。ということは、手元でどんな実験をしても――位置でも、干渉でも、斜めの質問でも――予想は集団Bと完全に一致する。<strong>もつれの片割れは、単独で見るかぎり「どちらか半々」の集団になりすましている</strong>んですね。だから何を測ってもランダムにしか見えなかった。</div>
+          <div class="dialog-bubble">グループの中と外で、ルールの扱いが変わるわけですね。<strong>同じグループの中</strong>の筋書きどうしは、相方の終わり方が同じですから、合流できて<strong>矢印の足し算</strong>。<strong>グループとグループのあいだ</strong>は、相方の状態が直交していて合流できませんから、<strong>確率の足し算</strong>。……この仕分けを、グループごとに1行ずつの表にすればよさそうです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。それを<strong>場合分けの表</strong>と呼ぼう。行は、相方の終わり方のグループごとに1つ。各行には、<strong>その行が起きる割合</strong>と、<strong>そのとき手元の粒子がどんな状態か</strong>を書く。手元の実験の予想は、行の中でいつものように計算して、最後に行ごとの割合で重みをつけて足せばいい。では、今回のもつれたペアで、実際に表を書いてごらん。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">書いてみます。もつれの状態は「2個とも左」と「2個とも右」の重ね合わせでした。行1「相方が左で終わる場合。起きる割合は1/2。この場合に対応するのは<strong>「2個とも左」の筋書きだけ</strong>なので、手元は確実に左」。行2「相方が右で終わる場合。割合は1/2。対応するのは「2個とも右」だけなので、手元は確実に右」。……この表、集団Bのレシピと<strong>一字一句同じ</strong>です。「半分は確実に左、半分は確実に右」。ということは、手元でどんな実験をしても――位置でも、干渉でも、斜めの質問でも――予想は集団Bと完全に一致する。<strong>もつれの片割れは、単独で見るかぎり「どちらか半々」の集団になりすましている</strong>んですね。だから何を測ってもランダムにしか見えなかった。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
@@ -214,7 +228,7 @@
       <div class="formula-box">
         <span class="step">【このステージの成果 ― 場合分けの表と混合状態】</span>
         <span class="step">・もつれの相手は天然の経路検出器：相方の状態が直交 → 手元の筋書きは合流できず、縞ゼロ</span>
-        <span class="step">・<strong>場合分けの表</strong>：相方の直交状態ごとに行を作り、重みと手元の状態を書く。行の中は矢印の足し算、行の間は確率の足し算。相方を実際に調べなくても使える</span>
+        <span class="step">・<strong>場合分けの表</strong>：筋書きを「相方の終わり方」のグループごとに1行ずつにまとめる。同じ行の中は合流できるので<strong>矢印の足し算</strong>、行と行の間は直交して合流できないので<strong>確率の足し算</strong>。各行に起きる割合（重み）と手元の状態を書き、行ごとの計算を重みつきで足す。相方を実際に調べなくても使える</span>
         <span class="step">・もつれの片割れの表＝「半分は確実に左・半分は確実に右」→ 単独ではどんな実験でも「どちらか半々」と区別不能（この状態を<strong>混合状態</strong>と呼ぶ）</span>
         <span class="step">・干渉（縞）は消滅せず<strong>ペアの相関の中へ</strong>。相方との突き合わせ（仕分け）でだけ取り出せる</span>
       </div>
