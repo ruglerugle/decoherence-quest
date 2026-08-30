@@ -171,12 +171,21 @@
           <text class="strong" x="186" y="16" text-anchor="middle">手がかりが残るなら、それぞれ2乗してから足す</text>
           <g id="square-body"></g>
         </svg>
+        <div class="readout">
+          <span style="color:#2f7a6b">左の長さ <b id="sq-l">1.00</b></span>
+          <span style="color:#b98a2e">右の長さ <b id="sq-r">1.00</b></span>
+          <span style="color:#2f7a6b">|左|² <b id="sq-l2">1.00</b></span>
+          <span style="color:#b98a2e">|右|² <b id="sq-r2">1.00</b></span>
+          <span>明るさの比＝|左|²＋|右|² <b id="sq-sum">2.00</b></span>
+          <span>1ピクセルあたりの確率 <b id="sq-p">0.0000</b></span>
+          <span>位相差 <b id="sq-ph">0°</b></span>
+        </div>
         <div class="anim-ctrl">
           <button type="button" class="btn" id="square-play">⏸ 一時停止</button>
           <span class="ctrl-label">走査位置</span>
           <input type="range" id="square-slider" min="40" max="210" step="0.5" value="40" aria-label="スクリーン上の走査位置を手動で動かす">
         </div>
-        <div class="diagram-caption">上の図と同じ装置・同じ2本の矢印。ただし手がかりが残るときは足し合わせが禁止され、<strong>左経由の矢印を単独で2乗（|左|²）、右経由も単独で2乗（|右|²）して、確率どうしを足す</strong>（1＝スクリーン中央に「1本だけ」のときの明るさ。端では矢印が短くなるので数値も下がる）。明るさは常に|左|²＋|右|²で、矢印の向き（位相差）はどこにも使われない。強め合いも打ち消し合いも起きないので、スクリーンには縞のない、なだらかな分布が積もる――計算の手順が変わっただけで、縞は消える</div>
+        <div class="diagram-caption">上の図と同じ装置・同じ2本の矢印。ただし手がかりが残るときは足し合わせが禁止され、<strong>左経由の矢印を単独で2乗（|左|²）、右経由も単独で2乗（|右|²）して、確率どうしを足す</strong>（1＝スクリーン中央に「1本だけ」のときの明るさ。端では矢印が短くなるので数値も下がる）。明るさは常に|左|²＋|右|²で、矢印の向き（位相差）はどこにも使われない。数値バーの「1ピクセルあたりの確率」は規格化した値（スクリーン全体で足すと1）。なお手がかりが残るこちらの場合、分布全体を1本のψで表すことはできない――左のψと右のψの<strong>2本立て</strong>で、明るさはその2乗の和になる。だから|ψ|の欄がない。強め合いも打ち消し合いも起きないので、スクリーンには縞のない、なだらかな分布が積もる――計算の手順が変わっただけで、縞は消える</div>
       </div>
 
       <div class="dialogue-scene">
@@ -528,13 +537,19 @@
   el('circle', {cx: insetX, cy: c2y, r: 15, fill: 'var(--paper2)', stroke: 'var(--line)'});
   var ar1 = el('line', {stroke: C1, 'stroke-width': 2.5, 'marker-end': 'url(#ah-l)'});
   var ar2 = el('line', {stroke: C2, 'stroke-width': 2.5, 'marker-end': 'url(#ah-r)'});
-  var lb1 = txt(insetX, c1y + 28, 'label', '|左|² = 1.00');
+  var lb1 = txt(insetX, c1y + 28, 'label', '左経由');
   lb1.style.fill = C1; lb1.style.fontWeight = '900';
-  var lb2 = txt(insetX, c2y + 28, 'label', '|右|² = 1.00');
+  var lb2 = txt(insetX, c2y + 28, 'label', '右経由');
   lb2.style.fill = C2; lb2.style.fontWeight = '900';
-  txt(insetX, 178, 'label', '確率を足すと');
-  var sumTxt = txt(insetX, 193, 'accent', '明るさ = 2.00');
-  var noteTxt = txt(insetX, 208, 'label', '位相差と無関係');
+  txt(insetX, 185, 'label', '確率を足す');
+  var noteTxt = txt(insetX, 200, 'label', '位相差と無関係');
+  // 数値はSVG外の読み出しバーへ。規格化（1ピクセルあたりの確率）は分布の積分で行う
+  var sqL = document.getElementById('sq-l'), sqR = document.getElementById('sq-r'),
+      sqL2 = document.getElementById('sq-l2'), sqR2 = document.getElementById('sq-r2'),
+      sqSum = document.getElementById('sq-sum'), sqP = document.getElementById('sq-p'),
+      sqPh = document.getElementById('sq-ph');
+  var NORM2 = 0;
+  for (var ny = TOP; ny <= BOT; ny += 0.5) NORM2 += 4 * intensityAt(ny).I * 0.5;
 
   function dist(a, b) { return Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)); }
 
@@ -569,9 +584,18 @@
     ar1.setAttribute('x2', insetX + Math.cos(r.ph1) * Ls); ar1.setAttribute('y2', c1y - Math.sin(r.ph1) * Ls);
     ar2.setAttribute('x1', insetX); ar2.setAttribute('y1', c2y);
     ar2.setAttribute('x2', insetX + Math.cos(r.ph2) * Ls); ar2.setAttribute('y2', c2y - Math.sin(r.ph2) * Ls);
-    lb1.textContent = '|左|² = ' + r.env.toFixed(2);
-    lb2.textContent = '|右|² = ' + r.env.toFixed(2);
-    sumTxt.textContent = '明るさ = ' + (2 * r.env).toFixed(2);
+    var alen2 = Math.sqrt(r.env);
+    if (sqL) sqL.textContent = alen2.toFixed(2);
+    if (sqR) sqR.textContent = alen2.toFixed(2);
+    if (sqL2) sqL2.textContent = r.env.toFixed(2);
+    if (sqR2) sqR2.textContent = r.env.toFixed(2);
+    if (sqSum) sqSum.textContent = (2 * r.env).toFixed(2);
+    if (sqP) sqP.textContent = (4 * r.I / NORM2).toFixed(4);
+    if (sqPh) {
+      var dp = ((r.ph1 - r.ph2) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+      if (dp > Math.PI) dp = 2 * Math.PI - dp;
+      sqPh.textContent = Math.round(dp * 180 / Math.PI) + '°';
+    }
     drawCurve(full ? BOT : y);
   }
 
