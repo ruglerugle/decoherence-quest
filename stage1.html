@@ -142,7 +142,7 @@
           <span class="ctrl-label">走査位置</span>
           <input type="range" id="interf-slider" min="40" max="210" step="0.5" value="40" aria-label="スクリーン上の走査位置を手動で動かす">
         </div>
-        <div class="diagram-caption">スクリーン上の黒丸の点に、左スリット経由（青緑）と右スリット経由（オレンジ）の2本の矢印が、道のりに応じて回転しながら届く。<strong>右の円が「矢印の足し算」の作業台</strong>：2本の矢印を同じ出発点から描き、それらを隣り合う2辺とする平行四辺形（点線）を作ると、その対角線が「合計」（黒い矢印）になる。<strong>合計の長さの2乗が、その点の明るさ</strong>（×1＝<strong>スクリーン中央に</strong>スリット1本だけ開けたときの明るさ）。明るさ×Nはカーブの高さそのものに対応し、明るい帯でも中央の×4.0から端へ行くほど小さくなる――矢印の長さが場所で変わる（波が広がって薄まって届く）ためで、作業台の矢印も端ほど短く描かれる。ただし、どの明るい帯も<strong>その場所の「1本だけ」と比べれば</strong>ちょうど4倍になっている（本文の二階建ての話）。2本の向きの開きが<strong>位相差</strong>：位相差0°（同じ向き）なら合計は長く×4（強め合い）、位相差180°（正反対）なら合計はほぼ消えて×0（打ち消し合い＝黒い矢印が見えなくなる瞬間）。走査点を上下に動かしながら明るさを右側に描き足していくと、干渉縞のカーブが浮かび上がる。数値の「左経由」「右経由」は各矢印単独の明るさ（長さの2乗）。合計は<strong>足してから2乗</strong>なので、強め合いの場所では左＋右を超えて4倍に達し、打ち消しの場所ではゼロまで落ちる――後半ルールの図の「合計は常に左＋右」と見比べてほしい</div>
+        <div class="diagram-caption">スクリーン上の黒丸の点に、左スリット経由（青緑）と右スリット経由（オレンジ）の2本の矢印が、道のりに応じて回転しながら届く。<strong>右の円が「矢印の足し算」の作業台</strong>：2本の矢印を同じ出発点から描き、それらを隣り合う2辺とする平行四辺形（点線）を作ると、その対角線が「合計」（黒い矢印）になる。<strong>合計の長さの2乗が、その点の明るさ</strong>（×1＝<strong>スクリーン中央に</strong>スリット1本だけ開けたときの明るさ）。明るさ|ψ|²はカーブの高さそのものに対応し、明るい帯でも中央の4.00から端へ行くほど小さくなる――矢印の長さが場所で変わる（波が広がって薄まって届く）ためで、作業台の矢印も端ほど短く描かれる。ただし、どの明るい帯も<strong>その場所の「1本だけ」と比べれば</strong>ちょうど4倍になっている（本文の二階建ての話）。2本の向きの開きが<strong>位相差</strong>：位相差0°（同じ向き）なら合計は長く×4（強め合い）、位相差180°（正反対）なら合計はほぼ消えて×0（打ち消し合い＝黒い矢印が見えなくなる瞬間）。走査点を上下に動かしながら明るさを右側に描き足していくと、干渉縞のカーブが浮かび上がる。数値は、左右の矢印の長さ|左|・|右|と、それらを足した合計の矢印（＝その場所の<strong>確率振幅ψ</strong>）の長さ|ψ|、そして明るさ|ψ|²（1＝スクリーン中央に1本だけのときの明るさ）。位相差0°なら|ψ|は|左|＋|右|まで伸びて強め合い、180°ならゼロまで縮んで打ち消し合う。明るさは必ず<strong>足してから2乗</strong>――後半ルールの図（明るさ＝|左|²＋|右|²）と見比べてほしい</div>
       </div>
 
       <div class="dialogue-scene">
@@ -165,7 +165,7 @@
           <span class="ctrl-label">走査位置</span>
           <input type="range" id="square-slider" min="40" max="210" step="0.5" value="40" aria-label="スクリーン上の走査位置を手動で動かす">
         </div>
-        <div class="diagram-caption">上の図と同じ装置・同じ2本の矢印。ただし手がかりが残るときは足し合わせが禁止され、<strong>左経由の矢印を単独で2乗、右経由も単独で2乗して、それから確率どうしを足す</strong>（×Nは中央の「1本だけ」を×1とした値。端では矢印が短くなるので数値も下がる）。合計は常に「左＋右」＝その場所の1本のちょうど2倍で、矢印の向き（位相差）はどこにも使われない。強め合いも打ち消し合いも起きないので、スクリーンには縞のない、なだらかな分布が積もる――計算の手順が変わっただけで、縞は消える</div>
+        <div class="diagram-caption">上の図と同じ装置・同じ2本の矢印。ただし手がかりが残るときは足し合わせが禁止され、<strong>左経由の矢印を単独で2乗（|左|²）、右経由も単独で2乗（|右|²）して、確率どうしを足す</strong>（1＝スクリーン中央に「1本だけ」のときの明るさ。端では矢印が短くなるので数値も下がる）。明るさは常に|左|²＋|右|²で、矢印の向き（位相差）はどこにも使われない。強め合いも打ち消し合いも起きないので、スクリーンには縞のない、なだらかな分布が積もる――計算の手順が変わっただけで、縞は消える</div>
       </div>
 
       <div class="dialogue-scene">
@@ -346,7 +346,7 @@
   // 矢印インセット（右端）: 2本の矢印を先端どうしでつないで足し、合計の黒い矢印を作る
   var insetX = 334, insetY = 103;
   txt(insetX, 52, 'strong', '矢印の合成');
-  var subTitle = txt(insetX, 68, 'label', '長さ²＝明るさ');
+  var subTitle = txt(insetX, 68, 'label', '明るさ＝|ψ|²');
   subTitle.style.fontSize = '10px';
   subTitle.style.fontWeight = '900';
   el('circle', {cx: insetX, cy: insetY, r: 28, fill: 'var(--paper2)', stroke: 'var(--line)'});
@@ -356,13 +356,15 @@
   var ar1 = el('line', {stroke: C1, 'stroke-width': 2.5, 'marker-end': 'url(#ah-l)'});
   var ar2 = el('line', {stroke: C2, 'stroke-width': 2.5, 'marker-end': 'url(#ah-r)'});
   var arS = el('line', {stroke: 'var(--ink)', 'stroke-width': 3, 'marker-end': 'url(#ah-s)'});
-  // 各経由と合計の数値表示（色が矢印と対応）
-  var lEnvTxt = txt(insetX, 146, 'label', '左経由 ×1.00');
-  lEnvTxt.style.fill = C1; lEnvTxt.style.fontWeight = '900';
-  var rEnvTxt = txt(insetX, 161, 'label', '右経由 ×1.00');
-  rEnvTxt.style.fill = C2; rEnvTxt.style.fontWeight = '900';
-  var brightTxt = txt(insetX, 177, 'strong', '合計 ×4.00');
-  var phaseTxt = txt(insetX, 193, 'label', '位相差 0°');
+  // 矢印の長さと明るさの数値表示（色が矢印と対応。ψ＝合計の矢印）
+  var lLenTxt = txt(insetX, 141, 'label', '|左| = 1.00');
+  lLenTxt.style.fill = C1; lLenTxt.style.fontWeight = '900';
+  var rLenTxt = txt(insetX, 155, 'label', '|右| = 1.00');
+  rLenTxt.style.fill = C2; rLenTxt.style.fontWeight = '900';
+  var psiTxt = txt(insetX, 169, 'label', '|ψ| = 2.00');
+  psiTxt.style.fill = 'var(--ink)'; psiTxt.style.fontWeight = '900';
+  var psi2Txt = txt(insetX, 184, 'strong', '|ψ|² = 4.00');
+  var phaseTxt = txt(insetX, 199, 'label', '位相差 0°');
   phaseTxt.style.fontWeight = '900';
 
   function dist(a, b) { return Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)); }
@@ -413,9 +415,11 @@
     var sumLen = Math.sqrt((v1.x + v2.x) * (v1.x + v2.x) + (v1.y + v2.y) * (v1.y + v2.y));
     arS.setAttribute('opacity', sumLen < 3 ? 0 : 1);
     var mult = (sumLen / 13) * (sumLen / 13); // ×1＝スクリーン中央にスリット1本だけのときの明るさ
-    lEnvTxt.textContent = '左経由 ×' + r.env.toFixed(2);
-    rEnvTxt.textContent = '右経由 ×' + r.env.toFixed(2);
-    brightTxt.textContent = '合計 ×' + mult.toFixed(2);
+    var alen = Math.sqrt(r.env);
+    lLenTxt.textContent = '|左| = ' + alen.toFixed(2);
+    rLenTxt.textContent = '|右| = ' + alen.toFixed(2);
+    psiTxt.textContent = '|ψ| = ' + (sumLen / 13).toFixed(2);
+    psi2Txt.textContent = '|ψ|² = ' + mult.toFixed(2);
     var dphi = ((r.ph1 - r.ph2) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
     if (dphi > Math.PI) dphi = 2 * Math.PI - dphi;
     phaseTxt.textContent = '位相差 ' + Math.round(dphi * 180 / Math.PI) + '°';
@@ -514,12 +518,12 @@
   el('circle', {cx: insetX, cy: c2y, r: 15, fill: 'var(--paper2)', stroke: 'var(--line)'});
   var ar1 = el('line', {stroke: C1, 'stroke-width': 2.5, 'marker-end': 'url(#ah-l)'});
   var ar2 = el('line', {stroke: C2, 'stroke-width': 2.5, 'marker-end': 'url(#ah-r)'});
-  var lb1 = txt(insetX, c1y + 28, 'label', '左経由 ×1.0');
+  var lb1 = txt(insetX, c1y + 28, 'label', '|左|² = 1.00');
   lb1.style.fill = C1; lb1.style.fontWeight = '900';
-  var lb2 = txt(insetX, c2y + 28, 'label', '右経由 ×1.0');
+  var lb2 = txt(insetX, c2y + 28, 'label', '|右|² = 1.00');
   lb2.style.fill = C2; lb2.style.fontWeight = '900';
   txt(insetX, 178, 'label', '確率を足すと');
-  var sumTxt = txt(insetX, 193, 'accent', '明るさ ×2.0');
+  var sumTxt = txt(insetX, 193, 'accent', '明るさ = 2.00');
   var noteTxt = txt(insetX, 208, 'label', '位相差と無関係');
 
   function dist(a, b) { return Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)); }
@@ -555,9 +559,9 @@
     ar1.setAttribute('x2', insetX + Math.cos(r.ph1) * Ls); ar1.setAttribute('y2', c1y - Math.sin(r.ph1) * Ls);
     ar2.setAttribute('x1', insetX); ar2.setAttribute('y1', c2y);
     ar2.setAttribute('x2', insetX + Math.cos(r.ph2) * Ls); ar2.setAttribute('y2', c2y - Math.sin(r.ph2) * Ls);
-    lb1.textContent = '左経由 ×' + r.env.toFixed(2);
-    lb2.textContent = '右経由 ×' + r.env.toFixed(2);
-    sumTxt.textContent = '明るさ ×' + (2 * r.env).toFixed(2);
+    lb1.textContent = '|左|² = ' + r.env.toFixed(2);
+    lb2.textContent = '|右|² = ' + r.env.toFixed(2);
+    sumTxt.textContent = '明るさ = ' + (2 * r.env).toFixed(2);
     drawCurve(full ? BOT : y);
   }
 
