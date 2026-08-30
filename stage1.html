@@ -34,6 +34,8 @@
   .anim-ctrl input[type=range]{flex:1;max-width:280px;min-width:140px;accent-color:#2f7a6b}
   .anim-ctrl .btn{padding:.35rem .9rem;font-size:12px}
   .anim-ctrl .ctrl-label{font-size:11px;color:var(--muted);font-weight:700}
+  .readout{display:flex;flex-wrap:wrap;gap:4px 16px;justify-content:center;margin-top:8px;font-size:12px;font-weight:700;color:var(--ink)}
+  .readout b{font-weight:900;font-variant-numeric:tabular-nums;color:inherit}
 </style>
 </head>
 <body>
@@ -137,12 +139,21 @@
           </defs>
           <g id="interf-body"></g>
         </svg>
+        <div class="readout">
+          <span style="color:#2f7a6b">左の長さ <b id="ro-l">1.00</b></span>
+          <span style="color:#b98a2e">右の長さ <b id="ro-r">1.00</b></span>
+          <span>合計の長さ <b id="ro-s">2.00</b></span>
+          <span>長さ²＝明るさの比 <b id="ro-s2">4.00</b></span>
+          <span>|ψ| <b id="ro-psi">0.000</b></span>
+          <span>|ψ|² <b id="ro-psi2">0.0000</b></span>
+          <span>位相差 <b id="ro-ph">0°</b></span>
+        </div>
         <div class="anim-ctrl">
           <button type="button" class="btn" id="interf-play">⏸ 一時停止</button>
           <span class="ctrl-label">走査位置</span>
           <input type="range" id="interf-slider" min="40" max="210" step="0.5" value="40" aria-label="スクリーン上の走査位置を手動で動かす">
         </div>
-        <div class="diagram-caption">スクリーン上の黒丸の点に、左スリット経由（青緑）と右スリット経由（オレンジ）の2本の矢印が、道のりに応じて回転しながら届く。<strong>右の円が「矢印の足し算」の作業台</strong>：2本の矢印を同じ出発点から描き、それらを隣り合う2辺とする平行四辺形（点線）を作ると、その対角線が「合計」（黒い矢印）になる。<strong>合計の長さの2乗が、その点の明るさ</strong>（×1＝<strong>スクリーン中央に</strong>スリット1本だけ開けたときの明るさ）。明るさ|ψ|²はカーブの高さそのものに対応し、明るい帯でも中央の4.00から端へ行くほど小さくなる――矢印の長さが場所で変わる（波が広がって薄まって届く）ためで、作業台の矢印も端ほど短く描かれる。ただし、どの明るい帯も<strong>その場所の「1本だけ」と比べれば</strong>ちょうど4倍になっている（本文の二階建ての話）。2本の向きの開きが<strong>位相差</strong>：位相差0°（同じ向き）なら合計は長く×4（強め合い）、位相差180°（正反対）なら合計はほぼ消えて×0（打ち消し合い＝黒い矢印が見えなくなる瞬間）。走査点を上下に動かしながら明るさを右側に描き足していくと、干渉縞のカーブが浮かび上がる。数値は、左右の矢印の長さ|左|・|右|と、それらを足した合計の矢印（＝その場所の<strong>確率振幅ψ</strong>）の長さ|ψ|、そして明るさ|ψ|²（1＝スクリーン中央に1本だけのときの明るさ）。位相差0°なら|ψ|は|左|＋|右|まで伸びて強め合い、180°ならゼロまで縮んで打ち消し合う。明るさは必ず<strong>足してから2乗</strong>――後半ルールの図（明るさ＝|左|²＋|右|²）と見比べてほしい</div>
+        <div class="diagram-caption">スクリーン上の黒丸の点に、左スリット経由（青緑）と右スリット経由（オレンジ）の2本の矢印が、道のりに応じて回転しながら届く。<strong>右の円が「矢印の足し算」の作業台</strong>：2本の矢印を同じ出発点から描き、それらを隣り合う2辺とする平行四辺形（点線）を作ると、その対角線が「合計」（黒い矢印）になる。<strong>合計の長さの2乗が、その点の明るさ</strong>（×1＝<strong>スクリーン中央に</strong>スリット1本だけ開けたときの明るさ）。明るさ（長さ²）はカーブの高さそのものに対応し、明るい帯でも中央の4.00から端へ行くほど小さくなる――矢印の長さが場所で変わる（波が広がって薄まって届く）ためで、作業台の矢印も端ほど短く描かれる。ただし、どの明るい帯も<strong>その場所の「1本だけ」と比べれば</strong>ちょうど4倍になっている（本文の二階建ての話）。2本の向きの開きが<strong>位相差</strong>：位相差0°（同じ向き）なら合計は長く×4（強め合い）、位相差180°（正反対）なら合計はほぼ消えて×0（打ち消し合い＝黒い矢印が見えなくなる瞬間）。走査点を上下に動かしながら明るさを右側に描き足していくと、干渉縞のカーブが浮かび上がる。数値バーは2種類の目盛りを並べている。前半は<strong>図の目盛り</strong>：左右の矢印の長さとその合計（位相差0°なら左＋右まで伸び、180°ならゼロ）、そして長さ²＝明るさの比（1＝スクリーン中央にスリット1本だけのときの明るさ）。後半は<strong>規格化した確率振幅</strong>：|ψ|²は「1ピクセルあたりの確率」で、スクリーン全体で足し合わせるとちょうど1になる（<strong>規格化</strong>＝全部の場所の確率の合計を100%にする約束）。長さ²と|ψ|²は目盛りが違うだけで場所ごとの比は同じ――縞の形はどちらでも変わらない。明るさは必ず<strong>足してから2乗</strong>。後半ルールの図（明るさ＝|左|²＋|右|²）と見比べてほしい</div>
       </div>
 
       <div class="dialogue-scene">
@@ -346,7 +357,7 @@
   // 矢印インセット（右端）: 2本の矢印を先端どうしでつないで足し、合計の黒い矢印を作る
   var insetX = 334, insetY = 103;
   txt(insetX, 52, 'strong', '矢印の合成');
-  var subTitle = txt(insetX, 68, 'label', '明るさ＝|ψ|²');
+  var subTitle = txt(insetX, 68, 'label', '長さ²＝明るさ');
   subTitle.style.fontSize = '10px';
   subTitle.style.fontWeight = '900';
   el('circle', {cx: insetX, cy: insetY, r: 28, fill: 'var(--paper2)', stroke: 'var(--line)'});
@@ -356,16 +367,13 @@
   var ar1 = el('line', {stroke: C1, 'stroke-width': 2.5, 'marker-end': 'url(#ah-l)'});
   var ar2 = el('line', {stroke: C2, 'stroke-width': 2.5, 'marker-end': 'url(#ah-r)'});
   var arS = el('line', {stroke: 'var(--ink)', 'stroke-width': 3, 'marker-end': 'url(#ah-s)'});
-  // 矢印の長さと明るさの数値表示（色が矢印と対応。ψ＝合計の矢印）
-  var lLenTxt = txt(insetX, 141, 'label', '|左| = 1.00');
-  lLenTxt.style.fill = C1; lLenTxt.style.fontWeight = '900';
-  var rLenTxt = txt(insetX, 155, 'label', '|右| = 1.00');
-  rLenTxt.style.fill = C2; rLenTxt.style.fontWeight = '900';
-  var psiTxt = txt(insetX, 169, 'label', '|ψ| = 2.00');
-  psiTxt.style.fill = 'var(--ink)'; psiTxt.style.fontWeight = '900';
-  var psi2Txt = txt(insetX, 184, 'strong', '|ψ|² = 4.00');
-  var phaseTxt = txt(insetX, 199, 'label', '位相差 0°');
-  phaseTxt.style.fontWeight = '900';
+  // 数値はSVG外の読み出しバーに表示。|ψ|²はスクリーン全体で足すと1になる規格化値
+  var roL = document.getElementById('ro-l'), roR = document.getElementById('ro-r'),
+      roS = document.getElementById('ro-s'), roS2 = document.getElementById('ro-s2'),
+      roPsi = document.getElementById('ro-psi'), roPsi2 = document.getElementById('ro-psi2'),
+      roPh = document.getElementById('ro-ph');
+  var NORM = 0;
+  for (var ny = TOP; ny <= BOT; ny += 0.5) NORM += 4 * intensityAt(ny).I * 0.5;
 
   function dist(a, b) { return Math.sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)); }
 
@@ -416,13 +424,15 @@
     arS.setAttribute('opacity', sumLen < 3 ? 0 : 1);
     var mult = (sumLen / 13) * (sumLen / 13); // ×1＝スクリーン中央にスリット1本だけのときの明るさ
     var alen = Math.sqrt(r.env);
-    lLenTxt.textContent = '|左| = ' + alen.toFixed(2);
-    rLenTxt.textContent = '|右| = ' + alen.toFixed(2);
-    psiTxt.textContent = '|ψ| = ' + (sumLen / 13).toFixed(2);
-    psi2Txt.textContent = '|ψ|² = ' + mult.toFixed(2);
+    if (roL) roL.textContent = alen.toFixed(2);
+    if (roR) roR.textContent = alen.toFixed(2);
+    if (roS) roS.textContent = (sumLen / 13).toFixed(2);
+    if (roS2) roS2.textContent = mult.toFixed(2);
+    if (roPsi) roPsi.textContent = Math.sqrt(mult / NORM).toFixed(3);
+    if (roPsi2) roPsi2.textContent = (mult / NORM).toFixed(4);
     var dphi = ((r.ph1 - r.ph2) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
     if (dphi > Math.PI) dphi = 2 * Math.PI - dphi;
-    phaseTxt.textContent = '位相差 ' + Math.round(dphi * 180 / Math.PI) + '°';
+    if (roPh) roPh.textContent = Math.round(dphi * 180 / Math.PI) + '°';
     drawCurve(full ? BOT : y);
   }
 
