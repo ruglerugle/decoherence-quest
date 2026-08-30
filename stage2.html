@@ -350,9 +350,9 @@
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var dots = [];
   function addDot(y) {
+    if (dots.length >= 700) return; // 点は増える一方。十分たまったら追加を止める
     var c = el('circle', {cx: (SCX + 5 + Math.random() * 8).toFixed(1), cy: y.toFixed(1), r: 1.6, fill: 'var(--ink)', opacity: .75}, dotsG);
     dots.push(c);
-    if (dots.length > 320) { var old = dots.shift(); old.parentNode.removeChild(old); }
   }
   if (reduced) {
     for (var i = 0; i < 260; i++) addDot(sampleY());
