@@ -18,22 +18,20 @@
     1: [2, 0, 1],
     2: [1, 2, 0],
     3: [0, 2, 1],
-    4: [2, 0, 1, 2],
-    5: [1, 0, 2],
-    6: [0, 2, 1],
-    7: [2, 1, 0],
-    8: [1, 2, 0]
+    4: [1, 0, 2],
+    5: [0, 2, 1],
+    6: [2, 1, 0],
+    7: [1, 2, 0]
   };
 
   var STAGES = [
     { n: 1, file: "stage1.html", title: "干渉の足し算ルール", sub: "矢印を足してから2乗" },
     { n: 2, file: "stage2.html", title: "経路検出器を置くと", sub: "縞が消える仕組み" },
     { n: 3, file: "stage3.html", title: "量子消しゴム", sub: "縞の復活実験" },
-    { n: 4, file: "stage4.html", title: "部分系の見え方", sub: "もつれの片割れはランダム" },
-    { n: 5, file: "stage5.html", title: "環境という巨大な検出器", sub: "デコヒーレンス" },
-    { n: 6, file: "stage6.html", title: "月が消えない理由", sub: "巨大物体と古典世界" },
-    { n: 7, file: "stage7.html", title: "デコヒーレンスが説明しないもの", sub: "観測問題との線引き" },
-    { n: 8, file: "stage8.html", title: "量子コンピュータと未来", sub: "総まとめ" }
+    { n: 4, file: "stage4.html", title: "環境という巨大な検出器", sub: "デコヒーレンス" },
+    { n: 5, file: "stage5.html", title: "月が消えない理由", sub: "巨大物体と古典世界" },
+    { n: 6, file: "stage6.html", title: "デコヒーレンスが説明しないもの", sub: "観測問題との線引き" },
+    { n: 7, file: "stage7.html", title: "量子コンピュータと未来", sub: "総まとめ" }
   ];
 
   function getCleared() {

@@ -12,14 +12,14 @@
   gtag('js', new Date());
   gtag('config', 'G-9RTQCP2HXM');
 </script>
-<title>STAGE4 部分系の見え方 ― 消える干渉縞</title>
-<meta name="description" content="もつれた粒子は単独で見ると完全にランダム――ベルの不等式の旅で出会った事実を、場合分けの表と重みつきの足し算だけで導く。もつれの相手は天然の経路検出器であり、片割れは「どちらか半々」の混合状態と区別できない。消えたように見える干渉はペアの相関の中に移っている。密度行列を使わないデコヒーレンス入門の山場。">
+<title>STAGE4 環境という巨大な検出器 ― 消える干渉縞</title>
+<meta name="description" content="検出器は人工物でなくていい。光子や空気分子が塵粒子に当たって跳ね返るだけで、経路の手がかりが環境へ漏れ出す――デコヒーレンスの仕組みと速さを導く。1回の衝突は不完全な手がかりでも、毎秒10²⁰回の掛け算で縞は実質瞬時にゼロ。空気中の塵粒子は約10⁻³¹秒。コヒーレンスとデコヒーレンスという用語、大きな分子の干渉実験まで。">
 <link rel="canonical" href="https://ruglerugle.github.io/decoherence-quest/stage4.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="消える干渉縞">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:title" content="STAGE4 部分系の見え方 ― 消える干渉縞">
-<meta property="og:description" content="もつれの片割れは「どちらか半々」になりすます。場合分けの表で導く、混合状態と相関の行方。旅の最大の山場。">
+<meta property="og:title" content="STAGE4 環境という巨大な検出器 ― 消える干渉縞">
+<meta property="og:description" content="散乱は目印製造機。環境は誰も読まず、誰にも消せない検出器。塵粒子の縞は10⁻³¹秒で死ぬ。">
 <meta property="og:url" content="https://ruglerugle.github.io/decoherence-quest/stage4.html">
 <meta property="og:image" content="https://ruglerugle.github.io/decoherence-quest/images/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -28,9 +28,8 @@
 <style>
   .dq-svg .label{fill:var(--muted);font-size:11px;font-weight:700}
   .dq-svg .strong{fill:var(--ink);font-size:12px;font-weight:900}
-  .dq-svg .accent{fill:#a63f6f;font-size:11px;font-weight:900}
+  .dq-svg .accent{fill:#3f6191;font-size:11px;font-weight:900}
   .dq-svg .grid{stroke:var(--line);stroke-width:1}
-  .dq-svg .head-cell{fill:#a63f6f;font-size:11px;font-weight:900}
 </style>
 </head>
 <body>
@@ -38,11 +37,11 @@
   <header class="game-header">
     <div class="brand">
       <div class="brand-title"><a class="head-reset home-badge" href="index.html" title="トップへ" aria-label="トップへ">🌫️</a> <span>消える干渉縞</span></div>
-      <div class="brand-sub">STAGE 4 ― 部分系の見え方 ―</div>
+      <div class="brand-sub">STAGE 4 ― 環境という巨大な検出器 ―</div>
     </div>
     <div class="head-progress-wrap">
-      <div class="head-progress-label" id="progress-label">クリア 0 / 8</div>
-      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
     </div>
     <div class="header-actions">
       <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
@@ -62,13 +61,13 @@
 
     <main class="main-area">
       <div class="chapter-head">
-        <span class="chapter-badge">STAGE 4</span><span class="chapter-title">部分系の見え方</span>
-        <div class="chapter-sub">もつれの片割れはランダム</div>
+        <span class="chapter-badge">STAGE 4</span><span class="chapter-title">環境という巨大な検出器</span>
+        <div class="chapter-sub">デコヒーレンス</div>
       </div>
 
       <div class="mission-box">
         <div class="mission-label">🎯 ミッション</div>
-        <div class="mission-text">旅の最大の山場。「誰も知らなくても、痕跡が残れば縞は消える」は前ステージの延長としてすぐ確かめられる。本題はその先――<strong>どこまで完全に消えるのか</strong>。もつれの片割れが「どちらか半々」の集団と<strong>どんな実験でも厳密に</strong>区別できないことを、場合分けの表という道具を作って導く（この厳密さが、前ステージで借り物だった「通信できない」の証明になる）。消えた縞の行き先まで言えれば合格。</div>
+        <div class="mission-text">光子1個・空気分子1個の衝突が経路検出器と同じ働きをすることを理解し、「不完全な手がかり×莫大な回数」の掛け算でデコヒーレンスの速さの桁（空気中の塵粒子で約10⁻³¹秒）を見積もれれば合格。</div>
         <span class="mission-status" id="mission-status">未達成</span>
       </div>
 
@@ -78,304 +77,166 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">今日は旅の最大の山場だ。はじめに、もつれの旅で学んだことを2つ、きみの言葉で思い出しておこう。</div>
+          <div class="dialog-bubble">前回予告した最強の相手と、今日は正面から向き合おう。実験装置ではなく、実験室の外の世界――<strong>環境</strong>だ。舞台を用意する。目に見えないほど小さな塵粒子を、左と右の2か所の<strong>重ね合わせ</strong>にしたとしよう。腕のいい実験家なら本当に作れる状態だよ。そこへ光子が1個だけ飛んできて、塵に当たって跳ね返る。さて、何が起きるかな。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">光は物に当たった場所によって跳ね返り方が変わります。塵が左にいれば光子は左寄りの跳ね方、右にいれば右寄りの跳ね方。つまり跳ね返った光子は、塵の位置に応じて<strong>違う状態</strong>になる。……これ、目印粒子の作られ方と同じです。誰も設計していないのに、<strong>光子が勝手に目印になって、手がかりを持って飛び去っていく</strong>。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。<strong>散乱は目印製造機</strong>なんだ。筋書きの終わり方が、散乱光子の分だけ分かれる。筋書き1「塵は左、光子は左寄りの状態」、筋書き2「塵は右、光子は右寄りの状態」。光子の2つの状態が直交に近ければ、塵の縞はほぼ消える。ただし、ここで「不完全な検出器」の話が効いてくるよ。光子1個の目印としての性能は、光子の<strong>波長</strong>で決まる。<strong>波長が左右の間隔より長い光子は、ぼやけた目しか持たない</strong>んだ。跳ね返り方の違いがごくわずかで、2つの状態はほとんど重なったまま。手がかりは不完全で、縞はほんの少ししか薄まらない。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">1つめ。もつれた粒子のペアは、離れていても<strong>同じ質問には必ず同じ答え</strong>を返しました（完全相関）。2つめ。そのくせ、<strong>片方の記録の列だけを単体で見ると</strong>――どの検出がどの相方とペアなのかという対応表を参照せずに、手元の列だけを眺めると――<strong>答えは完全にランダム</strong>で、規則は何も見えませんでした。あのときは実験事実として受け取りましたが――今日はこのランダムさを、足し算ルールから導くんですね。</div>
+          <div class="dialog-bubble">1個だけなら平気そうです。でも、続きがあります。飛んでくるのは1個では済まない、ですよね。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">その通り。今日の見取り図を、先にはっきりさせておこう。相手が遠くの<strong>相方の粒子</strong>で、どの粒子とどの粒子がペアなのか対応を誰も知らなくても、手がかりが残る限り縞は消える――ここまでは前のステージの最後に話した通りで、すぐに確かめられる。今日の本題は、その先だ。<strong>どこまで完全に消えるのか</strong>。前のステージで借り物のままだった<strong>「通信できない」の理由を、ルールから導いて返すこと</strong>。そして、それを一撃で計算できる<strong>道具</strong>を作ること。だがその前に、腕試しをひとつ。ここに2種類の粒子の集団がある。集団Aは、どの粒子も「左と右の<strong>重ね合わせ</strong>」――左経由の矢印と右経由の矢印を両方持つ状態だ。集団Bは、半分の粒子を「確実に左」、残り半分を「確実に右」で作った、いわば<strong>「どちらか半々」</strong>の集団。ここで、1個ずつ取り出して「左にいるか、右にいるか」と<strong>位置を測った</strong>としよう――スリットのそばに検出器を置いて調べるのと同じ質問だ。すると、どちらの集団も左右半々に見つかる。集団Aの重ね合わせは、測ればどちらか一方に確率半々で決まる。集団Bは、もともと半々で混ぜてある。つまり<strong>位置の統計は完全に同じ</strong>になるわけだ。さて、この2つを区別する方法はあるかな？</div>
+          <div class="dialog-bubble">そこが桁の恐ろしさだよ。空気中では、塵粒子に空気の分子が毎秒およそ<strong>10²⁰回</strong>ぶつかる。1回の衝突で縞の濃さがほんのわずか――仮に1%だけ――減るとしよう。10回ぶつかれば約10%減。では10²⁰回では、どうなると思う？</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">足し算ではなく<strong>掛け算</strong>です。0.99を繰り返し掛ける。100乗で約0.37倍、1000乗だと0.00004倍程度……。10²⁰乗なんて、小数点の下に0が何十桁どころではない数になります。実質、<strong>完全にゼロ</strong>。毎秒どころか、ほんの一瞬のうちに縞は死にます。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">理論計算の答えを教えよう。空気中の小さな塵粒子の場合、縞が消えるまでの時間はおよそ<strong>10⁻³¹秒</strong>。物理学者の<strong>ヨース</strong>と<strong>ツェー</strong>が1985年に見積もった数字だ。宇宙の年齢が約10¹⁷秒だから、どれほど桁外れの速さか分かるね。ここで用語を2つ渡そう。矢印を足せる資格が保たれていることを<strong>コヒーレンス</strong>、環境へ手がかりが漏れてその資格が壊れていくことを<strong>デコヒーレンス</strong>と呼ぶんだ。</div>
         </div>
       </div>
 
       <div class="diagram-box">
-        <svg id="ensemble-svg" class="dq-svg" viewBox="0 0 372 226" width="100%" role="img" aria-label="腕試しの設問の図解。集団Aはどの粒子も左経由と右経由の矢印を2本とも持つ重ね合わせ。集団Bは確実に左の粒子と確実に右の粒子を半分ずつ混ぜた集団。位置を測ると、どちらの集団も左50%右50%で、位置の統計だけではまったく区別できない">
-          <text class="strong" x="186" y="16" text-anchor="middle">腕試し：この2つの集団、見分けられるか？</text>
-          <defs>
-            <marker id="ah4-l" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="4.5" markerHeight="4.5" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#2f7a6b"></path></marker>
-            <marker id="ah4-r" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="4.5" markerHeight="4.5" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#b98a2e"></path></marker>
-          </defs>
-          <g id="ensemble-body"></g>
+        <svg id="scatter-svg" class="dq-svg" viewBox="0 0 372 240" width="100%" role="img" aria-label="塵粒子のデコヒーレンスのアニメーション。左と右の重ね合わせ状態の塵粒子に光子が次々と当たって散乱し、手がかりを持って飛び去るたびに、下の干渉縞の濃さが減衰していく。縞が消えるとまた最初から繰り返す">
+          <text class="strong" x="186" y="16" text-anchor="middle">散乱のたびに、縞の濃さは掛け算で減る</text>
+          <g id="scatter-body"></g>
         </svg>
-        <div class="diagram-caption">集団A：どの粒子も、左経由の矢印（青緑）と右経由の矢印（オレンジ）を<strong>2本とも持つ「重ね合わせ」</strong>。集団B：<strong>確実に左</strong>の粒子（青緑の矢印1本）と<strong>確実に右</strong>の粒子（オレンジの矢印1本）を半分ずつ混ぜた集団。位置を測る（＝各粒子に「左か右か」と直接聞く。スリット脇の検出器と同じ質問）と、集団Aの重ね合わせは確率半々でどちらかに決まり、集団Bはもともと半々なので、どちらの集団も左50%・右50%――<strong>位置の統計だけではまったく区別できない</strong>。見分ける方法はあるか――ヒント：矢印が2本そろって初めて起きる現象は何だったか。なお、位置を測った粒子は「確実に左／右」に書き換わるので、測定後の集団Aは集団Bと同じものになってしまう。縞の検査は、位置を測っていない手つかずの粒子で行う</div>
+        <div class="diagram-caption">左右の重ね合わせ状態の塵粒子（点線の2つの円）に、環境の光子・空気分子（小さな点）が次々に衝突して散乱し、経路の手がかりを持ち去っていく。1回ごとの目減りはわずかでも掛け算で効くため、下の縞は加速度的に薄まり、のっぺりに落ちる。実際の空気中では毎秒10²⁰回ぶつかるので、この過程は約10⁻³¹秒で完了する</div>
       </div>
 
       <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">位置の統計が同じでも……<strong>干渉実験</strong>があります。集団Aの粒子は矢印を2本持っているので、二重スリットに通せば縞。集団Bの粒子は左か右か、どちらか1本の矢印しか持っていないので、左の山と右の山を重ねたのっぺり。<strong>縞が出るかどうかで見分けられます</strong>。</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">正解。「重ね合わせ」と「どちらか」は、位置の統計では同じ顔でも、干渉実験が暴いてくれる。</div>
-        </div>
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">ひとつ注意が要りますね。位置を測って半々を確認した、<strong>そのあとの粒子</strong>を二重スリットに通しても、集団Aでも縞は出ないはずです。前に学んだとおり、質問には状態を答えの状態に書き換える働きがありました。「左にいる」と答えた粒子は、もう矢印1本の「確実に左」になっている。つまり位置を測った時点で、<strong>集団Aは集団Bに作り替えられてしまう</strong>。</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">大事な注意だ、その通りだよ。だから2つの検査は両立しない。位置を測れば、その瞬間に重ね合わせは壊れる。縞で見分けたいなら、<strong>位置を測っていない手つかずの粒子</strong>を二重スリットに通す必要がある。同じ粒子で両方を試すことはできず、どちらの質問をするかを毎回選ぶしかないんだ。さて、これを押さえて本題に入ろう。もつれたペアを用意する。状態は「<strong>2個とも左</strong>」と「<strong>2個とも右</strong>」の重ね合わせだ。手元の粒子だけを二重スリットに通し、遠くの相方には何もしない。手元の粒子に、縞は出るかな？</div>
-        </div>
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">筋書きを終わり方まで書きます。筋書き1「手元が左を通って点xへ。<strong>相方は左の状態</strong>」。筋書き2「手元が右を通って点xへ。<strong>相方は右の状態</strong>」。相方の「左の状態」と「右の状態」は直交していて、終わり方が合流していません。……相方が、消しゴムの実験の<strong>目印粒子そのもの</strong>の役をしています。矢印は足せない。<strong>縞は出ない</strong>。</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">そう――<strong>もつれの相手は、天然の経路検出器</strong>なんだ。ではここからが本当の山場だよ。言いたいのは「縞が出ない」だけではない。手元の粒子に<strong>どんな実験をしても</strong>、さっきの集団B「どちらか半々」と見分けがつかない――そこまで言い切りたい。判定の基準は、いつも通り<strong>最後の写真</strong>だけだ。そして写真には、手元の粒子だけでなく、遠くの<strong>相方も必ず写り込む</strong>。思い出してほしい。今日のもつれ状態は、「手元は左・相方も左」の矢印と、「手元は右・相方も右」の矢印――<strong>2本の矢印の束</strong>でできていた。では、最後の写真に写る相方の姿は、何通りありうるかな。</div>
-        </div>
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">相方には、実験のあいだ誰も何も触れません。触れられないものは、変わりようがない。だから最後の写真に写る相方は、束の片方に属する筋書きなら<strong>左の状態のまま</strong>、もう片方なら<strong>右の状態のまま</strong>――この2通りだけです。そして左と右は直交していますから、ありとあらゆる筋書きの最後の写真は、「相方が左と写る」か「相方が右と写る」かの<strong>2種類にきっぱり分かれます</strong>。</div>
+          <div class="dialog-bubble">デコヒーレンス……「足し算の資格を失うこと」ですね。ただ、環境を検出器と呼ぶのは乱暴な気もします。針のような読みやすい記録を残してくれるわけでもないのに。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">その通り。手元でどんなに込み入った実験をしても、写真の<strong>相方の欄</strong>だけは書き換わらない。だから2種類の写真は、<strong>絶対に互いに合流できない</strong>。ここで気づいてほしいのは、いま使ったのが「最後の写真」と「相方に誰も触れない」という2つの事実だけだ、ということだよ。筋書きの途中経過は、一度も話に出てこなかった。</div>
-        </div>
-      </div>
-
-      <div class="diagram-box">
-        <svg id="lane-svg" class="dq-svg" viewBox="0 0 372 252" width="100%" role="img" aria-label="最後の写真が2種類に分かれる流れ図。もつれたペアは左の束と右の束という2本の矢印の束でできている。各束の中で手元の実験によって筋書きは枝分かれするが、相方には誰も触れないので、最後の写真に写る相方は左か右のまま変わらない。左の相方と右の相方は直交していて見分けがつくため、上下の束は絶対に合流できず、すべての筋書きの写真が相方＝左のグループと相方＝右のグループに分かれる">
-          <text class="strong" x="186" y="16" text-anchor="middle">最後の写真は、相方の欄で2種類に分かれる</text>
-          <defs>
-            <marker id="ah5-k" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--ink)"></path></marker>
-          </defs>
-          <g id="lane-body"></g>
-        </svg>
-        <div class="diagram-caption">もつれ状態は「手元L・相方L」と「手元R・相方R」の<strong>2本の矢印の束</strong>（上の段＝左の束、下の段＝右の束）。手元の実験で筋書きは自由に枝分かれするが、相方には誰も触れないので、<strong>最後の写真に写る相方は左か右のまま変わらない</strong>。左の相方と右の相方は直交＝写真で見分けがつくため、上の段と下の段は<strong>絶対に合流できない</strong>。こうして最後の写真が「相方＝左」グループ（場合分けの表の行1）と「相方＝右」グループ（行2）の2種類に分かれる。※この2つの束は「最初からどちらかに決まっていた」という意味ではない――どちらも矢印を持った枝であり、違いは相方との突き合わせにだけ現れる（本文参照）</div>
-      </div>
-
-      <div class="dialogue-scene">
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">この「2種類に分かれる」という考え方、引っかかります。「最初から「両方左」か「両方右」のどちらかに決まっていて、私たちが知らないだけ」――ベルの旅で葬ったはずの<strong>説明書モデル（実在論）</strong>と、同じことを言っているように聞こえます。何が違うんでしょうか。</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">鋭い。そして、半分は本当にその通りなんだ。<strong>相方に触れず、手元だけを見ている限り</strong>、この2つの束の計算は「最初から決まっていた」モデルと寸分たがわず同じ予言を出す。だからこそ、もつれの片割れは「どちらか半々」の集団Bに完全になりすませる――それが今日これから示すことだ。ただし、決定的な違いが2つある。第一に、2つの束は決まった事実ではなく、<strong>どちらも矢印を持った枝</strong>だ。だから前のステージでやったように、相方に斜めの質問をして答えで仕分ければ、縞と逆縞がよみがえる。最初からどちらかに決まっていたのなら、この復活は起こせない。第二に、「なら、あらゆる質問に対応できる答えの札をあらかじめ持っていたのだ」と粘る道は、ベルの不等式が実験ごと葬っている。つまり、<strong>実在論そっくりに見えるのは手元だけを見ているからで、違いは相方との突き合わせにだけ現れる</strong>。この「2種類への分かれ方」は、なりすましの完璧さを表すものであって、「正体」を表すものではないんだよ。</div>
+          <div class="dialog-bubble">そう、環境は<strong>誰も読まない、そして誰にも消せない検出器</strong>だ。読みにくさは問題にならない――ルールが問うのは「手がかりが世界に残ったか」だけで、「読みやすいか」ではないからね。消しゴムが効かない理由も同じだ。散乱した光子と空気分子を1個残らずつかまえて、全部に斜めの質問をする――それができない限り、＋と−の仕分けは永遠にできない。手がかりは宇宙へ、光速で逃げていく。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">逆の側からも確認させてください。本物の集団Bは、どう頑張っても――どんな装置や仕分けを工夫しても――縞は出せないんですか？</div>
+          <div class="dialog-bubble">逆向きの質問をさせてください。電子の二重スリット実験は、現に成功していますよね。デコヒーレンスがそれほど強力なら、なぜ実験室では縞が出せるんでしょう。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">出せない。縞は、<strong>1個の粒子が矢印を2本持っている</strong>ときにしか作れないからね。集団Bの粒子は、どれも矢印1本だ。どう仕分けようと、できる部分集合は「矢印1本の粒子」の集まりのままだから、作れるのは山の組み合わせだけ。集団Bを準備した人は「どれが左か」のメモを持っているけれど、そのメモで仕分けても、出てくるのは左の山と右の山だ。だからこそ――前のステージで、仕分けによって縞がよみがえったという事実が、<strong>「もつれの片割れの正体は集団Bではない」ことの動かぬ証拠</strong>になる。なりすましが完璧なのは、あくまで相方の札を使わずに見ている場合の話なんだよ。</div>
+          <div class="dialog-bubble">いい質問だ。電子は小さすぎて、環境とほとんど衝突しないからだよ。デコヒーレンスの速さは、<strong>物体が大きいほど、環境が濃い（分子や光子が多い）ほど</strong>、桁違いに速くなる。だから実験家は真空にして、冷やして、小さい粒子を使う。実際、炭素原子60個でできたサッカーボール型の大きな分子でも、超高真空なら縞が出せた。そして同じ種類の分子を<strong>熱してやる</strong>と、分子が自分から光を放ち始めて、縞は消えた。放った光が経路の手がかりを運び去ったからだ。2004年にウィーンで行われた実験で、消え方はデコヒーレンス理論の予言どおりだったよ。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">分かりました。では、なりすましの完璧さを計算で確かめます。グループの中と外で、ルールの扱いが変わるわけですね。<strong>同じグループの中</strong>の筋書きどうしは、相方の終わり方が同じですから、合流できて<strong>矢印の足し算</strong>。<strong>グループとグループのあいだ</strong>は、相方の状態が直交していて合流できませんから、<strong>確率の足し算</strong>。……この仕分けを、グループごとに1行ずつの表にすればよさそうです。</div>
+          <div class="dialog-bubble">もうひとつ、前に習ったことの宿題のような疑問が残っています。スリット板は、粒子が通るたびに必ず反動を受けるのでした。反動という手がかりを毎回受け取っているのに、なぜ<strong>スリット板はデコヒーレンスを起こさない</strong>んでしょうか。光子1個の散乱でさえ縞を薄めるのに、つり合いが取れていない気がします。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">いい整理だ。それを<strong>場合分けの表</strong>と呼ぼう。行は、相方の終わり方のグループごとに1つ。各行には、<strong>その行が起きる割合</strong>と、<strong>そのとき手元の粒子がどんな状態か</strong>を書く。手元の実験の予想は、行の中でいつものように計算して、最後に行ごとの割合で重みをつけて足せばいい。では、今回のもつれたペアで、実際に表を書いてごらん。</div>
-        </div>
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">書いてみます。もつれの状態は「2個とも左」と「2個とも右」の重ね合わせでした。行1「相方が左で終わる場合。起きる割合は1/2。この場合に対応するのは<strong>「2個とも左」の筋書きだけ</strong>なので、手元は確実に左」。行2「相方が右で終わる場合。割合は1/2。対応するのは「2個とも右」だけなので、手元は確実に右」。……この表、集団Bのレシピと<strong>一字一句同じ</strong>です。「半分は確実に左、半分は確実に右」。ということは、手元でどんな実験をしても――位置でも、干渉でも、斜めの質問でも――予想は集団Bと完全に一致する。<strong>もつれの片割れは、単独で見るかぎり「どちらか半々」の集団になりすましている</strong>んですね。だから何を測ってもランダムにしか見えなかった。</div>
-        </div>
-      </div>
-
-      <div class="diagram-box">
-        <svg id="table-svg" class="dq-svg" viewBox="0 0 372 240" width="100%" role="img" aria-label="場合分けの表の行の数が結果を決めることを示す対比図。左は相方がいない場合で、筋書きLと筋書きRが同じ1つの行に入り、行の中では矢印を足すので縞が出る。右は相方が直交している場合で、筋書きLと筋書きRが別々の行に引き裂かれ、行の間では確率を足すのでのっぺりになる">
-          <text class="strong" x="186" y="16" text-anchor="middle">表の形がすべて：行がひとつなら縞、ふたつならのっぺり</text>
-          <g id="table-body"></g>
-        </svg>
-        <div class="diagram-caption">場合分けの表の結果は、じつは<strong>行の数</strong>だけで決まる。左：相方がいなければ、筋書きLと筋書きRは<strong>同じ行に同居</strong>し、行の中では矢印を足す→縞。右：相方が直交していると、同じ2つの筋書きが<strong>別々の行に引き裂かれ</strong>、行の間では確率を足す→のっぺり。うさ美の表はこの右のケース。次のステージでは、行の分かれ方が<strong>不完全</strong>な場合（少しだけ引き裂かれる）を同じ表で扱い、縞の濃さが連続的に薄れていく様子を計算する</div>
-      </div>
-
-      <div class="dialogue-scene">
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">それが答えだ。もつれの旅で見た「片方だけでは完全ランダム」の正体は、いまきみが書いたこの表だよ。物理学者は、この「行ごとに確率で混ぜた状態」を<strong>混合状態</strong>と呼ぶ。大学では密度行列という道具で書くけれど、中身はこの表と同じことだ。ひとつ大事な注意がある。この表は、相方を<strong>実際に調べなくても</strong>そのまま使える。行の分かれ目を作っているのは「誰かが調べたか」ではなく、相方の状態が直交していて筋書きの終わり方が合流できない、という事実そのものだからね。</div>
-        </div>
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">ただ……正直に言うと、少し拍子抜けしています。検出器で縞が消えるのは前に学んだ通りですし、相方が検出器の役をするのも自然です。今日の結論は、当たり前のことを丁寧に確認しただけに見えます。何が新しいんでしょうか。</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">いい問いだ。まず正直に認めよう。縞が消えること自体は、きみの言う通り前のステージの延長で、そこに新しさはない。今日の本当の収穫は、<strong>論理の向きがひっくり返った</strong>ことだ。前のステージできみは、「全体はのっぺりのまま」を予想するのに「変わったら超光速通信になってしまうから」という理由を使った。あれは、もつれの旅から借りてきた<strong>実験事実</strong>だったね。今日は逆向きに、足し算ルールだけから「単独の統計は、相方について何を知ろうと、相方に何が起ころうと、絶対に変わらない」を導いた。<strong>「通信できない」が、仮定からルールの帰結に変わった</strong>――借りを返したんだ。しかも返し方は豪華だよ。スクリーンの分布1つどころか、<strong>ありとあらゆる実験</strong>で集団Bと寸分たがわない、とまで言えた。位置を測っても、二重スリットに通しても、斜めの質問をどの角度で試しても、頼りない検出器で弱くつついても、測っては回し測っては回しと何手続けても、果ては自前の補助粒子とわざともつれさせてから調べても――統計は全部、集団Bと同じだ。理由は単純で、どんな実験の予想も、結局は<strong>場合分けの表から計算される</strong>からだよ。表が同じなら、答えも全部同じになる。相方はベルの不等式を破るほど非古典的な相関の片割れなのに、単独ではただのコイン投げと厳密に見分けがつかない。どんなに小さなズレでもあれば光より速い通信機になってしまう以上、このなりすましの完璧さこそが、もつれと相対性理論が共存できている理由だ。そしてもうひとつ。この計算を支えた場合分けの表は、この先の旅ぜんぶの<strong>主砲</strong>になる。当たり前に見える道具ほど、よく切れるんだよ。</div>
-        </div>
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">待ってください、それは<strong>循環論法</strong>になっていませんか？ 「通信できない」を使ってのっぺりを予想し、そののっぺりの理屈から「通信できない」を導いたのなら、ぐるっと一周しているだけのような気がします。</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">なっていない――そこを確かめるのは大事なことだ。今日の導出を振り返ってごらん。使ったのは、最後の写真に相方が写ること、相方に誰も触れないこと、そして足し算ルール。この3つだけで、<strong>「通信できない」は前提のどこにも登場していない</strong>。前のステージの「通信できないから、のっぺりのはず」は、答えに<strong>当たりをつける</strong>ための道具にすぎなくて、証明はあのあと別にやったね――＋の縞と−の逆縞をルールで計算して、足すとぴったりのっぺりに戻る、と確かめた。当たりをつけるのに使った事実を、あとから独立な道筋で証明し直す。これは循環ではなく、物理でよくある健全な往復だよ。ついでに言えば、相方が測られた場合には表の行の分け方そのものが変わるけれど、<strong>どう分けても重みつきの合計は変わらない</strong>。＋と−の相殺がのっぺりに戻ったのは、まさにその実例だったわけだ。</div>
+          <div class="dialog-bubble">いい復習だ。実は判定基準は、板も光子もまったく同じ――<strong>「相手の写真2枚が、どれだけ見分けられるか」</strong>だよ。違うのは、答えの桁なんだ。光子や空気分子は、<strong>軽くて自由に飛んでいる相手</strong>だ。わずかな蹴りでも飛ぶ方向がはっきり変わるから、写真はそれなりに見分けられる。そのうえ空気中では毎秒10²⁰回もぶつかる。一方、どっしり固定された板は、蹴りの違いが自分のもともとの量子的なゆらぎに埋もれてしまい、写真はほぼ完全に重なる。見積もると、粒子1個が通ったときに縞が薄まる割合は、<strong>小数点の下に0が30個以上並ぶ小ささ</strong>だ。しかも板への蹴りは粒子1個につき1回きりで、10²⁰回の掛け算も起きない。つまり板は「デコヒーレンスを起こさない」のではなく、<strong>同じ法則で計算すると、目減りが小さすぎて見えない</strong>だけ――差は仕組みではなく、桁なんだよ。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">分かりました。では次の疑問です。集団Aが持っていた縞――あの干渉は、もつれのペアでは<strong>どこへ消えた</strong>んでしょう。ルールでは、矢印そのものは消えないはずです。足すのを禁止されただけで。</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">実にいい聞き方だ。消えていない。<strong>ペアの相関の中に引っ越した</strong>んだ。証拠は、前のステージできみ自身が計算している。相方（＝目印）に斜めの質問をして＋と−で仕分けると、縞と逆縞が取り出せた――あれだよ。手元だけ見れば縞はゼロ。相方だけ見てもランダム。でも<strong>2人の記録を突き合わせる</strong>と、縞は相関の形で生きている。ベルの不等式の破れが「2人の記録を突き合わせて初めて見える」ものだったのと、まったく同じ構図だ。</div>
-        </div>
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">確認させてください。「片方だけでは完全ランダム」というのは、<strong>どの粒子とどの粒子がペアなのか分からなくても</strong>成り立つんですよね。手元の記録だけを見るかぎり、ペアの組み合わせを知っていてもいなくても、ただのランダムな列にしか見えない。</div>
+          <div class="dialog-bubble">縞が出る条件と消える条件、両方が定量的に当たっているんですね。まとめます。「観測装置」も「観測者」も、特別な存在ではありませんでした。<strong>手がかりを持ち去るものすべてが観測者</strong>で、宇宙は空気と光で満ちている。だから大きな物体は、生まれた瞬間から絶え間なく観測され続けている。日常の世界が縞のない普通の確率の世界に見えるのは、そのせいだったんですね。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">その通り。手元の統計は、相方について何を知っていようと、相方に何が起ころうと、絶対に変わらない――変わったら超光速通信になってしまうからね。そして裏返すと、大事なことが言える。相関を取り出すには、記録のほかに<strong>「どれとどれがペアか」という対応表</strong>が必要なんだ。実際のもつれ実験では、2台の検出器の<strong>時刻</strong>を突き合わせて、同時に鳴った記録どうしをペアと認定している。もし対応表を失えば、どちらの記録も正真正銘のランダム列のままで、相関は二度と取り出せない。量子らしさが「関係の中」にあるというのは、そういう意味でもあるんだよ。</div>
-        </div>
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">整理します。もつれるほど、個々の粒子は「どちらか半々」のふりをして、量子らしさは<strong>関係の中</strong>へ隠れていく。……そして、嫌な予感がします。手元の粒子の相手が実験用の目印粒子なら、まだ消しゴムが使えました。でも相手が<strong>そのへんの空気分子や光</strong>だったら？ 同じ場合分けの表がそのまま使えて、縞は消える。しかも相手は空の彼方へ飛んでいって、消しゴムはもう使えない。</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">その通り――<strong>場合分けの表という主砲が火を噴く場所</strong>を、きみはいま自分で言い当てた。その嫌な予感の正体が、次のステージの主役――<strong>デコヒーレンス</strong>だよ。環境という、誰にも読めず、誰にも消せない巨大な検出器の話をしよう。</div>
+          <div class="dialog-bubble">それが「量子の世界と日常の世界の境目」の正体だよ。次のステージでは、この理屈を宇宙でいちばん有名な物体に当てはめる。<strong>月</strong>だ。もつれの旅の最後に残した、あの問いに決着をつけよう。</div>
         </div>
       </div>
 
-
       <div class="diagram-box">
-        <svg id="three-svg" class="dq-svg" viewBox="0 0 372 198" width="100%" role="img" aria-label="3つの集団の干渉実験の結果比較。左：重ね合わせの集団は縞。中央：どちらか半々の集団はのっぺり。右：もつれの片割れものっぺり。中央と右は区別できない">
-          <text class="strong" x="186" y="16" text-anchor="middle">干渉実験にかけると――</text>
-          <g id="three-body"></g>
+        <svg id="timescale-svg" class="dq-svg" viewBox="0 0 372 200" width="100%" role="img" aria-label="デコヒーレンス時間の桁の比較。対数スケールの横軸に、空気中の塵粒子は10のマイナス31乗秒、宇宙空間で背景放射だけを浴びる塵粒子は約1秒、宇宙の年齢は10の17乗秒が示されている。電子は超高真空なら縞の実験ができるほど長く保てる">
+          <text class="strong" x="186" y="16" text-anchor="middle">縞が保てる時間（1目盛＝10倍）</text>
+          <g id="timescale-body"></g>
         </svg>
-        <div class="diagram-caption">左：重ね合わせの集団は縞を出す。中央：「どちらか半々」の集団はのっぺり。右：もつれの片割れも、まったく同じのっぺり。<strong>中央と右はどんな実験でも区別できない</strong>――単独で見るかぎり、もつれの片割れは混合状態そのものとして振る舞う</div>
+        <div class="diagram-caption">ヨース＆ツェーらの見積もりによる桁の比較。同じ塵粒子でも、空気中なら10⁻³¹秒、ほぼ何もない宇宙空間で宇宙背景放射（宇宙を満たすかすかな光）だけを浴びる場合なら1秒程度と、環境の濃さで50桁近く変わる。電子のような小さな粒子は環境とほとんど相互作用せず、実験室で縞を観測できる</div>
       </div>
 
       <div class="formula-box">
-        <span class="step">【このステージの成果 ― 場合分けの表と混合状態】</span>
-        <span class="step">・核心：どちらを通ったかを<strong>誰も知らなくても</strong>、ペアの対応表がなくても、痕跡が世界に残る限り干渉は消える。「読み出せる」とは原理上の区別可能性のことで、誰かの知識とは無関係</span>
-        <span class="step">・もつれの相手は天然の経路検出器：相方の状態が直交 → 手元の筋書きは合流できず、縞ゼロ</span>
-        <span class="step">・<strong>場合分けの表</strong>：筋書きを「相方の終わり方」のグループごとに1行ずつにまとめる。同じ行の中は合流できるので<strong>矢印の足し算</strong>、行と行の間は直交して合流できないので<strong>確率の足し算</strong>。各行に起きる割合（重み）と手元の状態を書き、行ごとの計算を重みつきで足す。相方を実際に調べなくても使える</span>
-        <span class="step">・もつれの片割れの表＝「半分は確実に左・半分は確実に右」→ 単独ではどんな実験でも「どちらか半々」と区別不能（この状態を<strong>混合状態</strong>と呼ぶ）</span>
-        <span class="step">・この結論の新しさは<strong>強さ</strong>：なりすましは近似ではなく厳密。ズレが少しでもあれば超光速通信ができてしまう――完璧ななりすましが相対性理論を守っている。表は以降のステージの主砲（相方の欄を環境に書き換えるだけでデコヒーレンスが計算できる）</span>
-        <span class="step">・干渉（縞）は消滅せず<strong>ペアの相関の中へ</strong>。相方との突き合わせ（仕分け）でだけ取り出せる</span>
+        <span class="step">【このステージの成果 ― デコヒーレンス】</span>
+        <span class="step">・<strong>散乱は目印製造機</strong>：光子・空気分子が経路の手がかりを持ち去る。波長が左右の間隔より長ければ、手がかりは不完全（ぼやけた目）</span>
+        <span class="step">・不完全でも回数が莫大：縞の濃さは衝突のたびに<strong>掛け算</strong>で減る。毎秒10²⁰回なら実質瞬時にゼロ</span>
+        <span class="step">・空気中の塵粒子：約<span class="nw">10⁻³¹秒</span>で縞が消える（ヨース＆ツェー、1985年）</span>
+        <span class="step">・<strong>コヒーレンス</strong>＝矢印を足せる資格。<strong>デコヒーレンス</strong>＝環境に手がかりが漏れて資格を失うこと。環境は誰も読まず、誰にも消せない検出器</span>
+        <span class="step">・速さは「大きいほど・環境が濃いほど」桁違いに速い。だから電子は縞を出せて、塵は出せない</span>
+        <span class="step">・スリット板が縞を薄めないのも同じ基準：重く固定された相手は写真がほぼ重なり（目減りは0が30個以上並ぶ小ささ）、蹴りも粒子1個につき1回きり。<strong>軽くて自由な相手×莫大な回数</strong>こそが環境の強さ</span>
       </div>
 
       <div class="quiz-head">確認クイズ</div>
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q1. 「左と右の重ね合わせ」の集団と「どちらか半々」の集団を見分ける方法は？</p>
+        <p class="quiz-q">Q1. 光子1個が塵粒子に当たって跳ね返ると、縞が薄くなるのはなぜ？</p>
         <div class="choice-list">
-          <button class="choice-btn">位置を何回も測って統計を取る</button>
-          <button class="choice-btn">原理的に見分ける方法はない</button>
-          <button class="choice-btn">干渉実験にかける。重ね合わせは縞、どちらか半々はのっぺりになる</button>
+          <button class="choice-btn">光子が塵を強く押して、位置を動かしてしまうから</button>
+          <button class="choice-btn">跳ね返った光子の状態が塵の位置に応じて変わり、経路の手がかりを持ち去るから</button>
+          <button class="choice-btn">光子のエネルギーで塵が温まるから</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ 位置の統計はどちらも左右半々で同じだが、重ね合わせの粒子は矢印を2本持つので干渉できる。「どちらか半々」の粒子は矢印1本なので干渉しようがない。縞こそが重ね合わせの身分証明書だ。</div>
+        <div class="quiz-explain" hidden>正解！ 散乱光子は「塵が左寄りの跳ね方をさせたか、右寄りの跳ね方をさせたか」という情報を状態に刻んで飛び去る。つまり誰も設計していない目印粒子だ。押す力や熱は本質ではない――手がかりの漏れがすべてを決める。</div>
       </div>
 
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q2. もつれたペアの片割れを、単独で二重スリットに通すと？</p>
+        <p class="quiz-q">Q2. 散乱した光子は誰も観測せず、宇宙の彼方へ飛んでいくだけ。それでも縞が消えるのは？</p>
         <div class="choice-list">
-          <button class="choice-btn">縞は出ない。相方の状態が直交していて、筋書きの終わり方が合流できないから</button>
-          <button class="choice-btn">薄い縞が出る</button>
-          <button class="choice-btn">相方に触れていなければ、完全な縞が出る</button>
+          <button class="choice-btn">手がかりが世界のどこかに残ること自体が「区別可能」の条件だから</button>
+          <button class="choice-btn">光子が特別な粒子だから</button>
+          <button class="choice-btn">実は誰かが見るまで縞は残っている</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ 「手元が左＋相方が左」と「手元が右＋相方が右」は、相方の部分が直交しているので別の終わり方。矢印を足せず、確率の足し算になって、のっぺりになる。相方は遠くにいるだけで、経路検出器と同じ働きをしてしまう。</div>
+        <div class="quiz-explain" hidden>正解！ 足し算ルールの判定基準は「筋書きの終わり方が合流できるか」だけで、読む人の有無は無関係。散乱光子の状態が塵の経路ごとに違ってしまった時点で、筋書きは別の終わり方になる。環境は「誰も読まない、誰にも消せない検出器」だ。</div>
       </div>
 
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q3. 場合分けの表の正しい使い方は？</p>
+        <p class="quiz-q">Q3. デコヒーレンスが速くなるのはどんな条件？</p>
         <div class="choice-list">
-          <button class="choice-btn">行の中も行の間も、矢印を足す</button>
-          <button class="choice-btn">行の中では矢印の足し算、行と行の間では確率の足し算</button>
-          <button class="choice-btn">行の中も行の間も、確率を足す</button>
+          <button class="choice-btn">物体が小さく、環境が薄いほど速い</button>
+          <button class="choice-btn">物体の大きさや環境の濃さには依存しない</button>
+          <button class="choice-btn">物体が大きく、環境の分子や光子が多い（空気中・高温）ほど、桁違いに速い</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ 行の分かれ目は「相方の直交する状態」＝区別可能な終わり方。区別可能どうしは確率で足し、同じ行の中（同じ終わり方に合流する筋書きどうし）は矢印で足す。この二段構えが、足し算ルールを複数の粒子に適用する標準の手順だ。</div>
-      </div>
-
-      <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q4. もつれたペアで、縞（干渉）はどうなった？</p>
-        <div class="choice-list">
-          <button class="choice-btn">完全に消滅した</button>
-          <button class="choice-btn">手元の粒子の中に薄く残っている</button>
-          <button class="choice-btn">ペアの相関の中へ移った。相方の結果と突き合わせて仕分けると取り出せる</button>
-        </div>
-        <div class="quiz-explain" hidden>正解！ 矢印は消えていない――足すのを禁じられただけ。相方に斜めの質問をして＋／−で仕分ければ、縞と逆縞として回収できる（量子消しゴム）。単独では見えず、突き合わせでだけ見える。ベルの破れと同じ「関係の中の量子らしさ」だ。</div>
+        <div class="quiz-explain" hidden>正解！ 大きい物体ほど環境とよく衝突し、環境が濃いほど衝突回数が増える。掛け算で効くので、差は桁違いになる――空気中の塵は10⁻³¹秒、電子は実験室で縞を出せるほど長持ち。実験家が真空・低温・小さな粒子にこだわる理由がこれだ。</div>
       </div>
 
       <div class="stage-nav">
@@ -393,191 +254,118 @@
 
 <script>
 (function(){
-  // 図0: 腕試しの設問（集団A=重ね合わせ、集団B=どちらか半々）の図解（静的）
-  var g = document.getElementById('ensemble-body');
-  if (!g) return;
+  // 図1: 塵の重ね合わせ＋光子散乱→縞コントラスト減衰アニメ
+  var svg = document.getElementById('scatter-svg');
+  var g = document.getElementById('scatter-body');
+  if (!svg || !g) return;
   var ns = 'http://www.w3.org/2000/svg';
-  var C1 = '#2f7a6b', C2 = '#b98a2e';
-  function el(name, attrs) {
+  var CL = {x: 130, y: 90}, CR = {x: 242, y: 90};
+
+  function el(name, attrs, parent) {
     var e = document.createElementNS(ns, name);
     for (var k in attrs) e.setAttribute(k, attrs[k]);
-    g.appendChild(e);
+    (parent || g).appendChild(e);
     return e;
   }
-  function txt(x, y, cls, content, size) {
-    var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': 'middle'});
+  function txt(x, y, cls, content, anchor) {
+    var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': anchor || 'middle'});
     t.textContent = content;
-    if (size) t.style.fontSize = size + 'px';
     return t;
   }
-  // 粒子アイコン: kind = 'both' | 'left' | 'right'
-  var DIRL = {x: -0.7071, y: -0.7071}, DIRR = {x: 0.7071, y: -0.7071}, AL = 10;
-  function particle(cx, cy, kind) {
-    el('circle', {cx: cx, cy: cy, r: 13, fill: 'var(--paper2)', stroke: 'var(--line)', 'stroke-width': 1.4});
-    if (kind !== 'right') el('line', {x1: cx, y1: cy, x2: cx + DIRL.x * AL, y2: cy + DIRL.y * AL, stroke: C1, 'stroke-width': 2, 'marker-end': 'url(#ah4-l)'});
-    if (kind !== 'left') el('line', {x1: cx, y1: cy, x2: cx + DIRR.x * AL, y2: cy + DIRR.y * AL, stroke: C2, 'stroke-width': 2, 'marker-end': 'url(#ah4-r)'});
-  }
 
-  var panels = [
-    {cx: 100, x0: 16, name: '集団A：全員が重ね合わせ', note: 'どの粒子も矢印2本（左＋右）', kinds: ['both','both','both','both','both','both']},
-    {cx: 272, x0: 188, name: '集団B：どちらか半々', note: '矢印1本ずつ（左か右）', kinds: ['left','right','left','right','left','right']}
-  ];
-  panels.forEach(function(p){
-    el('rect', {x: p.x0, y: 28, width: 168, height: 168, rx: 10, fill: 'var(--paper2)', stroke: 'var(--line)'});
-    var h = txt(p.cx, 46, 'strong', p.name, 11.5);
-    p.kinds.forEach(function(kind, i){
-      var col = i % 3, row = Math.floor(i / 3);
-      particle(p.cx + (col - 1) * 44, 76 + row * 34, kind);
-    });
-    txt(p.cx, 138, 'label', p.note, 9.5);
-    el('line', {x1: p.x0 + 10, y1: 148, x2: p.x0 + 158, y2: 148, stroke: 'var(--line)', 'stroke-dasharray': '4 4'});
-    txt(p.cx, 164, 'label', '位置を測ると', 9.5);
-    var r = txt(p.cx, 182, 'strong', '左 50%　右 50%', 11);
+  // 重ね合わせの塵（左右2つのゴースト）
+  [CL, CR].forEach(function(c, i){
+    el('circle', {cx: c.x, cy: c.y, r: 17, fill: 'rgba(63,97,145,.15)', stroke: '#3f6191', 'stroke-width': 1.6, 'stroke-dasharray': '5 4'});
+    txt(c.x, c.y + 4, 'accent', i === 0 ? '左' : '右');
   });
-  txt(186, 216, 'label', '→ 位置の統計はまったく同じ。では、どうやって見分ける？', 10.5);
-})();
-</script>
+  txt(186, 60, 'label', '塵粒子（左右の重ね合わせ）');
 
-<script>
-(function(){
-  // 図0b: 2つの束のレーン図（静的）。相方に触れない→写真の相方欄は不変→合流不可
-  var g = document.getElementById('lane-body');
-  if (!g) return;
-  var ns = 'http://www.w3.org/2000/svg';
-  var C1 = '#2f7a6b', C2 = '#b98a2e';
-  function el(name, attrs) {
-    var e = document.createElementNS(ns, name);
-    for (var k in attrs) e.setAttribute(k, attrs[k]);
-    g.appendChild(e);
-    return e;
-  }
-  function txt(x, y, cls, content, size) {
-    var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': 'middle'});
-    t.textContent = content;
-    if (size) t.style.fontSize = size + 'px';
-    return t;
-  }
-  txt(186, 32, 'label', 'もつれ状態＝「手元L・相方L」と「手元R・相方R」の2本の矢印の束', 9.5);
+  // 縞メーター（下部）
+  var MX = 60, MW = 252, MH = 66, MY0 = 218;
+  el('rect', {x: MX, y: MY0 - MH, width: MW, height: MH, fill: 'var(--paper2)', stroke: 'var(--line)', rx: 6});
+  var curve = el('path', {fill: 'none', stroke: '#8a6a24', 'stroke-width': 2.2});
+  var vLabel = txt(330, MY0 - MH / 2, 'accent', '', 'start');
 
-  var YL = 78, YR = 170;
-  // 出発点（もつれたペア）
-  el('circle', {cx: 30, cy: 124, r: 6, fill: '#a63f6f'});
-  txt(30, 148, 'label', 'もつれたペア', 8.5);
-  el('line', {x1: 36, y1: 119, x2: 72, y2: YL + 6, stroke: 'var(--ink)', 'stroke-width': 1.5, 'marker-end': 'url(#ah5-k)'});
-  el('line', {x1: 36, y1: 129, x2: 72, y2: YR - 6, stroke: 'var(--ink)', 'stroke-width': 1.5, 'marker-end': 'url(#ah5-k)'});
-
-  // レーンごとの箱と編み込み（手元の実験の枝分かれ）
-  [
-    {y: YL, c: C1, name: '左の束', sub: '手元:左 相方:左', photo: '相方は左のまま'},
-    {y: YR, c: C2, name: '右の束', sub: '手元:右 相方:右', photo: '相方は右のまま'}
-  ].forEach(function(lane){
-    el('rect', {x: 76, y: lane.y - 18, width: 80, height: 36, rx: 7, fill: 'var(--paper2)', stroke: lane.c, 'stroke-width': 1.8});
-    var t1 = txt(116, lane.y - 4, 'strong', lane.name, 10);
-    t1.style.fill = lane.c;
-    txt(116, lane.y + 11, 'label', lane.sub, 8.5);
-    // 枝分かれの編み込み（相方には触れない）
-    [-12, 0, 12].forEach(function(b){
-      el('path', {d: 'M 156 ' + lane.y + ' Q 190 ' + (lane.y + b) + ' 207 ' + lane.y + ' Q 224 ' + (lane.y - b) + ' 250 ' + lane.y, fill: 'none', stroke: lane.c, 'stroke-width': 1.2, opacity: .65});
-    });
-    el('line', {x1: 250, y1: lane.y, x2: 256, y2: lane.y, stroke: 'var(--ink)', 'stroke-width': 1.5, 'marker-end': 'url(#ah5-k)'});
-    el('rect', {x: 258, y: lane.y - 20, width: 104, height: 40, rx: 7, fill: 'var(--paper2)', stroke: lane.c, 'stroke-width': 1.8});
-    txt(310, lane.y - 5, 'strong', '最後の写真', 10);
-    var t2 = txt(310, lane.y + 12, 'strong', lane.photo, 9.5);
-    t2.style.fill = lane.c;
-  });
-
-  // 中央: 合流不可の仕切り
-  el('line', {x1: 76, y1: 124, x2: 362, y2: 124, stroke: 'var(--ng)', 'stroke-width': 1, 'stroke-dasharray': '5 4', opacity: .7});
-  txt(219, 117, 'label', '手元でいくら枝分かれしても', 9.5);
-  var ng = txt(219, 137, 'label', '✗ 相方が直交 → 上下は合流できない', 10);
-  ng.style.fill = 'var(--ng)'; ng.style.fontWeight = '900';
-
-  txt(186, 220, 'label', '→ すべての筋書きが2つのグループに分かれる', 10.5);
-  txt(186, 236, 'label', '「相方＝左」グループ（表の行1）／「相方＝右」グループ（表の行2）', 10);
-})();
-</script>
-
-<script>
-(function(){
-  // 図1: 行の数の対比図（静的）。1行＝矢印の足し算→縞、2行＝確率の足し算→のっぺり
-  var g = document.getElementById('table-body');
-  if (!g) return;
-  var ns = 'http://www.w3.org/2000/svg';
-  var C1 = '#2f7a6b', C2 = '#b98a2e', CS = '#a63f6f';
-  function el(name, attrs) {
-    var e = document.createElementNS(ns, name);
-    for (var k in attrs) e.setAttribute(k, attrs[k]);
-    g.appendChild(e);
-    return e;
-  }
-  function txt(x, y, cls, content, size) {
-    var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': 'middle'});
-    t.textContent = content;
-    if (size) t.style.fontSize = size + 'px';
-    return t;
-  }
-  function env(u) { return Math.exp(-u * u * 2.2); }
-  function curve(x0, y0, w, h, f, color) {
+  function drawFringe(v) {
     var d = '';
-    for (var i = 0; i <= 100; i++) {
-      var u = (i - 50) / 50;
-      var x = x0 + 4 + (w - 8) * i / 100;
-      var y = y0 - 5 - f(u) * (h - 12);
+    for (var i = 0; i <= 110; i++) {
+      var u = (i - 55) / 55;
+      var env = Math.exp(-u * u * 2.2);
+      var I = env * (1 + v * Math.cos(u * 10)) / 2;
+      var x = MX + 4 + (MW - 8) * i / 110;
+      var y = MY0 - 5 - I * (MH - 14);
       d += (i === 0 ? 'M ' : 'L ') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
     }
-    el('path', {d: d, fill: 'none', stroke: color, 'stroke-width': 2.2});
-  }
-  function twoTone(x, y, size) {
-    var a = txt(x - 30, y, 'strong', '筋書きL', size || 10);
-    a.style.fill = C1;
-    var b = txt(x + 30, y, 'strong', '筋書きR', size || 10);
-    b.style.fill = C2;
-    txt(x, y, 'strong', '＋', size || 10);
+    curve.setAttribute('d', d);
+    vLabel.textContent = Math.round(v * 100) + '%';
   }
 
-  var panels = [
-    {x0: 14, head: '相方なし → 行はひとつ', mode: 'one'},
-    {x0: 192, head: '相方が直交 → 行はふたつ', mode: 'two'}
-  ];
-  panels.forEach(function(p){
-    var cx = p.x0 + 83;
-    txt(cx, 38, 'strong', p.head, 11);
-    if (p.mode === 'one') {
-      el('rect', {x: p.x0 + 4, y: 48, width: 158, height: 40, rx: 7, fill: 'var(--paper2)', stroke: CS, 'stroke-width': 1.6});
-      twoTone(cx, 68);
-      txt(cx, 82, 'label', '同じ行に同居', 8.5);
-      txt(cx, 106, 'label', '行の中 → 矢印を足す', 9.5);
-    } else {
-      el('rect', {x: p.x0 + 4, y: 48, width: 158, height: 22, rx: 6, fill: 'var(--paper2)', stroke: C1, 'stroke-width': 1.6});
-      var r1 = txt(cx, 63, 'strong', '行1：筋書きL（割合1/2）', 9.5);
-      r1.style.fill = C1;
-      el('rect', {x: p.x0 + 4, y: 74, width: 158, height: 22, rx: 6, fill: 'var(--paper2)', stroke: C2, 'stroke-width': 1.6});
-      var r2 = txt(cx, 89, 'strong', '行2：筋書きR（割合1/2）', 9.5);
-      r2.style.fill = C2;
-      txt(cx, 106, 'label', '行の間 → 確率を足す', 9.5);
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) {
+    drawFringe(0.35);
+    // 静止画: 散乱光子を数個描いておく
+    for (var i = 0; i < 5; i++) {
+      var a = i * 1.25;
+      el('circle', {cx: 186 + Math.cos(a) * 80, cy: 90 + Math.sin(a) * 55, r: 3, fill: '#b98a2e'});
     }
-    // ↓ 矢印
-    el('line', {x1: cx, y1: 112, x2: cx, y2: 122, stroke: 'var(--muted)', 'stroke-width': 1.5});
-    el('path', {d: 'M ' + cx + ' 126 l -4 -7 l 8 0 z', fill: 'var(--muted)'});
-    // 結果の分布
-    el('rect', {x: p.x0 + 12, y: 130, width: 142, height: 70, rx: 6, fill: 'var(--paper2)', stroke: 'var(--line)'});
-    if (p.mode === 'one') {
-      curve(p.x0 + 12, 198, 142, 66, function(u){ return env(u) * Math.pow(Math.cos(u * 9), 2); }, C1);
-      var t1 = txt(cx, 218, 'label', '縞が出る', 11);
-      t1.style.fill = 'var(--ok)'; t1.style.fontWeight = '900';
-    } else {
-      curve(p.x0 + 12, 198, 142, 66, function(u){ return env(u) * 0.55; }, CS);
-      var t2 = txt(cx, 218, 'label', '縞は出ない（のっぺり）', 11);
-      t2.style.fill = 'var(--ng)'; t2.style.fontWeight = '900';
+    return;
+  }
+
+  // 飛来する光子たち
+  var photons = [];
+  function spawn() {
+    var target = Math.random() < 0.5 ? CL : CR;
+    var ang = Math.random() * Math.PI * 2;
+    var R0 = 160;
+    photons.push({
+      el: el('circle', {r: 2.6, fill: '#b98a2e', opacity: .9}),
+      tx: target.x, ty: target.y,
+      sx: target.x + Math.cos(ang) * R0, sy: target.y + Math.sin(ang) * R0,
+      oa: Math.random() * Math.PI * 2, // 散乱後の方向
+      p: 0, hit: false
+    });
+  }
+
+  var v = 1, running = false, raf = null, spawnT = 0;
+  function loop() {
+    if (!running) return;
+    spawnT += 1;
+    if (spawnT % 26 === 0) spawn();
+    photons.forEach(function(ph){
+      ph.p += 0.02;
+      var x, y;
+      if (ph.p < 0.5) { // 飛来
+        var q = ph.p / 0.5;
+        x = ph.sx + (ph.tx - ph.sx) * q; y = ph.sy + (ph.ty - ph.sy) * q;
+      } else { // 散乱して飛び去る（手がかりを持って）
+        if (!ph.hit) { ph.hit = true; v = Math.max(0, v * 0.86 - 0.004); }
+        var q2 = (ph.p - 0.5) / 0.5;
+        x = ph.tx + Math.cos(ph.oa) * 170 * q2; y = ph.ty + Math.sin(ph.oa) * 170 * q2;
+        ph.el.setAttribute('opacity', (0.9 * (1 - q2)).toFixed(2));
+      }
+      ph.el.setAttribute('cx', x.toFixed(1)); ph.el.setAttribute('cy', y.toFixed(1));
+    });
+    for (var i = photons.length - 1; i >= 0; i--) {
+      if (photons[i].p >= 1) { photons[i].el.parentNode.removeChild(photons[i].el); photons.splice(i, 1); }
     }
-  });
+    if (v < 0.02) v = 1; // 消えきったら最初から（連続ループ）
+    drawFringe(v);
+    raf = requestAnimationFrame(loop);
+  }
+  drawFringe(1);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(es){
+      if (es[0].isIntersecting && !running) { running = true; loop(); }
+      else if (!es[0].isIntersecting && running) { running = false; if (raf) cancelAnimationFrame(raf); }
+    }, {threshold: 0.15}).observe(svg);
+  } else { running = true; loop(); }
 })();
 </script>
 
 <script>
 (function(){
-  // 図2: 3つの集団の干渉実験結果（静的）
-  var g = document.getElementById('three-body');
+  // 図2: デコヒーレンス時間の対数スケール比較（静的）
+  var g = document.getElementById('timescale-body');
   if (!g) return;
   var ns = 'http://www.w3.org/2000/svg';
   function el(name, attrs) {
@@ -586,36 +374,35 @@
     g.appendChild(e);
     return e;
   }
-  function txt(x, y, cls, content) {
-    var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': 'middle'});
+  function txt(x, y, cls, content, anchor) {
+    var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': anchor || 'middle'});
     t.textContent = content;
     return t;
   }
-  function env(u) { return Math.exp(-u * u * 2.2); }
-  var panels = [
-    {x0: 16, label: '重ね合わせ', sub: '（矢印2本）', f: function(u){ return env(u) * Math.pow(Math.cos(u * 9), 2); }, color: '#2f7a6b', res: '縞'},
-    {x0: 136, label: 'どちらか半々', sub: '（矢印1本ずつ）', f: function(u){ return env(u) * 0.55; }, color: '#8a5a2a', res: 'のっぺり'},
-    {x0: 256, label: 'もつれの片割れ', sub: '（相方＝検出器）', f: function(u){ return env(u) * 0.55; }, color: '#a63f6f', res: 'のっぺり'}
-  ];
-  panels.forEach(function(p){
-    var W = 100, H = 84, y0 = 140;
-    el('rect', {x: p.x0, y: y0 - H, width: W, height: H, fill: 'var(--paper2)', stroke: 'var(--line)', rx: 6});
-    var d = '';
-    for (var i = 0; i <= 100; i++) {
-      var u = (i - 50) / 50;
-      var x = p.x0 + 4 + (W - 8) * i / 100;
-      var y = y0 - 5 - p.f(u) * (H - 14);
-      d += (i === 0 ? 'M ' : 'L ') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
-    }
-    el('path', {d: d, fill: 'none', stroke: p.color, 'stroke-width': 2.2});
-    txt(p.x0 + W / 2, 40, 'strong', p.label);
-    txt(p.x0 + W / 2, y0 + 16, 'label', p.sub);
-    var r = txt(p.x0 + W / 2, y0 + 32, 'accent', p.res);
-    r.style.fill = p.color;
+  // 対数軸: 10^-31 .. 10^17（48桁）を x=40..340 に割り当て
+  var X0 = 40, X1 = 340, E0 = -31, E1 = 17;
+  function xOf(e) { return X0 + (e - E0) / (E1 - E0) * (X1 - X0); }
+  var AY = 150;
+  el('line', {x1: X0 - 6, y1: AY, x2: X1 + 6, y2: AY, stroke: 'var(--ink)', 'stroke-width': 1.6});
+  [-31, -20, -10, 0, 10, 17].forEach(function(e){
+    el('line', {x1: xOf(e), y1: AY - 3, x2: xOf(e), y2: AY + 3, stroke: 'var(--ink)'});
+    txt(xOf(e), AY + 16, 'label', e === 0 ? '1秒' : '10' + String(e).replace('-', '⁻').replace(/1/g, '¹').replace(/2/g, '²').replace(/3/g, '³').replace(/7/g, '⁷').replace(/0/g, '⁰') + '秒');
   });
-  // 中央と右の同一性を示す括弧
-  el('path', {d: 'M 140 172 L 140 178 L 352 178 L 352 172', fill: 'none', stroke: 'var(--muted)', 'stroke-width': 1.4});
-  txt(246, 189, 'label', 'どんな実験でも区別できない');
+  // 項目（点＋ラベル）
+  var items = [
+    {e: -31, label: '塵粒子・空気中', color: '#b5504a', y: 56},
+    {e: 0, label: '塵粒子・宇宙空間（背景放射のみ）', color: '#3f6191', y: 82},
+    {e: 17, label: '宇宙の年齢', color: '#7a6a2f', y: 108}
+  ];
+  items.forEach(function(it){
+    var x = xOf(it.e);
+    el('line', {x1: x, y1: it.y + 6, x2: x, y2: AY - 4, stroke: it.color, 'stroke-width': 1.2, 'stroke-dasharray': '3 3'});
+    el('circle', {cx: x, cy: AY, r: 4.5, fill: it.color});
+    var anchor = it.e < -15 ? 'start' : it.e > 8 ? 'end' : 'middle';
+    var t = txt(x, it.y, 'label', it.label, anchor);
+    t.style.fill = it.color; t.style.fontWeight = '900';
+  });
+  txt(186, 186, 'label', '電子（超高真空）は環境とほぼ相互作用せず、縞の実験が可能なほど長く保てる');
 })();
 </script>
 </body>

@@ -12,14 +12,14 @@
   gtag('js', new Date());
   gtag('config', 'G-9RTQCP2HXM');
 </script>
-<title>STAGE6 月が消えない理由 ― 消える干渉縞</title>
-<meta name="description" content="「月は見ていなくても存在するか」への現代の答えを精密に導く。月には毎秒約10³⁴個の光子が当たり、位置の手がかりを光速で持ち去る。巨大物体の重ね合わせは実質ゼロ時間で壊れ、もつれは環境との巨大なもつれに薄まってベルの破れは実際上見えなくなる。環境が読むのは位置――だから月は位置の定まった姿で安定する。">
+<title>STAGE6 デコヒーレンスが説明しないもの ― 消える干渉縞</title>
+<meta name="description" content="デコヒーレンスは「なぜ縞が消えるか」を説明したが、「なぜ毎回1つの結果が選ばれるか」は説明していない――観測問題の現代の形と、コペンハーゲン的立場・多世界解釈・客観的収縮理論の中立な紹介。解けた謎と解けていない謎の境界線を、ごまかさずに引く。">
 <link rel="canonical" href="https://ruglerugle.github.io/decoherence-quest/stage6.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="消える干渉縞">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:title" content="STAGE6 月が消えない理由 ― 消える干渉縞">
-<meta property="og:description" content="月は毎秒10³⁴個の光子に見られている。「誰も見ていない月」を宇宙が許さない理由。">
+<meta property="og:title" content="STAGE6 デコヒーレンスが説明しないもの ― 消える干渉縞">
+<meta property="og:description" content="部屋のドアが閉まるところまでは説明した。だが部屋の数は1つに減っていない――観測問題との誠実な線引き。">
 <meta property="og:url" content="https://ruglerugle.github.io/decoherence-quest/stage6.html">
 <meta property="og:image" content="https://ruglerugle.github.io/decoherence-quest/images/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -28,7 +28,8 @@
 <style>
   .dq-svg .label{fill:var(--muted);font-size:11px;font-weight:700}
   .dq-svg .strong{fill:var(--ink);font-size:12px;font-weight:900}
-  .dq-svg .accent{fill:#7a6a2f;font-size:11px;font-weight:900}
+  .dq-svg .ok{fill:var(--ok);font-size:11.5px;font-weight:900}
+  .dq-svg .ng{fill:var(--ng);font-size:11.5px;font-weight:900}
 </style>
 </head>
 <body>
@@ -36,11 +37,11 @@
   <header class="game-header">
     <div class="brand">
       <div class="brand-title"><a class="head-reset home-badge" href="index.html" title="トップへ" aria-label="トップへ">🌫️</a> <span>消える干渉縞</span></div>
-      <div class="brand-sub">STAGE 6 ― 月が消えない理由 ―</div>
+      <div class="brand-sub">STAGE 6 ― デコヒーレンスが説明しないもの ―</div>
     </div>
     <div class="head-progress-wrap">
-      <div class="head-progress-label" id="progress-label">クリア 0 / 8</div>
-      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <div class="head-progress-label" id="progress-label">クリア 0 / 7</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
     </div>
     <div class="header-actions">
       <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
@@ -60,13 +61,13 @@
 
     <main class="main-area">
       <div class="chapter-head">
-        <span class="chapter-badge">STAGE 6</span><span class="chapter-title">月が消えない理由</span>
-        <div class="chapter-sub">巨大物体と古典世界</div>
+        <span class="chapter-badge">STAGE 6</span><span class="chapter-title">デコヒーレンスが説明しないもの</span>
+        <div class="chapter-sub">観測問題との線引き</div>
       </div>
 
       <div class="mission-box">
         <div class="mission-label">🎯 ミッション</div>
-        <div class="mission-text">月に当たる光子の数を自分で概算し、巨大物体の重ね合わせが実質ゼロ時間で壊れることと、もつれが環境に薄まってベルの破れが実際上見えなくなる過程を説明できれば合格。「なぜいつも位置なのか」まで答えられれば満点。</div>
+        <div class="mission-text">「なぜ縞が消えるか」（デコヒーレンスが説明済み）と「なぜ毎回1つの結果が選ばれるか」（未解決＝観測問題）を区別して語れるようになろう。3つの解釈の違いを中立に説明できれば合格。</div>
         <span class="mission-status" id="mission-status">未達成</span>
       </div>
 
@@ -76,134 +77,133 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">もつれの旅の出発点は、アインシュタインの問い「<strong>月は見ていなくても存在するか</strong>」だったね。あの旅の終わりにきみは「月は環境に測られ続けている」という答えに出会った。今日はそれを、数字と仕組みの両方で精密にしよう。まず数字からだ。月が太陽から浴びる光子の数を概算してごらん。材料を渡すよ。月の断面積はおよそ<span class="nw">9.5×10¹²</span>平方メートル。太陽光は1平方メートルあたり毎秒約1400ジュールのエネルギーを運ぶ。可視光の光子1個のエネルギーはおよそ<span class="nw">4×10⁻¹⁹</span>ジュールだ。</div>
-        </div>
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">掛け算と割り算だけですね。月が毎秒受け取るエネルギーは、9.5×10¹² × 1400 ≒ <span class="nw">1.3×10¹⁶</span>ジュール。これを光子1個分の4×10⁻¹⁹ジュールで割ると……およそ<strong>3×10³⁴</strong>。毎秒<strong>10³⁴個</strong>という桁の光子が月に当たって、跳ね返っています。</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">そして、その1個1個が前回の散乱光子と同じ<strong>目印製造機</strong>だ。月の位置の手がかりを刻んで、光速で四方八方へ散っていく。仮に誰かが「月が軌道上の2か所にいる重ね合わせ」を用意できたとしても、最初のほんの一瞬――どんな時計でも測れない短さの時間――で、2つの位置は環境に区別されきってしまう。空気中の塵で10⁻³¹秒だったのだから、月では実質ゼロ時間だよ。</div>
+          <div class="dialog-bubble">今日は、この旅でいちばん大人な話をしよう。その前に、ここまでの成果をきみの口から整理してもらえるかな。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">これまでの理屈がそのまま通るなら、反論もひとつ思いつきます。手がかりが残っても、<strong>消しゴム</strong>で消せば縞は戻るはずでした。月の場合、原理的にはどうなんですか？</div>
+          <div class="dialog-bubble">はい。使った道具は足し算ルール1つだけでした。そこから、検出器で縞が消える理由、消しゴムで戻る理由、環境がすべてを検出してしまう理由、月が位置の定まった姿で安定する理由――全部を導けました。特別な「観測のルール」を後から書き足す必要は、一度もなかった。……正直に言うと、<strong>観測の謎はもう解決した</strong>、と言いたくなっています。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">原理の上では、量子力学は縞の復活を禁止していない。だが、必要な作業を書き出してみよう。月で跳ね返った光子は宇宙へ散り、あるものは地面や雲や誰かの目に吸収され、吸収した物質の状態をわずかに変える。手がかりは光子から原子へ、原子から隣の分子へ、<strong>コピーを増やしながら</strong>広がっていくんだ。縞を取り戻すには、手がかりを持つ粒子を<strong>1個残らず</strong>集めて、全部まとめて斜めの質問をしなければならない。1個でも取り逃せば、そこに手がかりが残って縞は戻らない。そして光子は光速で逃げていく――追いつく手段は物理的に存在しない。</div>
+          <div class="dialog-bubble">その気持ちはよく分かる。だからこそ今日は、その「解決した」に<strong>線を引く</strong>日なんだ。デコヒーレンスが終わったあとの世界を、もう一度よく見てほしい。たとえば塵の実験なら、「塵は左＋環境はそれを写した状態」という枝と、「塵は右＋環境はそれを写した状態」という枝が、確率半々で並んでいる。ところで、実験を1回行うと、結果は毎回<strong>どちらか一方だけ</strong>が起きるね。さて――この枝の一覧のどこに、「今回は<strong>こちら</strong>が起きる」と決める仕組みが書いてあるかな。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">「<strong>原理上は消えていない。しかし実際上は永遠に取り戻せない</strong>」。この2つを区別して言うのが正確なんですね。では、もつれはどうなるんでしょう。ベルの不等式を破る、あの相関も――環境に触れたら同じ運命ですか？</div>
+          <div class="dialog-bubble">……どこにも、ありません。枝の一覧が言っているのは「枝どうしは互いに干渉できない」ということと「割合は半々」ということだけ。<strong>どちらの枝が現実になるかを選ぶ部品</strong>は、一覧にも、足し算ルールにも、見当たりません。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">同じ運命だ。もつれたペアの片方が環境の光子1個と散乱しただけで、相関は「2人のもの」から「3人のもの」へ広がる。散乱が続けば4人、5人……と、もつれは<strong>巨大なネットワークへ薄まっていく</strong>。ベルの破れを確認するには、2人の記録の突き合わせでは足りなくなって、散らばった全員の記録が必要になる。つまり実際上、破れは見えなくなる。量子らしさは消滅したのではなく、<strong>宇宙全体に薄められて、回収不能になった</strong>んだ。</div>
+          <div class="dialog-bubble">そう。デコヒーレンスが示したことを正確に言うと、こうなる。<strong>「枝と枝は、互いに影響を及ぼす手段（干渉）を実際上失う」</strong>。候補たちが別々の部屋に分かれて、部屋のあいだのドアが閉まる――そこまでは、みごとに説明した。だが<strong>部屋の数が1つに減ったわけではない</strong>んだ。式の上では、どの枝も残ったまま。消えてはいない。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">だから日常サイズの世界では、重ね合わせも、縞も、ベルの破れも見えない。量子力学が大きな物体で「壊れる」からではなく、足し算ルールが環境まで含めて<strong>働き続けた結果</strong>として、世界は普通の確率の世界の顔になるんですね。……もうひとつ、ずっと気になっていることがあります。なぜ、いつも<strong>位置</strong>なんでしょう。月は「位置のはっきりした姿」で安定していて、たとえば「速さだけがはっきりした姿」で安定したりはしません。</div>
+          <div class="dialog-bubble">つまり、デコヒーレンスは「なぜ縞が消えるか」には答えたけれど、「なぜ毎回<strong>1つの結果だけ</strong>が起きるのか」「その確率がなぜ矢印の長さの<strong>2乗</strong>なのか」には、答えていない――。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">最後のピースにふさわしい質問だ。環境との衝突は、物体の<strong>位置</strong>によって散乱の仕方が変わる相互作用なんだ。つまり環境が毎瞬問い続けている質問は、いつも「<strong>どこにいる？</strong>」。位置の手がかりばかりが猛スピードで漏れるから、位置の重ね合わせが真っ先に壊されて、<strong>位置のはっきりした状態だけが生き残りの勝者</strong>になる。「環境が何を読み取るかが、生き残る状態の顔を決める」――デコヒーレンス理論の中でも、とりわけ美しい発見のひとつだよ。</div>
+          <div class="dialog-bubble">それが<strong>観測問題</strong>の現代の形だ。そして正直に言えば、こちらは未解決なんだ。物理学者の立場は分かれている。代表的な3つを、どれにも肩入れせずに紹介しよう。1つめ、<strong>コペンハーゲン的な立場</strong>。「量子力学は測定結果の確率を計算する道具であり、『1つに決まる瞬間の仕組み』はそもそも理論に求めない」という実用主義の構え。2つめ、<strong>多世界解釈</strong>。「どの枝も本当に起きている。デコヒーレンスで枝同士は干渉できなくなるから、それぞれの枝の住人には、自分の結果だけが起きたように見える」。選ばれたのではなく、全部ある、という考えだ。3つめ、<strong>客観的収縮理論</strong>。「まだ知られていない物理法則があって、大きな系では本当に1つへ絞り込まれる」。これは通常の量子力学とわずかに違う予言をするから、将来の実験で白黒がつく可能性がある。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">これで、あの問いに答えられます。「月は見ていなくても存在するか」――月ほどの物体になると、そもそも<strong>「誰も見ていない月」を宇宙が許してくれません</strong>。毎秒10³⁴個の光子が見張りを続けていて、位置の定まった月だけが安定して存在できる。アインシュタインが心配した「見ていないときの月」は、用意することすらできない状況だったんですね。</div>
+          <div class="dialog-bubble">確認させてください。この3つの立場は、枝の一覧の<strong>読み方</strong>が違うだけで、一覧の中身――実験の予言――は同じなんですか？</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">それが現代の答えだ。ただしね、うさ美。今日の話には、まだ触れていない急所が残っている。「重ね合わせが壊れて縞が消える」ことと、「月がいま<strong>この場所に</strong>ある、というただ1つの事実が選ばれる」こと――この2つは、実は<strong>別の話</strong>なんだ。次のステージでは、デコヒーレンスに<strong>できないこと</strong>を、ごまかさずに線引きしよう。科学の誠実さが試される回だよ。</div>
+          <div class="dialog-bubble">今のところ、ほぼ同じだ。だから今日の実験技術では決着がついていない（例外は客観的収縮で、大きな系での小さなずれを探す検証実験が現在進行中だよ）。ここでいちばん大事なことを言っておこう。デコヒーレンスの研究を切り開いた本人たち――ツェー、ヨース、そして<strong>ズレク</strong>――が、繰り返しこう釘を刺しているんだ。「<strong>デコヒーレンスは観測問題を解決しない</strong>」。デコヒーレンスは、どの解釈を選ぶ人にとっても共通の土台、つまり「なぜ世界が古典的に<strong>見える</strong>か」の説明であって、解釈の代わりにはならない。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">解けた範囲を正確に言えること。そして、解けていない範囲を隠さないこと。……この旅で学んだ中で、いちばん科学らしい教訓かもしれません。「観測すると世界はどう変わるか」という問いは、半分は物理できちんと答えが出て、残りの半分はまだ開いたまま。この線引きを曖昧にした瞬間、デコヒーレンスは「なんでも説明した気になれる魔法の言葉」に堕ちてしまいます。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">線引きできる人だけが、この言葉を正しく使える。きみはもう、その1人だよ。次はいよいよ最終ステージ。この旅の知識のすべてが、いま現実の技術の最前線でどう戦われているか――<strong>量子コンピュータ</strong>の話で旅を締めくくろう。</div>
         </div>
       </div>
 
       <div class="diagram-box">
-        <svg id="moon-svg" class="dq-svg" viewBox="0 0 372 220" width="100%" role="img" aria-label="月に太陽光子が降り注ぐアニメーション。左から飛来した光子が月面で反射し、月の位置の手がかりを持って四方八方へ光速で飛び去っていく">
-          <text class="strong" x="186" y="16" text-anchor="middle">月は毎秒10³⁴個の光子に「見られて」いる</text>
-          <g id="moon-body"></g>
+        <svg id="boundary-svg" class="dq-svg" viewBox="0 0 372 220" width="100%" role="img" aria-label="デコヒーレンスが説明した範囲と説明していない範囲の境界図。左側には縞の消失・縞の復活・部分系のランダムさ・古典的な見え方が説明済みとして並び、右側には1つの結果の選択と確率が2乗になる理由が未解決として並ぶ">
+          <text class="strong" x="186" y="16" text-anchor="middle">解けた謎と、開いたままの謎</text>
+          <g id="boundary-body"></g>
         </svg>
-        <div class="diagram-caption">太陽からの光子（オレンジの点）が月面で反射し、月の位置の手がかりを刻んで宇宙へ散っていく。この流れは毎秒10³⁴個規模で、止める方法はない。「誰も見ていない月」という状況は、宇宙のどこにも用意できない</div>
+        <div class="diagram-caption">左（説明済み）：足し算ルール＋環境で導けたこと。右（未解決＝観測問題）：デコヒーレンスの発見者たち自身が「解決していない」と明言している問い。この境界線を保つことが、デコヒーレンスを正しく語る条件になる</div>
       </div>
 
       <div class="diagram-box">
-        <svg id="dilute-svg" class="dq-svg" viewBox="0 0 372 218" width="100%" role="img" aria-label="もつれの相関が環境に薄まっていく樹形図。左端でペア2つを結んでいた太い相関の線が、検出器、空気分子、光子へと枝分かれするたびに細く薄くなり、右端では無数の粒子に広がって個々の線はほとんど見えなくなる">
-          <text class="strong" x="186" y="16" text-anchor="middle">相関は消えるのではなく、薄まって回収不能になる</text>
-          <g id="dilute-body"></g>
+        <svg id="interp-svg" class="dq-svg" viewBox="0 0 372 230" width="100%" role="img" aria-label="同じ枝分かれをする世界の図を、3つの解釈がどう読むかの比較。コペンハーゲン的立場は片方の枝だけを結果として採用し、多世界解釈は両方の枝が実在するとみなし、客観的収縮理論は未知の法則が片方の枝を実際に消すと考える">
+          <text class="strong" x="186" y="16" text-anchor="middle">同じ枝分かれ、3つの読み方</text>
+          <g id="interp-body"></g>
         </svg>
-        <div class="diagram-caption">最初は2つの粒子だけが濃い相関（太い線）で結ばれている。環境の粒子と散乱するたびに相関の網は枝分かれし、1本1本は細く薄くなっていく。ベルの破れを見るには網の全員の記録が必要だが、メンバーは光速で宇宙へ散っていく――量子らしさは「消滅」ではなく「回収不能な拡散」で失われる</div>
+        <div class="diagram-caption">デコヒーレンスが用意する「互いに干渉できない枝分かれ」はどの立場にも共通（だから実験の予言もほぼ同じ）。違うのはその読み方――コペンハーゲン的立場「起きた枝だけが結果。仕組みは問わない」、多世界「全部の枝が実在する」、客観的収縮「未知の法則が片方を本当に消す」。決着をつける実験は、まだない</div>
       </div>
 
       <div class="formula-box">
-        <span class="step">【このステージの成果】</span>
-        <span class="step">・月に当たる光子：断面積9.5×10¹² m² × 1400 J/m²秒 ÷ 4×10⁻¹⁹ J ≒ 毎秒<span class="nw">3×10³⁴個</span>。すべてが位置の手がかりを持ち去る目印製造機</span>
-        <span class="step">・巨大物体の位置の重ね合わせは実質ゼロ時間で区別されきる（塵の10⁻³¹秒より桁違いに速い）</span>
-        <span class="step">・手がかりはコピーを増やしながら光速で拡散 → 全回収は物理的に不可能 → <strong>原理上は残るが、実際上永遠に取り戻せない</strong></span>
-        <span class="step">・もつれ相関は環境との巨大なもつれに薄まり、ベルの破れは実際上見えなくなる</span>
-        <span class="step">・環境が毎瞬読むのは<strong>位置</strong> → 位置のはっきりした状態だけが生き残る → 月は位置の定まった姿で安定する</span>
+        <span class="step">【このステージの成果 ― 誠実な線引き】</span>
+        <span class="step">・デコヒーレンスが<strong>説明したこと</strong>：干渉が実際上消える仕組み（縞の消失・復活・部分系のランダムさ・世界が古典的に見える理由）</span>
+        <span class="step">・<strong>説明していないこと</strong>：なぜ毎回1つの結果だけが起きるのか。確率がなぜ矢印の長さの2乗なのか（＝観測問題、未解決）</span>
+        <span class="step">・枝は「互いに干渉できなくなる」だけで、<strong>1つに減りはしない</strong>（部屋のドアは閉まるが、部屋は残る）</span>
+        <span class="step">・解釈：コペンハーゲン的立場／多世界／客観的収縮。実験では未決着。デコヒーレンスは全立場に共通の土台であって、解釈の代役ではない</span>
       </div>
 
       <div class="quiz-head">確認クイズ</div>
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q1. 月の位置の重ね合わせが実質ゼロ時間で壊れるのはなぜ？</p>
+        <p class="quiz-q">Q1. デコヒーレンスが「説明したこと」はどれ？</p>
         <div class="choice-list">
-          <button class="choice-btn">毎秒10³⁴個規模の光子が月面で反射し、位置の手がかりを持ち去り続けるから</button>
-          <button class="choice-btn">月が重すぎて、量子力学がそもそも適用できないから</button>
-          <button class="choice-btn">地球からいつも誰かが月を見ているから</button>
+          <button class="choice-btn">なぜ毎回1つの結果だけが選ばれるのか</button>
+          <button class="choice-btn">確率が矢印の長さの2乗になる理由</button>
+          <button class="choice-btn">候補どうしの干渉が実際上消えていく仕組み（世界が古典的に見える理由）</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ 量子力学は月にも適用できる――適用した結果が「一瞬でデコヒーレンスする」なのだ。人間の視線は無関係で、太陽光・地球からの照り返し・宇宙背景放射だけで見張りは完成している。塵粒子で10⁻³¹秒なのだから、月では比較にならないほど速い。</div>
+        <div class="quiz-explain" hidden>正解！ デコヒーレンスの守備範囲は「なぜ縞が消え、重ね合わせが見えなくなるか」まで。1つの結果の選択とボルンの規則（確率＝2乗）の起源は、その外側にある未解決問題だ。この区別を言えることが、このステージのゴール。</div>
       </div>
 
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q2. 巨大物体の縞（干渉）を取り戻すことについて、正確な言い方はどれ？</p>
+        <p class="quiz-q">Q2. 多世界解釈の主張として正しいのは？</p>
         <div class="choice-list">
-          <button class="choice-btn">量子力学が原理的に禁止している</button>
-          <button class="choice-btn">高性能な望遠鏡で月を観察し直せば取り戻せる</button>
-          <button class="choice-btn">原理上は禁止されていないが、手がかりを持つ粒子の全回収が物理的に不可能なので、実際上永遠に取り戻せない</button>
+          <button class="choice-btn">人間の意識が1つの結果を選び出す</button>
+          <button class="choice-btn">どの枝（候補）も実際に起きていて、枝同士が干渉できないため、各枝の住人には自分の結果だけが起きたように見える</button>
+          <button class="choice-btn">未知の物理法則が、大きな系で本当に1つへ絞り込む</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ 消しゴムの理屈は月にも当てはまるが、実行には「手がかりを持つ全粒子を集めて斜めの質問をする」必要がある。手がかりはコピーを増やしながら光速で拡散していて、1個の取り逃しも許されない。この「原理と実際の区別」が、デコヒーレンスを正確に語る鍵だ。</div>
+        <div class="quiz-explain" hidden>正解！ 多世界解釈では「選ばれる」という出来事自体が存在せず、すべての枝が実在する。枝同士のドアを閉めるのがデコヒーレンスなので、この解釈はデコヒーレンスと相性がよい――ただし「確率がなぜ2乗か」の説明には今も議論が続いている。3つめの選択肢は客観的収縮理論の主張だ。</div>
       </div>
 
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q3. 巨大物体がいつも「位置」のはっきりした姿で安定するのはなぜ？</p>
+        <p class="quiz-q">Q3. 「デコヒーレンスは観測問題を解決したのか」への正確な答えは？</p>
         <div class="choice-list">
-          <button class="choice-btn">位置以外の物理量は巨大物体には存在しないから</button>
-          <button class="choice-btn">環境との衝突が位置に応じて変わる相互作用で、位置の手がかりばかりが漏れ、位置の重ね合わせが真っ先に壊されるから</button>
-          <button class="choice-btn">たまたまそう見えているだけで、理由はないから</button>
+          <button class="choice-btn">解決していない。発見者たち自身がそう明言しており、どの解釈にも共通する土台を与えたが、解釈の代わりにはならない</button>
+          <button class="choice-btn">完全に解決した。もう解釈は不要になった</button>
+          <button class="choice-btn">観測問題はもともと存在しなかったことが分かった</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ 光子や空気分子の散乱は「物体がどこにいるか」で跳ね方が変わる。つまり環境は毎瞬「どこにいる？」と質問し続けている。環境が読み取る量の重ね合わせだけが選択的に壊され、その量のはっきりした状態が生き残る――世界が「位置の定まった物」で満ちて見える理由だ。</div>
+        <div class="quiz-explain" hidden>正解！ ツェー、ヨース、ズレクらデコヒーレンス研究の開拓者たちは、「デコヒーレンスだけでは観測問題は解けない」と繰り返し明言している。解けた範囲（古典的な見え方）と開いたままの範囲（1つの結果の選択）の線引きこそ、この分野の誠実さの証だ。</div>
       </div>
 
       <div class="stage-nav">
@@ -221,17 +221,14 @@
 
 <script>
 (function(){
-  // 図1: 月＋光子シャワーアニメ
-  var svg = document.getElementById('moon-svg');
-  var g = document.getElementById('moon-body');
-  if (!svg || !g) return;
+  // 図1: 説明済み／未解決の境界図（静的）
+  var g = document.getElementById('boundary-body');
+  if (!g) return;
   var ns = 'http://www.w3.org/2000/svg';
-  var MX = 200, MY = 120, MR = 42;
-
-  function el(name, attrs, parent) {
+  function el(name, attrs) {
     var e = document.createElementNS(ns, name);
     for (var k in attrs) e.setAttribute(k, attrs[k]);
-    (parent || g).appendChild(e);
+    g.appendChild(e);
     return e;
   }
   function txt(x, y, cls, content, anchor) {
@@ -239,75 +236,27 @@
     t.textContent = content;
     return t;
   }
-
-  // 月
-  el('circle', {cx: MX, cy: MY, r: MR, fill: '#e8e2ce', stroke: '#b8ab84', 'stroke-width': 2});
-  el('circle', {cx: MX - 12, cy: MY - 10, r: 7, fill: '#d5cbaa'});
-  el('circle', {cx: MX + 14, cy: MY + 8, r: 5, fill: '#d5cbaa'});
-  el('circle', {cx: MX - 2, cy: MY + 18, r: 4, fill: '#d5cbaa'});
-  txt(MX, MY + MR + 18, 'label', '月');
-  txt(40, 46, 'accent', '太陽光', 'start');
-
-  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced) {
-    for (var i = 0; i < 6; i++) {
-      var a = -0.9 + i * 0.35;
-      el('circle', {cx: MX + Math.cos(a) * (MR + 30), cy: MY + Math.sin(a) * (MR + 30), r: 2.6, fill: '#b98a2e'});
-    }
-    return;
-  }
-
-  var photons = [];
-  function spawn() {
-    // 左上方向から飛来し、月面で反射して放射状に去る
-    var impact = (Math.random() - 0.5) * 1.6; // 月面上の当たり角
-    var hitA = Math.PI + impact; // 左側の面
-    var hx = MX + Math.cos(hitA) * MR, hy = MY + Math.sin(hitA) * MR;
-    var outA = hitA + (Math.random() - 0.5) * 1.8; // 反射方向
-    photons.push({
-      el: el('circle', {r: 2.4, fill: '#b98a2e', opacity: .9}),
-      sx: 8, sy: hy + (Math.random() - 0.5) * 30 - 40,
-      hx: hx, hy: hy,
-      ox: hx + Math.cos(outA) * 190, oy: hy + Math.sin(outA) * 190,
-      p: 0
-    });
-  }
-  var running = false, raf = null, tick = 0;
-  function loop() {
-    if (!running) return;
-    tick++;
-    if (tick % 9 === 0) spawn();
-    photons.forEach(function(ph){
-      ph.p += 0.016;
-      var x, y;
-      if (ph.p < 0.5) {
-        var q = ph.p / 0.5;
-        x = ph.sx + (ph.hx - ph.sx) * q; y = ph.sy + (ph.hy - ph.sy) * q;
-      } else {
-        var q2 = (ph.p - 0.5) / 0.5;
-        x = ph.hx + (ph.ox - ph.hx) * q2; y = ph.hy + (ph.oy - ph.hy) * q2;
-        ph.el.setAttribute('opacity', (0.9 * (1 - q2 * 0.7)).toFixed(2));
-      }
-      ph.el.setAttribute('cx', x.toFixed(1)); ph.el.setAttribute('cy', y.toFixed(1));
-    });
-    for (var i = photons.length - 1; i >= 0; i--) {
-      if (photons[i].p >= 1) { photons[i].el.parentNode.removeChild(photons[i].el); photons.splice(i, 1); }
-    }
-    raf = requestAnimationFrame(loop);
-  }
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function(es){
-      if (es[0].isIntersecting && !running) { running = true; loop(); }
-      else if (!es[0].isIntersecting && running) { running = false; if (raf) cancelAnimationFrame(raf); }
-    }, {threshold: 0.15}).observe(svg);
-  } else { running = true; loop(); }
+  // 左ゾーン
+  el('rect', {x: 16, y: 30, width: 190, height: 178, rx: 10, fill: 'rgba(47,158,92,.08)', stroke: 'var(--ok)', 'stroke-width': 1.6});
+  txt(111, 52, 'ok', '✔ デコヒーレンスが説明');
+  ['縞が消える仕組み', '消しゴムで縞が戻る仕組み', '環境がすべてを検出すること', '世界が古典的に「見える」理由'].forEach(function(s, i){
+    txt(30, 78 + i * 24, 'label', '・' + s, 'start');
+  });
+  // 右ゾーン
+  el('rect', {x: 222, y: 30, width: 134, height: 178, rx: 10, fill: 'rgba(200,67,63,.07)', stroke: 'var(--ng)', 'stroke-width': 1.6, 'stroke-dasharray': '6 4'});
+  txt(289, 52, 'ng', '？ 未解決（観測問題）');
+  txt(232, 84, 'label', '・なぜ毎回1つの', 'start');
+  txt(242, 100, 'label', '結果だけが起きるのか', 'start');
+  txt(232, 128, 'label', '・なぜ確率は矢印の', 'start');
+  txt(242, 144, 'label', '長さの2乗なのか', 'start');
+  txt(232, 180, 'label', '→ 解釈が分かれる', 'start');
 })();
 </script>
 
 <script>
 (function(){
-  // 図2: 相関の拡散樹形図（静的）
-  var g = document.getElementById('dilute-body');
+  // 図2: 3解釈の読み方比較（静的）
+  var g = document.getElementById('interp-body');
   if (!g) return;
   var ns = 'http://www.w3.org/2000/svg';
   function el(name, attrs) {
@@ -319,34 +268,40 @@
   function txt(x, y, cls, content) {
     var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': 'middle'});
     t.textContent = content;
+    return t;
   }
-  var CP = '#a63f6f';
-  // 世代0: ペア（太い相関線）
-  var gen0 = [{x: 44, y: 88}, {x: 44, y: 132}];
-  el('line', {x1: gen0[0].x, y1: gen0[0].y, x2: gen0[1].x, y2: gen0[1].y, stroke: CP, 'stroke-width': 5, 'stroke-linecap': 'round'});
-  gen0.forEach(function(n){ el('circle', {cx: n.x, cy: n.y, r: 7, fill: CP}); });
-  txt(44, 62, 'strong', 'ペア');
-  txt(44, 160, 'label', '濃い相関');
-
-  // 世代1〜3: 枝分かれ。ノード数が増え、線が細く薄くなる
-  var stages = [
-    {x: 130, n: 4, w: 3, o: 0.7, label: '＋検出器・分子'},
-    {x: 226, n: 8, w: 1.8, o: 0.45, label: '＋空気'},
-    {x: 322, n: 16, w: 0.9, o: 0.28, label: '＋光子は宇宙へ'}
+  var panels = [
+    {x: 62, name: 'コペンハーゲン的', sub: '起きた枝だけ採用', mode: 'copenhagen'},
+    {x: 186, name: '多世界', sub: '全部の枝が実在', mode: 'many'},
+    {x: 310, name: '客観的収縮', sub: '未知の法則が片方を消す', mode: 'collapse'}
   ];
-  var prev = gen0;
-  stages.forEach(function(s){
-    var nodes = [];
-    for (var i = 0; i < s.n; i++) {
-      nodes.push({x: s.x, y: 40 + (150 * i) / (s.n - 1)});
+  panels.forEach(function(p){
+    txt(p.x, 44, 'strong', p.name);
+    // 幹
+    var Y0 = 190, YB = 130, spread = 34;
+    el('line', {x1: p.x, y1: Y0, x2: p.x, y2: YB, stroke: 'var(--ink)', 'stroke-width': 2.4});
+    // 左右の枝
+    function branch(sign, style) {
+      var x2 = p.x + sign * spread, y2 = 74;
+      var attrs = {x1: p.x, y1: YB, x2: x2, y2: y2, 'stroke-width': 2.4, 'stroke-linecap': 'round'};
+      if (style === 'solid') { attrs.stroke = '#2f7a6b'; }
+      else if (style === 'ghost') { attrs.stroke = '#9aa8a2'; attrs['stroke-dasharray'] = '4 4'; }
+      else if (style === 'dead') { attrs.stroke = '#c8433f'; attrs['stroke-dasharray'] = '2 4'; }
+      el('line', attrs);
+      return {x: x2, y: y2};
     }
-    nodes.forEach(function(n, i){
-      var p = prev[Math.floor(i * prev.length / s.n)];
-      el('line', {x1: p.x, y1: p.y, x2: n.x, y2: n.y, stroke: CP, 'stroke-width': s.w, opacity: s.o});
-      el('circle', {cx: n.x, cy: n.y, r: Math.max(2.2, 6 - prev.length), fill: CP, opacity: Math.min(1, s.o + 0.25)});
-    });
-    txt(s.x, 208, 'label', s.label);
-    prev = nodes;
+    if (p.mode === 'copenhagen') {
+      branch(-1, 'solid'); var b = branch(1, 'ghost');
+      txt(b.x, b.y - 10, 'label', '問わない');
+    } else if (p.mode === 'many') {
+      var a = branch(-1, 'solid'), b2 = branch(1, 'solid');
+      txt(a.x, a.y - 10, 'ok', '実在');
+      txt(b2.x, b2.y - 10, 'ok', '実在');
+    } else {
+      branch(-1, 'solid'); var c = branch(1, 'dead');
+      txt(c.x, c.y - 10, 'ng', '×消える');
+    }
+    txt(p.x, 212, 'label', p.sub);
   });
 })();
 </script>
