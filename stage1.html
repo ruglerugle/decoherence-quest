@@ -133,7 +133,7 @@
           </defs>
           <g id="interf-body"></g>
         </svg>
-        <div class="diagram-caption">スクリーン上の黒丸の点に、左スリット経由（青緑）と右スリット経由（オレンジ）の2本の矢印が、道のりに応じて回転しながら届く。<strong>右の円が「矢印の足し算」の作業台</strong>：2本の矢印を同じ出発点から描き、それらを隣り合う2辺とする平行四辺形（点線）を作ると、その対角線が「合計」（黒い矢印）になる。<strong>合計の長さの2乗が、その点の明るさ</strong>（×1＝<strong>同じ場所に</strong>スリット1本だけ開けたときの明るさ。×0〜×4）。カーブの明るい帯の高さが端へ行くほど低いのは、矢印の長さそのものが場所で変わる（波が広がって薄まって届く）ためで、×4という倍率は各場所の「1本のとき」との比を表す。2本の向きの開きが<strong>位相差</strong>：位相差0°（同じ向き）なら合計は長く×4（強め合い）、位相差180°（正反対）なら合計はほぼ消えて×0（打ち消し合い＝黒い矢印が見えなくなる瞬間）。走査点を上下に動かしながら明るさを右側に描き足していくと、干渉縞のカーブが浮かび上がる</div>
+        <div class="diagram-caption">スクリーン上の黒丸の点に、左スリット経由（青緑）と右スリット経由（オレンジ）の2本の矢印が、道のりに応じて回転しながら届く。<strong>右の円が「矢印の足し算」の作業台</strong>：2本の矢印を同じ出発点から描き、それらを隣り合う2辺とする平行四辺形（点線）を作ると、その対角線が「合計」（黒い矢印）になる。<strong>合計の長さの2乗が、その点の明るさ</strong>（×1＝<strong>同じ場所に</strong>スリット1本だけ開けたときの明るさ。×0〜×4）。カーブの明るい帯の高さが端へ行くほど低いのは、矢印の長さそのものが場所で変わる（波が広がって薄まって届く）ためで、作業台の矢印も走査点が端に行くほど短く描かれる。×4という倍率は各場所の「1本のとき」との比を表す。2本の向きの開きが<strong>位相差</strong>：位相差0°（同じ向き）なら合計は長く×4（強め合い）、位相差180°（正反対）なら合計はほぼ消えて×0（打ち消し合い＝黒い矢印が見えなくなる瞬間）。走査点を上下に動かしながら明るさを右側に描き足していくと、干渉縞のカーブが浮かび上がる</div>
       </div>
 
       <div class="dialogue-scene">
@@ -151,7 +151,7 @@
           <text class="strong" x="186" y="16" text-anchor="middle">手がかりが残るなら、それぞれ2乗してから足す</text>
           <g id="square-body"></g>
         </svg>
-        <div class="diagram-caption">上の図と同じ装置・同じ2本の矢印。ただし手がかりが残るときは足し合わせが禁止され、<strong>左経由の矢印を単独で2乗（長さ1→×1.0）、右経由も単独で2乗（×1.0）、それから確率どうしを足す</strong>。合計はどの点でも×2.0で、矢印の向き（位相差）はどこにも使われない。強め合いも打ち消し合いも起きないので、スクリーンには縞のない、なだらかな分布が積もる――計算の手順が変わっただけで、縞は消える</div>
+        <div class="diagram-caption">上の図と同じ装置・同じ2本の矢印。ただし手がかりが残るときは足し合わせが禁止され、<strong>左経由の矢印を単独で2乗して×1.0（＝その場所に1本だけ開けたときの明るさそのもの）、右経由も×1.0、それから確率どうしを足す</strong>。合計はどの点でも×2.0で、矢印の向き（位相差）はどこにも使われない。強め合いも打ち消し合いも起きないので、スクリーンには縞のない、なだらかな分布が積もる――計算の手順が変わっただけで、縞は消える</div>
       </div>
 
       <div class="dialogue-scene">
@@ -384,7 +384,7 @@
     path2.setAttribute('x2', SCX); path2.setAttribute('y2', y);
     dot.setAttribute('cx', SCX); dot.setAttribute('cy', y);
     lensDot.setAttribute('cx', SCX + 6 + r.I * 70); lensDot.setAttribute('cy', y);
-    var L = 13;
+    var L = 13 * Math.sqrt(r.env); // 矢印の長さは場所で変わる（波が広がって薄まる）
     var v1 = {x: Math.cos(r.ph1) * L, y: -Math.sin(r.ph1) * L};
     var v2 = {x: Math.cos(r.ph2) * L, y: -Math.sin(r.ph2) * L};
     // 2本とも中心から出発させ、平行四辺形の対角線が合計（黒）
@@ -496,7 +496,7 @@
     var ph1 = 2 * Math.PI * dist(SL, p) / LAM, ph2 = 2 * Math.PI * dist(SR, p) / LAM;
     var env = Math.exp(-Math.pow((y - 125) / 70, 2));
     // それぞれ2乗してから足す: |a1|²+|a2|² = 1+1 = 2 → 図1と同じ規格化（÷4）でI=0.5
-    return {I: 0.5 * env, ph1: ph1, ph2: ph2};
+    return {I: 0.5 * env, ph1: ph1, ph2: ph2, env: env};
   }
 
   function drawCurve(uptoY) {
@@ -517,10 +517,11 @@
     path2.setAttribute('x2', SCX); path2.setAttribute('y2', y);
     dot.setAttribute('cx', SCX); dot.setAttribute('cy', y);
     lensDot.setAttribute('cx', SCX + 6 + r.I * 70); lensDot.setAttribute('cy', y);
+    var Ls = L * Math.sqrt(r.env); // 矢印の長さは場所で変わる（波が広がって薄まる）
     ar1.setAttribute('x1', insetX); ar1.setAttribute('y1', c1y);
-    ar1.setAttribute('x2', insetX + Math.cos(r.ph1) * L); ar1.setAttribute('y2', c1y - Math.sin(r.ph1) * L);
+    ar1.setAttribute('x2', insetX + Math.cos(r.ph1) * Ls); ar1.setAttribute('y2', c1y - Math.sin(r.ph1) * Ls);
     ar2.setAttribute('x1', insetX); ar2.setAttribute('y1', c2y);
-    ar2.setAttribute('x2', insetX + Math.cos(r.ph2) * L); ar2.setAttribute('y2', c2y - Math.sin(r.ph2) * L);
+    ar2.setAttribute('x2', insetX + Math.cos(r.ph2) * Ls); ar2.setAttribute('y2', c2y - Math.sin(r.ph2) * Ls);
     drawCurve(y);
   }
 
