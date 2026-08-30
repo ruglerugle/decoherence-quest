@@ -165,6 +165,20 @@
           </div>
           <div class="dialog-bubble">その通り。そして左の状態の相方と右の状態の相方は<strong>直交</strong>している――つまり、最後の写真で見分けがつく。ということは、書き出しLの筋書きと書き出しRの筋書きは、手元でどんなに込み入った実験をしようと、<strong>絶対に同じ写真には合流できない</strong>。こうして、ありとあらゆる筋書きが、「相方が左と写るグループ」と「相方が右と写るグループ」の2つに、きっぱり分かれることになる。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg id="lane-svg" class="dq-svg" viewBox="0 0 372 252" width="100%" role="img" aria-label="筋書きが2つの系統に分かれる流れ図。もつれたペアから書き出しLと書き出しRの2本のレーンが分岐する。各レーンの中で手元の実験によって筋書きは枝分かれするが、相方のラベルは最後の写真まで持ち越される。左の相方と右の相方は直交していて見分けがつくため、上下のレーンは絶対に合流できず、すべての筋書きが相方＝左のグループと相方＝右のグループに分かれる">
+          <text class="strong" x="186" y="16" text-anchor="middle">筋書きは「書き出し」で2つの系統に分かれる</text>
+          <defs>
+            <marker id="ah5-k" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="var(--ink)"></path></marker>
+          </defs>
+          <g id="lane-body"></g>
+        </svg>
+        <div class="diagram-caption">もつれ状態は「両方左」と「両方右」の重ね合わせなので、どんな筋書きも書き出しは2通り（上の段＝書き出しL、下の段＝書き出しR）。手元の粒子で実験をすると筋書きは自由に枝分かれするが、触っているのは手元だけなので、<strong>相方のラベル（左／右）は最後の写真までそのまま持ち越される</strong>。左の相方と右の相方は直交＝写真で見分けがつくため、上の段と下の段の筋書きは<strong>絶対に合流できない</strong>。こうして全筋書きが「相方＝左」グループ（場合分けの表の行1）と「相方＝右」グループ（行2）に分かれる</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
@@ -345,6 +359,65 @@
     var r = txt(p.cx, 182, 'strong', '左 50%　右 50%', 11);
   });
   txt(186, 216, 'label', '→ 位置の統計はまったく同じ。では、どうやって見分ける？', 10.5);
+})();
+</script>
+
+<script>
+(function(){
+  // 図0b: 2系統レーン図（静的）。書き出し2通り→ラベル持ち越し→合流不可
+  var g = document.getElementById('lane-body');
+  if (!g) return;
+  var ns = 'http://www.w3.org/2000/svg';
+  var C1 = '#2f7a6b', C2 = '#b98a2e';
+  function el(name, attrs) {
+    var e = document.createElementNS(ns, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    g.appendChild(e);
+    return e;
+  }
+  function txt(x, y, cls, content, size) {
+    var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': 'middle'});
+    t.textContent = content;
+    if (size) t.style.fontSize = size + 'px';
+    return t;
+  }
+  txt(186, 32, 'label', 'もつれ状態＝「両方左」と「両方右」の重ね合わせ → 書き出しは2通り', 9.5);
+
+  var YL = 78, YR = 170;
+  // 出発点（もつれたペア）
+  el('circle', {cx: 30, cy: 124, r: 6, fill: '#a63f6f'});
+  txt(30, 148, 'label', 'もつれたペア', 8.5);
+  el('line', {x1: 36, y1: 119, x2: 72, y2: YL + 6, stroke: 'var(--ink)', 'stroke-width': 1.5, 'marker-end': 'url(#ah5-k)'});
+  el('line', {x1: 36, y1: 129, x2: 72, y2: YR - 6, stroke: 'var(--ink)', 'stroke-width': 1.5, 'marker-end': 'url(#ah5-k)'});
+
+  // レーンごとの箱と編み込み（手元の実験の枝分かれ）
+  [
+    {y: YL, c: C1, name: '書き出しL', sub: '手元:左 相方:左', photo: '相方は左のまま'},
+    {y: YR, c: C2, name: '書き出しR', sub: '手元:右 相方:右', photo: '相方は右のまま'}
+  ].forEach(function(lane){
+    el('rect', {x: 76, y: lane.y - 18, width: 80, height: 36, rx: 7, fill: 'var(--paper2)', stroke: lane.c, 'stroke-width': 1.8});
+    var t1 = txt(116, lane.y - 4, 'strong', lane.name, 10);
+    t1.style.fill = lane.c;
+    txt(116, lane.y + 11, 'label', lane.sub, 8.5);
+    // 枝分かれの編み込み（相方には触れない）
+    [-12, 0, 12].forEach(function(b){
+      el('path', {d: 'M 156 ' + lane.y + ' Q 190 ' + (lane.y + b) + ' 207 ' + lane.y + ' Q 224 ' + (lane.y - b) + ' 250 ' + lane.y, fill: 'none', stroke: lane.c, 'stroke-width': 1.2, opacity: .65});
+    });
+    el('line', {x1: 250, y1: lane.y, x2: 256, y2: lane.y, stroke: 'var(--ink)', 'stroke-width': 1.5, 'marker-end': 'url(#ah5-k)'});
+    el('rect', {x: 258, y: lane.y - 20, width: 104, height: 40, rx: 7, fill: 'var(--paper2)', stroke: lane.c, 'stroke-width': 1.8});
+    txt(310, lane.y - 5, 'strong', '最後の写真', 10);
+    var t2 = txt(310, lane.y + 12, 'strong', lane.photo, 9.5);
+    t2.style.fill = lane.c;
+  });
+
+  // 中央: 合流不可の仕切り
+  el('line', {x1: 76, y1: 124, x2: 362, y2: 124, stroke: 'var(--ng)', 'stroke-width': 1, 'stroke-dasharray': '5 4', opacity: .7});
+  txt(219, 117, 'label', '手元でいくら枝分かれしても', 9.5);
+  var ng = txt(219, 137, 'label', '✗ 相方が直交 → 上下は合流できない', 10);
+  ng.style.fill = 'var(--ng)'; ng.style.fontWeight = '900';
+
+  txt(186, 220, 'label', '→ すべての筋書きが2つのグループに分かれる', 10.5);
+  txt(186, 236, 'label', '「相方＝左」グループ（表の行1）／「相方＝右」グループ（表の行2）', 10);
 })();
 </script>
 
