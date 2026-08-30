@@ -214,6 +214,17 @@
           </div>
           <div class="dialog-bubble">書いてみます。もつれの状態は「2個とも左」と「2個とも右」の重ね合わせでした。行1「相方が左で終わる場合。起きる割合は1/2。この場合に対応するのは<strong>「2個とも左」の筋書きだけ</strong>なので、手元は確実に左」。行2「相方が右で終わる場合。割合は1/2。対応するのは「2個とも右」だけなので、手元は確実に右」。……この表、集団Bのレシピと<strong>一字一句同じ</strong>です。「半分は確実に左、半分は確実に右」。ということは、手元でどんな実験をしても――位置でも、干渉でも、斜めの質問でも――予想は集団Bと完全に一致する。<strong>もつれの片割れは、単独で見るかぎり「どちらか半々」の集団になりすましている</strong>んですね。だから何を測ってもランダムにしか見えなかった。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg id="table-svg" class="dq-svg" viewBox="0 0 372 248" width="100%" role="img" aria-label="うさ美が書いた場合分けの表。行1は相方が左で終わる場合で、起きる割合は2分の1、対応する筋書きは両方左だけなので手元は確実に左。行2は相方が右で終わる場合で、割合2分の1、手元は確実に右。行が交互に強調されたあと、行ごとの分布を割合の重みつきで足した合計として、縞のないのっぺりした分布が描かれる">
+          <text class="strong" x="186" y="16" text-anchor="middle">うさ美の場合分けの表：行の中は矢印、行の間は確率</text>
+          <g id="table-body"></g>
+        </svg>
+        <div class="diagram-caption">セリフの表をそのまま書いたもの。行1：相方が<strong>左</strong>で終わる場合（割合1/2）――対応する筋書きは「2個とも左」だけなので、手元は<strong>確実に左</strong>（左由来の山）。行2：相方が<strong>右</strong>（割合1/2）――手元は<strong>確実に右</strong>。行ごとの分布を割合の重みつきで足すと、一番下の<strong>のっぺり</strong>になる。この表は「半分は確実に左、半分は確実に右」という集団Bのレシピと同じ――もつれの片割れは混合状態になりすます</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
@@ -251,13 +262,6 @@
         </div>
       </div>
 
-      <div class="diagram-box">
-        <svg id="table-svg" class="dq-svg" viewBox="0 0 372 240" width="100%" role="img" aria-label="場合分けの表のアニメーション。行1は相方が左の状態で重み2分の1、手元は左由来の山。行2は相方が右の状態で重み2分の1、手元は右由来の山。行が交互に強調されたあと、重みつきの合計として縞のないのっぺりした分布が描かれる">
-          <text class="strong" x="186" y="16" text-anchor="middle">場合分けの表：行の中は矢印、行の間は確率</text>
-          <g id="table-body"></g>
-        </svg>
-        <div class="diagram-caption">もつれの片割れの計算。相方の直交する状態ごとに行を作り（行1：相方が左・重み1/2・手元は左由来の山、行2：相方が右・重み1/2・手元は右由来の山）、行ごとの分布を重みつきで足すと、一番下の「のっぺり」になる。この表は「半分は確実に左、半分は確実に右」という集団のレシピと同じ――もつれの片割れは混合状態になりすます</div>
-      </div>
 
       <div class="diagram-box">
         <svg id="three-svg" class="dq-svg" viewBox="0 0 372 198" width="100%" role="img" aria-label="3つの集団の干渉実験の結果比較。左：重ね合わせの集団は縞。中央：どちらか半々の集団はのっぺり。右：もつれの片割れものっぺり。中央と右は区別できない">
@@ -437,7 +441,7 @@
 
 <script>
 (function(){
-  // 図1: 場合分けの表。行を交互に強調し、重みつき合計カーブを描く
+  // 図1: うさ美の場合分けの表。行を交互に強調し、重みつき合計カーブを描く
   var svg = document.getElementById('table-svg');
   var g = document.getElementById('table-body');
   if (!svg || !g) return;
@@ -450,21 +454,12 @@
     (parent || g).appendChild(e);
     return e;
   }
-  function txt(x, y, cls, content, anchor) {
-    var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': anchor || 'middle'});
+  function txt(x, y, cls, content, size) {
+    var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': 'middle'});
     t.textContent = content;
+    if (size) t.style.fontSize = size + 'px';
     return t;
   }
-
-  var X0 = 24, W = 324;
-  el('rect', {x: X0, y: 28, width: W, height: 196, rx: 8, fill: 'var(--paper2)', stroke: 'var(--line)'});
-  // ヘッダ行
-  txt(X0 + 40, 46, 'head-cell', '行');
-  txt(X0 + 110, 46, 'head-cell', '相方の状態');
-  txt(X0 + 180, 46, 'head-cell', '重み');
-  txt(X0 + 262, 46, 'head-cell', '手元の見え方');
-  el('line', {x1: X0, y1: 54, x2: X0 + W, y2: 54, 'class': 'grid'});
-
   function miniCurve(cx, cy, w, h, f, color) {
     var d = '';
     for (var i = 0; i <= 60; i++) {
@@ -478,27 +473,40 @@
   function envL(u) { return Math.exp(-Math.pow((u + 0.35) / 0.5, 2)) * 0.9; }
   function envR(u) { return Math.exp(-Math.pow((u - 0.35) / 0.5, 2)) * 0.9; }
 
-  // 行1・行2
-  var row1 = el('rect', {x: X0 + 2, y: 58, width: W - 4, height: 48, fill: 'rgba(47,122,107,.10)', opacity: 0});
-  var row2 = el('rect', {x: X0 + 2, y: 110, width: W - 4, height: 48, fill: 'rgba(185,138,46,.12)', opacity: 0});
-  txt(X0 + 40, 86, 'strong', '行1');
-  txt(X0 + 110, 80, 'strong', '左の状態');
-  txt(X0 + 110, 96, 'label', '（直交その1）');
-  txt(X0 + 180, 86, 'strong', '1/2');
-  miniCurve(X0 + 262, 80, 92, 30, envL, C1);
-  txt(X0 + 40, 138, 'strong', '行2');
-  txt(X0 + 110, 132, 'strong', '右の状態');
-  txt(X0 + 110, 148, 'label', '（直交その2）');
-  txt(X0 + 180, 138, 'strong', '1/2');
-  miniCurve(X0 + 262, 132, 92, 30, envR, C2);
-  el('line', {x1: X0, y1: 108, x2: X0 + W, y2: 108, 'class': 'grid'});
-  el('line', {x1: X0, y1: 160, x2: X0 + W, y2: 160, 'class': 'grid'});
+  var X0 = 14, W = 344;
+  el('rect', {x: X0, y: 28, width: W, height: 212, rx: 8, fill: 'var(--paper2)', stroke: 'var(--line)'});
+  // ヘッダ行
+  txt(X0 + 26, 46, 'head-cell', '行');
+  txt(X0 + 100, 46, 'head-cell', '相方の終わり方');
+  txt(X0 + 170, 46, 'head-cell', '割合');
+  txt(X0 + 262, 46, 'head-cell', '手元の状態');
+  el('line', {x1: X0, y1: 52, x2: X0 + W, y2: 52, 'class': 'grid'});
+
+  // 行1・行2（強調用の背景）
+  var row1 = el('rect', {x: X0 + 2, y: 55, width: W - 4, height: 58, fill: 'rgba(47,122,107,.10)', opacity: 0});
+  var row2 = el('rect', {x: X0 + 2, y: 117, width: W - 4, height: 58, fill: 'rgba(185,138,46,.12)', opacity: 0});
+
+  [
+    {cy: 84, n: '行1', state: '左の状態', sub: '（対応：両方左だけ）', p: '確実に左', c: C1, f: envL},
+    {cy: 146, n: '行2', state: '右の状態', sub: '（対応：両方右だけ）', p: '確実に右', c: C2, f: envR}
+  ].forEach(function(r){
+    txt(X0 + 26, r.cy + 4, 'strong', r.n);
+    var st = txt(X0 + 100, r.cy - 4, 'strong', r.state, 11);
+    st.style.fill = r.c;
+    txt(X0 + 100, r.cy + 13, 'label', r.sub, 8.5);
+    txt(X0 + 170, r.cy + 4, 'strong', '1/2');
+    var pt = txt(X0 + 262, r.cy - 10, 'strong', r.p, 11);
+    pt.style.fill = r.c;
+    miniCurve(X0 + 262, r.cy + 9, 92, 22, r.f, r.c);
+  });
+  el('line', {x1: X0, y1: 115, x2: X0 + W, y2: 115, 'class': 'grid'});
+  el('line', {x1: X0, y1: 177, x2: X0 + W, y2: 177, 'class': 'grid'});
 
   // 合計行
-  txt(X0 + 84, 196, 'accent', '重みつき合計＝');
-  txt(X0 + 84, 212, 'label', '(1/2)×行1 ＋ (1/2)×行2');
-  miniCurve(X0 + 240, 194, 130, 36, function(u){ return (envL(u) + envR(u)) / 2; }, CS);
-  txt(X0 + 240, 220, 'accent', 'のっぺり（縞ゼロ）');
+  txt(X0 + 84, 202, 'accent', '重みつき合計＝');
+  txt(X0 + 84, 218, 'label', '(1/2)×行1 ＋ (1/2)×行2');
+  miniCurve(X0 + 240, 202, 130, 34, function(u){ return (envL(u) + envR(u)) / 2; }, CS);
+  txt(X0 + 240, 232, 'accent', 'のっぺり（縞ゼロ）');
 
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced) { row1.setAttribute('opacity', 1); row2.setAttribute('opacity', 1); return; }
@@ -507,7 +515,6 @@
     if (!running) return;
     t += 0.016;
     var ph = (t % 4) / 4;
-    // 行1強調→行2強調→両方、を滑らかに循環
     row1.setAttribute('opacity', ph < 0.33 ? 1 : ph < 0.66 ? 0.25 : 1);
     row2.setAttribute('opacity', ph < 0.33 ? 0.25 : 1);
     raf = requestAnimationFrame(loop);
