@@ -221,15 +221,6 @@
         <div class="diagram-caption">矢印の足し算は、波の重ね合わせと同じもの（矢印の向き＝波の山が来るタイミング、矢印の長さ＝波の振れ幅）。上段（＋グループ）：左からの波（青緑）と右からの波（オレンジ）を<strong>そのまま重ねる</strong>と、黒い合計の波になる。下段（−グループ）：右の波の<strong>山と谷をひっくり返してから</strong>（＝矢印の半回転）重ねる。道のり差が波長の整数倍なら、2つの波は<strong>山と山・谷と谷がそろう</strong>ので、そのまま重ねれば強め合って大きく振れ――その点は＋の縞の<strong>明るい帯</strong>になる。ひっくり返して重ねれば山と谷が出会って打ち消し合い――−の縞の<strong>暗い帯</strong>になる。半端ならその逆。下のグラフは道のり差を動かしたときの両グループの明るさで、ピークが正確に互い違いになり、合わせると常に一定＝のっぺりに戻る（※波の山・谷は振動の話、明るい帯・暗い帯はスクリーン上の縞の場所の話）</div>
       </div>
 
-      <div class="diagram-box">
-        <div style="font-size:12.5px;font-weight:900;color:var(--ink);margin-bottom:8px">波紋で見る：波源を半波長ずらすと、縞がそっくり入れ替わる</div>
-        <div style="font-size:12px;font-weight:900;color:#5b3fa6;margin:2px 0 4px;text-align:left">＋グループ：2つの波源が同じタイミングで振れる（同位相）</div>
-        <canvas id="pond-plus" width="340" height="150" style="width:100%;max-width:460px;height:auto;border-radius:8px;display:block;margin:0 auto" role="img" aria-label="2つの波源から同じタイミングで波紋が広がるアニメーション。中央の筋では山と山が重なって強め合い、右端のスクリーンの帯では中央が明るい帯になる干渉縞ができる"></canvas>
-        <div style="font-size:12px;font-weight:900;color:#b98a2e;margin:12px 0 4px;text-align:left">−グループ：片方の波源（下・白抜き）を半波長ずらして振らせる</div>
-        <canvas id="pond-minus" width="340" height="150" style="width:100%;max-width:460px;height:auto;border-radius:8px;display:block;margin:0 auto" role="img" aria-label="片方の波源を半波長ずらしたアニメーション。中央の筋では山と谷が出会って打ち消し合い、右端のスクリーンの帯では中央が暗い帯になる。明るい帯と暗い帯の位置が上の図と正確に入れ替わる"></canvas>
-        <div class="diagram-caption">2つの波源（＝2本のスリット）から広がる波紋。金色が波の山、深緑が谷。右端の帯がスクリーンで、時間をならした明るさを表す。上（＋グループ）：2つの波源が同位相なので、中央の筋は山と山が重なって強め合い、スクリーン中央は<strong>明るい帯</strong>。下（−グループ）：片方の波源を<strong>半波長（半周期）ずらす</strong>――「矢印の半回転」は、波ではこのずらしのこと。中央の筋では山と谷が出会って打ち消し合い、スクリーン中央は<strong>暗い帯</strong>に。強め合いの筋と静かな筋が全部入れ替わるので、明るい帯の位置は上下の図で正確に互い違いになる</div>
-      </div>
-
       <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -264,7 +255,7 @@
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">なるほど……すると今度は、こう考えたくなります。粒子は最初から「＋族」と「−族」の2種類で、族ごとに明るい帯の場所が決まっていた。まんべんなく見えたのは2つの族が混ざっていたからだ――という説明です。でも、これは怪しい。質問の仕方を変えれば、同じ粒子たちが「左印の族」と「右印の族」（のっぺりの山2つ）にも仕分けられるはずです。<strong>あらゆる質問への答えを書いた札を、あらかじめ全部持っている</strong>という説明は……ベルの旅で葬った、あの<strong>説明書モデル</strong>そのものです。</div>
+          <div class="dialog-bubble">なるほど……すると今度は、こう考えたくなります。粒子は最初から「＋族」と「−族」の2種類で、族ごとに明るい帯の場所が決まっていた。まんべんなく見えたのは2つの族が混ざっていたからだ――という説明です。でも、これは怪しい。質問の仕方を変えれば、同じ粒子たちが「左印の族」と「右印の族」（のっぺりの山2つ）にも仕分けられるはずです。<strong>あらゆる質問への答えを書いた札を、あらかじめ全部持っている</strong>という説明は……<a href="https://ruglerugle.github.io/bell-inequality/" target="_blank" rel="noopener" style="color:#2f7a6b;text-decoration:underline">ベルの旅</a>で葬った、あの<strong>説明書モデル</strong>そのものです。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
@@ -294,15 +285,7 @@
           <text class="strong" x="186" y="16" text-anchor="middle">同じデータでも、仕分けると縞が見える</text>
           <g id="eraser-body"></g>
         </svg>
-        <div class="diagram-caption">上：全部の点をそのまま見ると、のっぺり（縞なし）。下：同じ点を目印の答えで仕分けると、＋の回（紫）は縞、−の回（オレンジ）は明るい帯と暗い帯が入れ替わった逆縞。2色を合わせると上の分布に戻る。点は1つも動いていない――変わったのは「見方」だけ</div>
-      </div>
-
-      <div class="diagram-box">
-        <svg id="sumzero-svg" class="dq-svg" viewBox="0 0 372 180" width="100%" role="img" aria-label="＋の縞の分布カーブと−の逆縞の分布カーブ、その合計ののっぺりカーブを重ねた静止図。＋の明るい帯が−の暗い帯をちょうど埋めて、合計は縞のない分布になる">
-          <text class="strong" x="186" y="16" text-anchor="middle">＋の縞 ＋ −の逆縞 ＝ のっぺり</text>
-          <g id="sumzero-body"></g>
-        </svg>
-        <div class="diagram-caption">＋の回の分布（紫）と−の回の分布（オレンジ）は明るい帯と暗い帯が互い違い。足し合わせる（灰色）と凹凸が打ち消されて、のっぺりに戻る。仕分けなしで見えるのはこの灰色だけ――だから質問の仕方をあとから変えても、スクリーン全体の見た目は変えられず、超光速通信には使えない</div>
+        <div class="diagram-caption">上：全部の点をそのまま見ると、のっぺり（縞なし）。下：同じ点を目印の答えで仕分けると、＋の回（紫）は縞、−の回（オレンジ）は明るい帯と暗い帯が入れ替わった逆縞。2色を合わせると明るい帯が暗い帯をちょうど埋めて、上の分布に戻る。点は1つも動いていない――変わったのは「見方」だけ。仕分けなしで見えるのは上の帯だけだから、質問の仕方をあとから変えてもスクリーン全体の見た目は変えられず、超光速通信には使えない</div>
       </div>
 
       <div class="formula-box">
@@ -852,106 +835,6 @@
 
 <script>
 (function(){
-  // 図0f: 波紋の干渉（canvas）。＋＝同位相の2波源、−＝片方を半波長ずらした2波源
-  var panels = [
-    {cv: document.getElementById('pond-plus'), phase: 0},
-    {cv: document.getElementById('pond-minus'), phase: Math.PI}
-  ];
-  if (!panels[0].cv || !panels[0].cv.getContext) return;
-  var S1 = {x: 58, y: 40}, S2 = {x: 58, y: 110};
-  var K = 2 * Math.PI / 14;          // 波長14px
-  var OMEGA = 2 * Math.PI / 1.6;     // 周期1.6秒
-  var SCR_X = 324, SCR_W = 12;       // スクリーン帯
-  var PAPER = [253, 252, 248], CREST = [185, 138, 46], TROUGH = [31, 82, 87];
-
-  panels.forEach(function(p){
-    var cv = p.cv;
-    p.ctx = cv.getContext('2d');
-    p.W = cv.width; p.H = cv.height;
-    p.img = p.ctx.createImageData(SCR_X, p.H);
-    p.px = p.img.data;
-    var n = SCR_X * p.H;
-    p.kr1 = new Float32Array(n); p.kr2 = new Float32Array(n);
-    p.a1 = new Float32Array(n); p.a2 = new Float32Array(n);
-    for (var y = 0; y < p.H; y++) {
-      for (var x = 0; x < SCR_X; x++) {
-        var i = y * SCR_X + x;
-        var r1 = Math.sqrt((x - S1.x) * (x - S1.x) + (y - S1.y) * (y - S1.y));
-        var r2 = Math.sqrt((x - S2.x) * (x - S2.x) + (y - S2.y) * (y - S2.y));
-        p.kr1[i] = K * r1; p.kr2[i] = K * r2;
-        p.a1[i] = Math.min(1, 5.5 / Math.sqrt(r1 + 4));
-        p.a2[i] = Math.min(1, 5.5 / Math.sqrt(r2 + 4));
-      }
-    }
-    // スクリーンの帯: 時間平均した明るさ（干渉縞）を前計算
-    p.screen = new Float32Array(p.H);
-    for (var yy = 0; yy < p.H; yy++) {
-      var i2 = yy * SCR_X + (SCR_X - 2);
-      var e2 = p.a1[i2] * p.a1[i2] + p.a2[i2] * p.a2[i2] +
-               2 * p.a1[i2] * p.a2[i2] * Math.cos(p.kr1[i2] - p.kr2[i2] - p.phase);
-      p.screen[yy] = e2;
-    }
-    var maxE = 0;
-    for (var m = 0; m < p.H; m++) if (p.screen[m] > maxE) maxE = p.screen[m];
-    for (var m2 = 0; m2 < p.H; m2++) p.screen[m2] /= maxE;
-  });
-
-  function drawFrame(p, t) {
-    var wt = OMEGA * t;
-    var n = SCR_X * p.H;
-    for (var i = 0, j = 0; i < n; i++, j += 4) {
-      var v = p.a1[i] * Math.sin(p.kr1[i] - wt) + p.a2[i] * Math.sin(p.kr2[i] - wt - p.phase);
-      var m = v < 0 ? -v : v;
-      if (m > 1.6) m = 1.6;
-      m = m / 1.6;
-      var c = v > 0 ? CREST : TROUGH;
-      p.px[j] = PAPER[0] + (c[0] - PAPER[0]) * m;
-      p.px[j + 1] = PAPER[1] + (c[1] - PAPER[1]) * m;
-      p.px[j + 2] = PAPER[2] + (c[2] - PAPER[2]) * m;
-      p.px[j + 3] = 255;
-    }
-    p.ctx.putImageData(p.img, 0, 0);
-    // スクリーンの帯（時間平均の明るさ＝縞）
-    for (var y = 0; y < p.H; y++) {
-      var b = p.screen[y];
-      p.ctx.fillStyle = 'rgb(' +
-        Math.round(40 + (255 - 40) * b) + ',' +
-        Math.round(45 + (215 - 45) * b) + ',' +
-        Math.round(48 + (140 - 48) * b) + ')';
-      p.ctx.fillRect(SCR_X, y, SCR_W + 4, 1);
-    }
-    // 波源の印: 通常は塗り、半波長ずらした側は白抜き
-    p.ctx.fillStyle = '#1c2622'; p.ctx.strokeStyle = '#1c2622'; p.ctx.lineWidth = 2;
-    p.ctx.beginPath(); p.ctx.arc(S1.x, S1.y, 3.5, 0, Math.PI * 2); p.ctx.fill();
-    if (p.phase === 0) {
-      p.ctx.beginPath(); p.ctx.arc(S2.x, S2.y, 3.5, 0, Math.PI * 2); p.ctx.fill();
-    } else {
-      p.ctx.fillStyle = '#fdfcf8';
-      p.ctx.beginPath(); p.ctx.arc(S2.x, S2.y, 3.5, 0, Math.PI * 2); p.ctx.fill(); p.ctx.stroke();
-    }
-  }
-
-  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced) { panels.forEach(function(p){ drawFrame(p, 0.4); }); return; }
-
-  var running = false;
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function(es){ running = es[0].isIntersecting; }, {threshold: 0.1}).observe(panels[0].cv);
-  } else { running = true; }
-  var last = 0;
-  function loop(ms) {
-    if (running && ms - last > 40) {  // 約25fpsに間引く
-      last = ms;
-      panels.forEach(function(p){ drawFrame(p, ms / 1000); });
-    }
-    requestAnimationFrame(loop);
-  }
-  requestAnimationFrame(loop);
-})();
-</script>
-
-<script>
-(function(){
   // 図1: 仕分け前（灰色のっぺり）と仕分け後（＋縞/−逆縞）の2帯アニメ
   var svg = document.getElementById('eraser-svg');
   var g = document.getElementById('eraser-body');
@@ -1037,49 +920,5 @@
 })();
 </script>
 
-<script>
-(function(){
-  // 図2: ＋縞・−逆縞・合計カーブの静止図
-  var g = document.getElementById('sumzero-body');
-  if (!g) return;
-  var ns = 'http://www.w3.org/2000/svg';
-  var CP = '#5b3fa6', CM = '#b98a2e', CS = '#7a8580';
-  function el(name, attrs) {
-    var e = document.createElementNS(ns, name);
-    for (var k in attrs) e.setAttribute(k, attrs[k]);
-    g.appendChild(e);
-    return e;
-  }
-  var X0 = 40, W = 292, Y0 = 150, H = 108;
-  el('rect', {x: X0, y: Y0 - H, width: W, height: H, fill: 'var(--paper2)', stroke: 'var(--line)', rx: 6});
-  function env(u) { return Math.exp(-u * u * 2.2); }
-  function curve(f, color, width, dash) {
-    var d = '';
-    for (var i = 0; i <= 120; i++) {
-      var u = (i - 60) / 60;
-      var x = X0 + 4 + (W - 8) * i / 120;
-      var y = Y0 - 6 - f(u) * (H - 16);
-      d += (i === 0 ? 'M ' : 'L ') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
-    }
-    var attrs = {d: d, fill: 'none', stroke: color, 'stroke-width': width};
-    if (dash) attrs['stroke-dasharray'] = dash;
-    el('path', attrs);
-  }
-  curve(function(u){ return env(u) * (1 + Math.cos(u * 9)) / 2; }, CP, 2);
-  curve(function(u){ return env(u) * (1 - Math.cos(u * 9)) / 2; }, CM, 2);
-  curve(function(u){ return env(u); }, CS, 2.6, '5 4');
-  // 凡例
-  var LY = 168;
-  el('line', {x1: 58, y1: LY, x2: 78, y2: LY, stroke: CP, 'stroke-width': 2.5});
-  el('line', {x1: 148, y1: LY, x2: 168, y2: LY, stroke: CM, 'stroke-width': 2.5});
-  el('line', {x1: 238, y1: LY, x2: 258, y2: LY, stroke: CS, 'stroke-width': 2.5, 'stroke-dasharray': '5 4'});
-  [['＋の縞', 84, CP], ['−の逆縞', 174, CM], ['合計', 264, CS]].forEach(function(it){
-    var t = el('text', {x: it[1], y: LY + 4, 'class': 'label', 'text-anchor': 'start'});
-    t.textContent = it[0];
-    t.style.fill = it[2];
-    t.style.fontWeight = '900';
-  });
-})();
-</script>
 </body>
 </html>

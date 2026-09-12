@@ -210,7 +210,7 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
 /* 折り返しても項目の切れ目が分かるよう、2つめ以降に区切り線を引く */
 .formula-box .step + .step{border-top:1px dashed #c0dbd0;padding-top:11px}
 /* 途中で割れると読めなくなる項だけ、折り返しを禁じる */
-.formula-box .nw{white-space:nowrap}
+.nw{white-space:nowrap}
 /* 幅の狭い画面では、見出しと式を別の行に分ける */
 .formula-box br.wbr{display:none}
 @media(max-width:480px){ .formula-box br.wbr{display:inline} }
@@ -262,7 +262,6 @@ a.btn{text-decoration:none;display:inline-flex;align-items:center}
 .hero h1 .line{display:block}
 .hero h1 .accent{color:var(--gold-light)}
 .hero p{max-width:440px;margin:12px auto 0;color:#e2efe9;font-size:13.5px;font-weight:700;line-height:2}
-.nowrap{white-space:nowrap}
 
 .board{margin-top:20px;padding:20px 20px 24px;background:var(--paper);border:1px solid #d3dcd6;border-radius:22px;box-shadow:var(--shadow)}
 .board-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px;
