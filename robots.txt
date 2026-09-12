@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ruglerugle.github.io/decoherence-quest/sitemap.xml
+Sitemap: https://quantum-mechanics.habatakijuku.com/decoherence-quest/sitemap.xml
