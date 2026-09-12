@@ -82,7 +82,7 @@
 
 # ファイル構成
 - `design-system.css` — quest-template由来の共通デザイン。配色は `:root` の変数で管理（霧の青緑×オレンジ）
-- `js/progress.js` — 進捗管理・クイズ判定。**クイズの正解は `ANSWERS`**。localStorageキーは `decoherenceQuestProgress`、グローバルは `DQ`
+- `js/progress.js` — 進捗管理・クイズ判定。**クイズの正解は `ANSWERS`**。localStorageキーは `decoherenceQuestProgress_v2`、グローバルは `DQ`
 - `stage1.html` 〜 `stage7.html` — 各ステージ。`index.html`（表紙）、`complete.html`（クリア画面）
 - `images/` — キャラ画像はWebP（幅300px程度、bell-inequalityから流用）。`<img>` には `width`/`height` 属性を必ず付ける。
   favicon.png は流用。ogp.png は未作成
