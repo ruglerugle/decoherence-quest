@@ -142,10 +142,10 @@
           <g id="interf-body"></g>
         </svg>
         <div class="readout">
-          <span style="color:#2f7a6b">左経由→ <b id="ro-l">1.00</b></span>
-          <span style="color:#b98a2e">右経由→ <b id="ro-r">1.00</b></span>
-          <span>合計→ <b id="ro-s">2.00</b></span>
-          <span>明るさの比＝(合計→)² <b id="ro-s2">4.00</b></span>
+          <span style="color:#2f7a6b">左経由の矢印の長さ <b id="ro-l">1.00</b></span>
+          <span style="color:#b98a2e">右経由の矢印の長さ <b id="ro-r">1.00</b></span>
+          <span>合計の矢印の長さ <b id="ro-s">2.00</b></span>
+          <span>明るさの比＝合計の長さの2乗 <b id="ro-s2">4.00</b></span>
           <span>位相差 <b id="ro-ph">0°</b></span>
         </div>
         <div class="anim-ctrl">
@@ -153,7 +153,7 @@
           <span class="ctrl-label">走査位置</span>
           <input type="range" id="interf-slider" min="40" max="210" step="0.5" value="40" aria-label="スクリーン上の走査位置を手動で動かす">
         </div>
-        <div class="diagram-caption">スクリーン上の黒丸の点に、左スリット経由（青緑）と右スリット経由（オレンジ）の2本の矢印が、道のりに応じて回転しながら届く。<strong>右の円が「矢印の足し算」の作業台</strong>：2本を隣り合う2辺とする平行四辺形（点線）の対角線が「合計」（黒い矢印）。<strong>合計の長さの2乗が、その点の明るさ</strong>（×1＝スクリーン中央にスリット1本だけのときの明るさ。端では矢印が短くなるので数値も下がる）。2本の向きの開きが<strong>位相差</strong>：0°なら合計は長く伸びて強め合い、180°なら打ち消し合ってほぼ0。走査点を上下に動かすと、明るさのカーブ＝干渉縞が右側に浮かび上がる</div>
+        <div class="diagram-caption">スクリーン上の黒丸の点に、左スリット経由（青緑）と右スリット経由（オレンジ）の2本の矢印が、道のりに応じて回転しながら届く。<strong>右の円が「矢印の足し算」の作業台</strong>：2本を隣り合う2辺とする平行四辺形（点線）の対角線が「合計」（黒い矢印）。<strong>合計の長さの2乗が、その点の明るさ</strong>（1＝スクリーン中央にスリット1本だけのときの明るさ。端では矢印が短くなるので数値も下がる）。2本の向きの開きが<strong>位相差</strong>：0°なら合計は長く伸びて強め合い、180°なら打ち消し合ってほぼ0。走査点を上下に動かすと、明るさのカーブ＝干渉縞が右側に浮かび上がる</div>
       </div>
 
       <div class="dialogue-scene">
@@ -172,10 +172,10 @@
           <g id="square-body"></g>
         </svg>
         <div class="readout">
-          <span style="color:#2f7a6b">左経由→ <b id="sq-l">1.00</b></span>
-          <span style="color:#b98a2e">右経由→ <b id="sq-r">1.00</b></span>
-          <span style="color:#2f7a6b">(左経由→)² <b id="sq-l2">1.00</b></span>
-          <span style="color:#b98a2e">(右経由→)² <b id="sq-r2">1.00</b></span>
+          <span style="color:#2f7a6b">左経由の矢印の長さ <b id="sq-l">1.00</b></span>
+          <span style="color:#b98a2e">右経由の矢印の長さ <b id="sq-r">1.00</b></span>
+          <span style="color:#2f7a6b">左経由の長さの2乗 <b id="sq-l2">1.00</b></span>
+          <span style="color:#b98a2e">右経由の長さの2乗 <b id="sq-r2">1.00</b></span>
           <span>明るさの比＝2乗の和 <b id="sq-sum">2.00</b></span>
           <span>位相差 <b id="sq-ph">0°</b></span>
         </div>
@@ -357,8 +357,8 @@
   // 矢印インセット（右端）: 2本の矢印を先端どうしでつないで足し、合計の黒い矢印を作る
   var insetX = 334, insetY = 103;
   txt(insetX, 52, 'strong', '矢印の合成');
-  var subTitle = txt(insetX, 68, 'label', '長さ²＝明るさ');
-  subTitle.style.fontSize = '10px';
+  var subTitle = txt(insetX - 4, 68, 'label', '長さの2乗＝明るさ');
+  subTitle.style.fontSize = '9px';
   subTitle.style.fontWeight = '900';
   el('circle', {cx: insetX, cy: insetY, r: 28, fill: 'var(--paper2)', stroke: 'var(--line)'});
   // 平行四辺形の補助線（点線）→ その上に矢印2本と合計を描く
